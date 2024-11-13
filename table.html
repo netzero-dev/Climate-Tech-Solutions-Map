@@ -70,17 +70,15 @@
     </div>
 
     <script>
-        const csvData = `Sector,Climate And Business Need,Solutions,Market Maturity,Market Maturity Number,Business Model,Type,SeedYN,GrantYN,SeriesX,Total Non-Equity Funding,Total Funding Amount (in USD),Total Equity Funding Amount (in USD),Funding Rank,Series Rank,Seed Rank,Scale Rank
-${document.querySelector('Climate Tech Solutions Map 2024 - Scale_Rank .csv').textContent}`;
+        // CSV data embedded directly in the JavaScript
+        const csvData = `${await window.fs.readFile('data.csv', { encoding: 'utf8' })}`;
 
-        let data = [];
-        
         // Parse CSV when page loads
         document.addEventListener('DOMContentLoaded', function() {
             Papa.parse(csvData, {
                 header: true,
                 complete: function(results) {
-                    data = results.data;
+                    const data = results.data;
                     
                     // Get unique sectors
                     const sectors = [...new Set(data.map(row => row.Sector))].sort();
@@ -91,18 +89,18 @@ ${document.querySelector('Climate Tech Solutions Map 2024 - Scale_Rank .csv').te
                         `<option value="${sector}">${sector}</option>`
                     ).join('');
                     
+                    // Update table when sector changes
+                    sectorSelect.addEventListener('change', function(e) {
+                        updateTable(data, e.target.value);
+                    });
+                    
                     // Show initial data
-                    updateTable(sectors[0]);
+                    updateTable(data, sectors[0]);
                 }
             });
         });
 
-        // Update table when sector changes
-        document.getElementById('sectorSelect').addEventListener('change', function(e) {
-            updateTable(e.target.value);
-        });
-
-        function updateTable(sector) {
+        function updateTable(data, sector) {
             const filteredData = data.filter(row => row.Sector === sector);
             const tableContainer = document.getElementById('tableContainer');
             
