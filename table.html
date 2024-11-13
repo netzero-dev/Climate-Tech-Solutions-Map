@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Climate Tech Solutions Explorer</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
@@ -24,6 +28,13 @@
             text-align: center;
             margin-bottom: 30px;
         }
+        h2 {
+            color: #444;
+            margin-top: 30px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+        }
         select {
             width: 100%;
             padding: 8px;
@@ -35,7 +46,8 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
+            margin-top: 10px;
+            margin-bottom: 30px;
             background-color: white;
         }
         th, td {
@@ -63,6 +75,16 @@
             background-color: #f8d7da;
             border-radius: 4px;
             margin: 20px 0;
+        }
+        .need-section {
+            margin-bottom: 40px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .need-section h2 {
+            margin-top: 0;
+            border-bottom: 1px solid #eee;
         }
     </style>
 </head>
@@ -118,32 +140,43 @@
                 return;
             }
 
-            const table = `
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Climate And Business Need</th>
-                            <th>Solutions</th>
-                            <th>Market Maturity</th>
-                            <th>Business Model</th>
-                            <th>Type</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        ${filteredData.map(row => `
-                            <tr>
-                                <td>${row['Climate And Business Need'] || ''}</td>
-                                <td>${row['Solutions'] || ''}</td>
-                                <td>${row['Market Maturity'] || ''}</td>
-                                <td>${row['Business Model'] || ''}</td>
-                                <td>${row['Type'] || ''}</td>
-                            </tr>
-                        `).join('')}
-                    </tbody>
-                </table>
-            `;
+            // Group the data by Climate And Business Need
+            const groupedData = _.groupBy(filteredData, 'Climate And Business Need');
             
-            tableContainer.innerHTML = table;
+            // Create HTML for each group
+            const sectionsHtml = Object.entries(groupedData)
+                .map(([need, solutions]) => {
+                    if (!need) return ''; // Skip empty needs
+                    
+                    return `
+                        <div class="need-section">
+                            <h2>${need}</h2>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Solutions</th>
+                                        <th>Market Maturity</th>
+                                        <th>Business Model</th>
+                                        <th>Type</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${solutions.map(row => `
+                                        <tr>
+                                            <td>${row['Solutions'] || ''}</td>
+                                            <td>${row['Market Maturity'] || ''}</td>
+                                            <td>${row['Business Model'] || ''}</td>
+                                            <td>${row['Type'] || ''}</td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    `;
+                })
+                .join('');
+            
+            tableContainer.innerHTML = sectionsHtml || '<div class="error">No data available</div>';
         }
 
         // Initialize the application
