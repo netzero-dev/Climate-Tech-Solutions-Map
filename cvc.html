@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corporate Venture Capital Directory</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <style>
+        .expanded-row {
+            background-color: #f9fafb;
+        }
+        .chevron::after {
+            content: '▼';
+            display: inline-block;
+            margin-left: 5px;
+            transition: transform 0.2s;
+        }
+        .expanded .chevron::after {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="p-6 max-w-7xl mx-auto">
+        <h1 class="text-3xl font-bold mb-8 text-gray-800">Corporate Venture Capital Directory</h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div class="relative">
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search CVCs..."
+                    class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                >
+            </div>
+            
+            <select
+                id="industryFilter"
+                class="p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            >
+                <option value="">All Industries</option>
+            </select>
+            
+            <select
+                id="countryFilter"
+                class="p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            >
+                <option value="">All Countries</option>
+            </select>
+        </div>
+
+        <div class="bg-white rounded-lg shadow">
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">CVC Name</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Company</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Industry</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Country</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Website</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody" class="bg-white divide-y divide-gray-200">
+                        <!-- Table rows will be inserted here -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="p-4 border-t border-gray-200">
+                <p id="resultCount" class="text-sm text-gray-500">
+                    Loading data...
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let allData = [];
+        let expandedRows = new Set();
+
+        // Function to create a table row
+        function createTableRow(item, index) {
+            const tr = document.createElement('tr');
+            tr.className = 'hover:bg-gray-50 cursor-pointer';
+            tr.dataset.index = index;
+            
+            tr.innerHTML = `
+                <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center">
+                        <span class="chevron"></span>
+                        <span class="text-sm font-medium text-gray-900 ml-2">
+                            ${item['CVC Name']}
+                        </span>
+                    </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${item.Company}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${item.Industry}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${item.Country}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm">
+                    <a 
+                        href="${item.Website}" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        class="text-blue-600 hover:text-blue-800"
+                        onclick="event.stopPropagation()"
+                    >
+                        Visit ↗
+                    </a>
+                </td>
+            `;
+
+            return tr;
+        }
+
+        // Function to create expanded content row
+        function createExpandedRow(item) {
+            const tr = document.createElement('tr');
+            tr.className = 'expanded-row';
+            tr.innerHTML = `
+                <td colspan="5" class="px-6 py-4">
+                    <div class="text-sm text-gray-900">
+                        <p class="whitespace-pre-wrap">
+                            ${item['CVC Description (Based on website, summarized by AI)']}
+                        </p>
+                    </div>
+                </td>
+            `;
+            return tr;
+        }
+
+        // Function to toggle row expansion
+        function toggleRow(index, tableBody) {
+            const isExpanded = expandedRows.has(index);
+            const row = tableBody.querySelector(`tr[data-index="${index}"]`);
+            
+            if (isExpanded) {
+                expandedRows.delete(index);
+                row.classList.remove('expanded');
+                const expandedContent = tableBody.querySelector(`tr[data-expanded-index="${index}"]`);
+                if (expandedContent) {
+                    expandedContent.remove();
+                }
+            } else {
+                expandedRows.add(index);
+                row.classList.add('expanded');
+                const expandedRow = createExpandedRow(allData[index]);
+                expandedRow.dataset.expandedIndex = index;
+                row.after(expandedRow);
+            }
+        }
+
+        // Function to update the table with filtered data
+        function updateTable(filteredData) {
+            const tableBody = document.getElementById('tableBody');
+            tableBody.innerHTML = '';
+            expandedRows.clear();
+
+            filteredData.forEach((item, index) => {
+                const row = createTableRow(item, index);
+                row.addEventListener('click', () => toggleRow(index, tableBody));
+                tableBody.appendChild(row);
+            });
+
+            document.getElementById('resultCount').textContent = 
+                `Showing ${filteredData.length} of ${allData.length} corporate venture capital firms`;
+        }
+
+        // Function to filter data based on current selections
+        function filterData() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const selectedIndustry = document.getElementById('industryFilter').value;
+            const selectedCountry = document.getElementById('countryFilter').value;
+
+            const filtered = allData.filter(item => {
+                const matchesSearch = !searchTerm || 
+                    item['CVC Name'].toLowerCase().includes(searchTerm) ||
+                    item.Company.toLowerCase().includes(searchTerm) ||
+                    (item['CVC Description (Based on website, summarized by AI)'] || '').toLowerCase().includes(searchTerm);
+                
+                const matchesIndustry = !selectedIndustry || item.Industry === selectedIndustry;
+                const matchesCountry = !selectedCountry || item.Country === selectedCountry;
+
+                return matchesSearch && matchesIndustry && matchesCountry;
+            });
+
+            updateTable(filtered);
+        }
+
+        // Function to populate filter dropdowns
+        function populateFilters(data) {
+            const industries = [...new Set(data.map(item => item.Industry))].sort();
+            const countries = [...new Set(data.map(item => item.Country))].sort();
+
+            const industryFilter = document.getElementById('industryFilter');
+            const countryFilter = document.getElementById('countryFilter');
+
+            industries.forEach(industry => {
+                const option = document.createElement('option');
+                option.value = industry;
+                option.textContent = industry;
+                industryFilter.appendChild(option);
+            });
+
+            countries.forEach(country => {
+                const option = document.createElement('option');
+                option.value = country;
+                option.textContent = country;
+                countryFilter.appendChild(option);
+            });
+        }
+
+        // Initialize the page
+        fetch('Climate Tech CVC.csv')
+            .then(response => response.text())
+            .then(csv => {
+                Papa.parse(csv, {
+                    header: true,
+                    skipEmptyLines: true,
+                    complete: (results) => {
+                        allData = results.data;
+                        populateFilters(allData);
+                        updateTable(allData);
+                    }
+                });
+            });
+
+        // Add event listeners
+        document.getElementById('searchInput').addEventListener('input', filterData);
+        document.getElementById('industryFilter').addEventListener('change', filterData);
+        document.getElementById('countryFilter').addEventListener('change', filterData);
+    </script>
+</body>
+</html>
