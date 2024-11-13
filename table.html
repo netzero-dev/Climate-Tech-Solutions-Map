@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climate Tech Solutions Explorer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: white;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+        }
+        tr:hover {
+            background-color: #f8f9fa;
+        }
+        .loading {
+            text-align: center;
+            padding: 20px;
+            font-style: italic;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Climate Tech Solutions Explorer</h1>
+        <select id="sectorSelect">
+            <option value="">Loading sectors...</option>
+        </select>
+        <div id="tableContainer">
+            <div class="loading">Loading data...</div>
+        </div>
+    </div>
+
+    <script>
+        const csvData = `Sector,Climate And Business Need,Solutions,Market Maturity,Market Maturity Number,Business Model,Type,SeedYN,GrantYN,SeriesX,Total Non-Equity Funding,Total Funding Amount (in USD),Total Equity Funding Amount (in USD),Funding Rank,Series Rank,Seed Rank,Scale Rank
+${document.querySelector('Climate Tech Solutions Map 2024 - Scale_Rank .csv').textContent}`;
+
+        let data = [];
+        
+        // Parse CSV when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            Papa.parse(csvData, {
+                header: true,
+                complete: function(results) {
+                    data = results.data;
+                    
+                    // Get unique sectors
+                    const sectors = [...new Set(data.map(row => row.Sector))].sort();
+                    
+                    // Populate sector dropdown
+                    const sectorSelect = document.getElementById('sectorSelect');
+                    sectorSelect.innerHTML = sectors.map(sector => 
+                        `<option value="${sector}">${sector}</option>`
+                    ).join('');
+                    
+                    // Show initial data
+                    updateTable(sectors[0]);
+                }
+            });
+        });
+
+        // Update table when sector changes
+        document.getElementById('sectorSelect').addEventListener('change', function(e) {
+            updateTable(e.target.value);
+        });
+
+        function updateTable(sector) {
+            const filteredData = data.filter(row => row.Sector === sector);
+            const tableContainer = document.getElementById('tableContainer');
+            
+            const table = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Climate And Business Need</th>
+                            <th>Solutions</th>
+                            <th>Market Maturity</th>
+                            <th>Business Model</th>
+                            <th>Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${filteredData.map(row => `
+                            <tr>
+                                <td>${row['Climate And Business Need']}</td>
+                                <td>${row['Solutions']}</td>
+                                <td>${row['Market Maturity']}</td>
+                                <td>${row['Business Model']}</td>
+                                <td>${row['Type']}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+            
+            tableContainer.innerHTML = table;
+        }
+    </script>
+</body>
+</html>

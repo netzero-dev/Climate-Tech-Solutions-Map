@@ -1,0 +1,572 @@
+Sector,Climate And Business Need,Solutions,Market Maturity,Market Maturity Number,Business Model,Type,SeedYN,GrantYN,SeriesX,Total Non-Equity Funding,Total Funding Amount (in USD),Total Equity Funding Amount (in USD),Funding Rank,Series Rank,Seed Rank,Scale Rank
+Energy Generation,Solar,Solar Hardware and PV Materials,Mature Market,34,Hardware,Mitigation,2,0,14,228578766,985334689,756755923,9,7,2,5
+Energy Generation,Solar,Solar Planning and Design Software,Market Scale,21,Software,Mitigation,3,1,6,1320405,548357217,547036812,9,5,3,5
+Energy Generation,Solar,"Residential Solar and ""as-a-Service""",Mature Market,34,Service,Mitigation,2,0,6,3820242361,5501953202,1681710841,10,5,2,5
+Energy Generation,Solar,"Sales, Design, Management for Solar Installers",Early Market,13,Software,Mitigation,3,0,3,83297000,1205083499,1121786499,10,3,3,4
+Energy Generation,Solar,Floating PV,Market Scale,21,Hardware,Mitigation,1,0,2,1132352,31386703,30254351,3,2,1,2
+Energy Generation,Solar,Agrivoltaics,Market Scale,21,Hardware,Mitigation,1,0,2,76958553,119092602,42134049,5,2,1,2
+Energy Generation,Solar,Solar PV Recycling,Early Market,13,Hardware,Mitigation,1,0,2,3783134,51384843,47601709,4,2,1,2
+Energy Generation,Solar,Community Solar,Mature Market,34,Service,Mitigation,1,1,3,840000000,1800570274,954470274,10,3,1,4
+Energy Generation,Solar,Multi-Tenant Solar and Virtual Billing,Early Market,13,HW/SW,Mitigation,,,,,,,3,2,1,2
+Energy Generation,Solar,Building-Integrated PV and Novel Solar Designs,Early Market,13,Hardware,Mitigation,2,0,4,9526890,93749202,82189725,5,4,2,3
+Energy Generation,Solar,Space-based solar power (SBSP),Research,1,Hardware,Mitigation,2,1,0,0,2250000,250000,1,1,2,1
+Energy Generation,Wind,On-shore Wind,Mature Market,34,Hardware,Mitigation,1,0,2,14470700,35306355,20760655,3,2,1,2
+Energy Generation,Wind,Off-shore and Floating Wind,Mature Market,34,Hardware,Mitigation,2,0,2,305617,73305087,72999470,4,2,2,2
+Energy Generation,Wind,"Novel Wind, Including Vertical Axis and Kites",Pilot,3,Hardware,Mitigation,2,3,5,9769410,56480870,44859169,4,5,2,3
+Energy Generation,Wind,Wind Farm Planning and Optimization,Early Market,13,Software,Mitigation,3,0,3,703147,292426566,291723419,7,3,3,3
+Energy Generation,Wind,Wind Farm Maintenance and Inspection,Early Market,13,HW/SW,Mitigation,1,3,5,6205221,91530205,81729310,5,5,1,3
+Energy Generation,Wind,"Blade Decommissioning, Refurb and Recycling",Commercial,8,Hardware,Mitigation,0,0,1,0,6500000,6500000,1,1,1,1
+Energy Generation,Nuclear,Advanced Nuclear Fission and Modular / Microreactors,Pilot,3,Hardware,Mitigation,0,3,8,66263888,1675937468,1607962877,10,7,1,5
+Energy Generation,Nuclear,Nuclear Fusion,Research,1,Hardware,Mitigation,3,4,7,105445160,4631089864,4525644704,10,6,3,5
+Energy Generation,Geothermal,Enhanced Geothermal Systems (EGS),Commercial,8,Hardware,Mitigation,0,0,3,0,511499991,511499991,8,3,1,4
+Energy Generation,Geothermal,Advanced Geothermal Systems (AGS),Commercial,8,Hardware,Mitigation,0,1,3,253899557,578694283,324794726,9,3,1,4
+Energy Generation,Geothermal,Supercritical Geothermal,Pilot,3,Hardware,Mitigation,0,0,2,0,108000000,108000000,5,2,1,2
+Energy Generation,Geothermal,"Geothermal Siting, Planning and Development",Commercial,8,Software,Mitigation,0,0,1,50710229,88210229,37500000,5,1,1,2
+Energy Generation,Hydrogen,Electrolyser Systems (Membrane and Alkaline),Market Scale,21,Hardware,Mitigation,4,1,6,75351966,754556588,679204622,9,5,4,5
+Energy Generation,Hydrogen,Electrolyser Components (Membrane and Alkaline),Market Scale,21,Hardware,Mitigation,4,1,4,395410196,1164450444,769040248,10,4,4,5
+Energy Generation,Hydrogen,Solid Oxide Electrolysers (SOEC) and Membrane-Free,Early Market,13,Hardware,Mitigation,1,1,4,510385616,1159294098,648858482,10,4,1,5
+Energy Generation,Hydrogen,Green Hydrogen via Methane Pyrolysis,Commercial,8,Hardware,Mitigation,2,2,5,22055735,254772066,232716331,7,5,2,4
+Energy Generation,Hydrogen,"Green Hydrogen from Biomass, Waste and Recyclates",Pilot,3,Hardware,Mitigation,2,2,1,300000,6677848,4177848,1,1,2,1
+Energy Generation,Hydrogen,Green Hydrogen Developers / Operators,Market Scale,21,Hardware,Mitigation,0,1,1,515400000,1800538987,1285138987,10,1,1,4
+Energy Generation,Hydrogen,Hydrogen Mining / Geologic Hydrogen,Pilot,3,Hardware,Mitigation,0,0,2,30000000,336399925,306399925,7,2,1,3
+Energy Generation,Hydrogen,Hydrogen Project Software,Commercial,8,Software,Mitigation,3,0,0,0,2272891,2272891,1,1,3,1
+Energy Generation,Hydrogen,Hydrogen Storage and Distribution,Early Market,13,Hardware,Mitigation,3,2,5,181411596,866931990,683820394,9,5,3,5
+Energy Generation,Hydrogen,Fuel Cells,Market Scale,21,Hardware,Mitigation,1,2,6,47744884,382680256,304735372,8,5,1,4
+Energy Generation,Alternative Fuels,MSW / Biomass Gasification,Market Scale,21,Hardware,Mitigation,0,2,2,260208984,1241200596,976766612,10,2,1,4
+Energy Generation,Alternative Fuels,SAF and Fuels via Fischer-Tropsch,Early Market,13,Hardware,Mitigation,2,0,4,9409514,565498196,556088682,9,4,2,4
+Energy Generation,Alternative Fuels,"Cellulosic Ethanol, Biofuel and SAF with 2nd Gen Biomass",Early Market,13,Hardware,Mitigation,4,2,3,11552986,445482409,433929423,8,3,4,4
+Energy Generation,Alternative Fuels,Alcohol-to-Jet (ATJ) SAF,Commercial,8,Hardware,Mitigation,0,0,0,114000000,214000000,100000000,6,1,1,2
+Energy Generation,Alternative Fuels,Electrochemical Power-to-Liquids (PtL),Commercial,8,Hardware,Mitigation,0,1,4,3761398,139941059,130720280,5,4,1,3
+Energy Generation,Alternative Fuels,Synbio and Biocatalytic Fuels,Commercial,8,Hardware,Mitigation,1,0,2,2715253,104650933,101935680,5,2,1,2
+Energy Generation,Alternative Fuels,Green Ammonia,Commercial,8,Hardware,Mitigation,3,0,4,3309579,268487324,265177745,7,4,3,4
+Energy Generation,Alternative Fuels,Green Methanol,Commercial,8,Hardware,Mitigation,5,0,3,1680426,116361257,112523331,5,3,5,3
+Energy Generation,Alternative Fuels,Algea-based Fuel,Commercial,8,Hardware,Mitigation,1,0,1,2000000,202000001,200000001,6,1,1,2
+Energy Generation,Waste To Energy,Waste to Energy (WtE) and Renewable Natural Gas (RNG),Market Scale,21,Hardware,Mitigation,2,2,2,354472101,3238318543,370733788,10,2,2,4
+Energy Generation,Waste To Energy,Anaerobic Digestion (AD),Market Scale,21,Hardware,Mitigation,0,1,3,101972442,481447281,370474839,8,3,1,4
+Energy Generation,Waste To Energy,Hydrothermal Carbonization (HTC),Early Market,13,Hardware,Mitigation,0,0,0,0,0,0,1,1,1,1
+Energy Generation,Waste To Energy,Catalytic Hydrothermal Gasification (HTG) and Liquifaction (HTL),Commercial,8,Hardware,Mitigation,0,0,1,8457573,18513428,10055855,2,1,1,1
+Energy Generation,Waste To Energy,Bioenergy Planning and Monitoring Software,Commercial,8,Software,Mitigation,0,0,1,0,300000,300000,1,1,1,1
+Energy Generation,Hydropower,Distributed Hydro Power,Early Market,13,Hardware,Mitigation,0,0,3,24004825,192484560,168479735,6,3,1,3
+Energy Generation,Hydropower,Osmotic Power,Commercial,8,Hardware,Mitigation,0,0,1,0,33291069,33291069,3,1,1,1
+Energy Generation,Hydropower,"Tidal, Wave-Based and Ocean Thermal Power",Early Market,13,Hardware,Mitigation,1,2,4,39746755,166129952,118458197,6,4,1,3
+Energy Generation,Renewables Management And Maintenance,"RE Procurement, Planning and Investment Analytics",Market Scale,21,Software,Mitigation,6,0,5,15081868,182178469,167096601,6,5,6,4
+Energy Generation,Renewables Management And Maintenance,Local Energy Emissions Analytics and 24/7 RE Enablement,Commercial,8,Software,Mitigation,0,0,3,0,48598660,48598660,3,3,1,2
+Energy Generation,Renewables Management And Maintenance,Renewable Project Development,Mature Market,34,Service,Mitigation,0,0,2,241303000,2406136930,1201150000,10,2,1,4
+Energy Generation,Renewables Management And Maintenance,Renewable Portfolio Developers and Owners,Mature Market,34,Service,Mitigation,0,0,3,13994577839,15147089035,1152511196,10,3,1,4
+Energy Generation,Renewables Management And Maintenance,Asset Inspection and Maintenance Robotics,Early Market,13,HW/SW,Hybrid,2,0,3,2402500,179376613,176974113,6,3,2,3
+Energy Generation,Renewables Management And Maintenance,RE Asset Portfolio Planning and Management,Early Market,13,Software,Mitigation,6,1,4,33867239,242613024,208745785,7,4,6,4
+Energy Generation,Renewables Management And Maintenance,Renewable Asset Operations and Optimization,Market Scale,21,Software,Mitigation,7,1,1,174736936,445954581,271217645,8,1,6,3
+Energy Generation,Renewables Management And Maintenance,Storage Developer / Operators,Market Scale,21,Service,Mitigation,0,1,4,1752246808,4012298575,1932951767,10,4,1,5
+Energy Generation,Energy Marketplaces,Retail and Commercial Energy Providers,Mature Market,34,Software,Mitigation,2,0,6,51856944,489476647,437619703,8,5,2,4
+Energy Storage and Distribution,Battery Storage And Components,Stationary Battery Energy Storage Systems (BESS),Market Scale,21,Hardware,Mitigation,2,0,3,106277718,850374196,744096478,9,3,2,4
+Energy Storage and Distribution,Battery Storage And Components,Mobile BESS and Commercial Backup Power,Early Market,13,Hardware,Mitigation,3,0,6,99814011,621610596,521796585,9,5,3,5
+Energy Storage and Distribution,Battery Storage And Components,Battery Manufacturing,Mature Market,34,Hardware,Mitigation,3,5,5,12390086456,19615610880,7225524424,10,5,3,5
+Energy Storage and Distribution,Battery Storage And Components,"Cell Materials, Components (Anode, Cathode, Electrolyte, Charger)",Market Scale,21,Hardware,Mitigation,4,5,15,1461992438,4096280641,2498066202,10,7,4,5
+Energy Storage and Distribution,Battery Storage And Components,"Battery Management, Optimization, Analytics and Design",Early Market,13,Software,Mitigation,7,2,10,64529931,478752988,414010427,8,7,6,5
+Energy Storage and Distribution,Battery Storage And Components,Sodium-Ion Batteries and Novel Battery Materials,Early Market,13,Hardware,Mitigation,2,0,4,19555402,373204159,353648757,8,4,2,4
+Energy Storage and Distribution,Battery Storage And Components,Residential Batteries,Market Scale,21,Hardware,Hybrid,1,0,4,0,918200000,918200000,9,4,1,4
+Energy Storage and Distribution,Battery Storage And Components,Solid State Battery Storage,Early Market,13,Hardware,Mitigation,4,3,4,21671263,2358032687,2336361424,10,4,4,5
+Energy Storage and Distribution,Battery Storage And Components,Capacitors and Super- / Ultracapacitors,Early Market,13,Hardware,Mitigation,3,0,2,80372453,375697676,295325223,8,2,3,3
+Energy Storage and Distribution,Long Duration Energy Storage (LDES),Compressed Air Energy Storage (CAES) and Liquid Air,Early Market,13,Hardware,Mitigation,4,1,1,36742470,345849924,309107454,7,1,4,3
+Energy Storage and Distribution,Long Duration Energy Storage (LDES),CO2 Storage and CO2 Splitting,Early Market,13,Hardware,Mitigation,0,2,2,79249692,198843249,118843557,6,2,1,3
+Energy Storage and Distribution,Long Duration Energy Storage (LDES),Hydrogen-based LDES,Commercial,8,Hardware,Mitigation,4,1,1,13825016,69583606,13264303,4,1,4,2
+Energy Storage and Distribution,Long Duration Energy Storage (LDES),Gravity and Well-based LDES,Commercial,8,Hardware,Mitigation,2,0,0,1597119,439537530,437940411,8,1,2,3
+Energy Storage and Distribution,Long Duration Energy Storage (LDES),Metal-Air and Aqueous Storage,Commercial,8,Hardware,Mitigation,3,2,1,154117461,1075554103,921436642,10,1,3,4
+Energy Storage and Distribution,Long Duration Energy Storage (LDES),"Pumped Hydro, Geomechanical, Geothermal Storage",Commercial,8,Hardware,Mitigation,0,1,2,24353896,45727087,21373191,3,2,1,2
+Energy Storage and Distribution,Long Duration Energy Storage (LDES),Flow-based and Electrochemical Storage,Early Market,13,Hardware,Mitigation,4,3,4,161295543,1214515610,1053220067,10,4,4,5
+Energy Storage and Distribution,Long Duration Energy Storage (LDES),Kinetic Battery Storage,Commercial,8,Hardware,Mitigation,3,1,1,997877,13920436,10422559,2,1,3,1
+Energy Storage and Distribution,Long Duration Energy Storage (LDES),Thermal LDES,Early Market,13,Hardware,Mitigation,2,4,9,37582267,297536801,259954534,7,7,2,5
+Energy Storage and Distribution,Battery Recycling,Battery Recycling,Early Market,13,Hardware,Mitigation,4,1,6,3339855889,7370582395,4030611777,10,5,4,5
+Energy Storage and Distribution,Battery Recycling,Battery Circularity Analytics and Marketplaces,Early Market,13,HW/SW,Mitigation,1,0,1,0,5026651,5026651,1,1,1,1
+Energy Storage and Distribution,Battery Recycling,Second Life Battery Storage,Market Scale,21,Hardware,Mitigation,3,3,2,23004366,116730804,77826438,5,2,3,2
+Energy Storage and Distribution,Smart Grid and Transmission,Grid Infrastructure Planning and Resiliance,Early Market,13,Software,Hybrid,4,0,4,1056762,84327376,82787999,4,4,4,3
+Energy Storage and Distribution,Smart Grid and Transmission,Grid Inspection and Maintenance,Early Market,13,HW/SW,Hybrid,4,0,6,4832607,188517190,183684583,6,5,4,4
+Energy Storage and Distribution,Smart Grid and Transmission,"Grid Monitoring, Stability and Management Systems",Early Market,13,Software,Hybrid,2,1,5,9116888,188096658,178224770,6,5,2,4
+Energy Storage and Distribution,Smart Grid and Transmission,"Grid Forecasting, Modeling and Trading Optimization",Early Market,13,Software,Mitigation,4,0,3,2705000,61650751,58945751,4,3,4,2
+Energy Storage and Distribution,Smart Grid and Transmission,Energy Data and Utility Billing Integration,Market Scale,21,Software,Mitigation,2,0,2,972000,27750449,26778449,2,2,2,1
+Energy Storage and Distribution,Smart Grid and Transmission,"Rate Planning, Analytics and Program Design",Early Market,13,Software,Mitigation,1,0,1,0,31029092,31029092,3,1,1,1
+Energy Storage and Distribution,Smart Grid and Transmission,"Dynamic Line Ratings (DLR), Power Flow, Grid Edge Control",Market Scale,21,HW/SW,Hybrid,3,1,3,2300000,277692369,275162369,7,3,3,3
+Energy Storage and Distribution,Smart Grid and Transmission,Switch Gear,Mature Market,34,Hardware,Hybrid,1,0,4,52893519,452681594,399788075,8,4,1,4
+Energy Storage and Distribution,Smart Grid and Transmission,Smart Meters and Behind the Meter Load Analytics,Mature Market,34,HW/SW,Mitigation,0,1,3,3100000,201065744,197965744,6,3,1,3
+Energy Storage and Distribution,Smart Grid and Transmission,High Voltage Transmission and Superconductors,Early Market,13,Hardware,Mitigation,0,1,2,3000000,144880679,141880679,5,2,1,2
+Energy Storage and Distribution,Smart Grid and Transmission,Smart Transformers,Market Scale,21,HW/SW,Hybrid,3,1,1,25000000,45801570,20801570,3,1,3,1
+Energy Storage and Distribution,Smart Grid and Transmission,Advanced Transmission and Reconductoring,Early Market,13,Hardware,Mitigation,1,0,3,0,94579637,94579637,5,3,1,3
+Energy Storage and Distribution,Smart Grid and Transmission,Transmission Undergrounding and Subsurface Mapping,Early Market,13,HW/SW,Hybrid,0,0,5,0,308020000,308020000,7,5,1,4
+Energy Storage and Distribution,Energy Resources Management,"DER Management (DERMS), Integration and Intelligence ",Market Scale,21,Software,Mitigation,5,2,6,7844361,294283034,286438673,7,5,5,4
+Energy Storage and Distribution,Energy Resources Management,DER Device Data Integration,Early Market,13,Software,Mitigation,4,0,5,3070680,134336563,131265883,5,5,4,3
+Energy Storage and Distribution,Energy Resources Management,Managed EV Charging and Smart Charging,Early Market,13,Software,Mitigation,0,1,3,41732469,143592389,101859920,5,3,1,3
+Energy Storage and Distribution,Energy Resources Management,"Demand Side Flexibility, DR Participation, Optimization",Market Scale,21,Software,Hybrid,6,0,9,159875269,1072689513,912664244,9,7,6,5
+Energy Storage and Distribution,Energy Resources Management,Virtual Power Plant (VPP) / Balance Marketplace Mgmt.,Market Scale,21,Software,Hybrid,4,0,5,9880982,229447451,219566469,6,5,4,4
+Energy Storage and Distribution,Energy Resources Management,Residential Energy Management,Early Market,13,HW/SW,Mitigation,1,1,3,0,198995176,197848062,6,3,1,3
+Energy Storage and Distribution,Mini / Microgrid and Off-Grid,Mini / Microgrid Systems and Controllers,Market Scale,21,HW/SW,Hybrid,5,4,4,234034375,1027883589,793724214,9,4,5,4
+Energy Storage and Distribution,Mini / Microgrid and Off-Grid,Microgrid Planning and Management,Early Market,13,Software,Hybrid,2,0,3,102000,34817719,34715719,3,3,2,2
+Energy Storage and Distribution,Mini / Microgrid and Off-Grid,Off-Grid Systems,Market Scale,21,Hardware,Hybrid,1,1,6,477579665,1139245054,661565389,10,5,1,5
+Mobility,EV Passenger Vehicles,EV Passenger Vehicles and Powertrains,Mature Market,34,HW/SW,Mitigation,3,0,0,2959901180,3763021180,803120000,10,1,3,4
+Mobility,Sharing And Subscription Mobility,Carpooling and Peer-to-Peer Carsharing,Market Scale,21,Software,Mitigation,3,1,3,237704809,724453575,486748766,9,3,3,4
+Mobility,Sharing And Subscription Mobility,EV Subscription and Sharing,Early Market,13,Software,Mitigation,2,0,7,1141867600,2578893546,1437025946,10,6,2,5
+Mobility,Sharing And Subscription Mobility,EV Buying / Selling,Commercial,8,Software,Mitigation,1,0,1,251958,29612391,29360433,2,1,1,1
+Mobility,Sharing And Subscription Mobility,Shuttle Bus as a Service / Group Rideshare / Microtransit,Early Market,13,Software,Mitigation,5,0,4,13066830,487634135,474567305,8,4,5,4
+Mobility,Sharing And Subscription Mobility,"Bike and Scooter Sharing, Subscription",Mature Market,34,Software,Mitigation,0,0,19,1161865767,6527752778,5365887011,10,7,1,5
+Mobility,Sharing And Subscription Mobility,Micro-Mobility Sharing Management Platforms,Early Market,13,Software,Mitigation,2,0,2,0,141919087,141919087,5,2,2,2
+Mobility,Micro-Mobility,Electric Bikes,Mature Market,34,Hardware,Mitigation,3,0,4,320365,536566327,536245962,8,4,3,4
+Mobility,Micro-Mobility,Electric Scooters and Mopeds,Mature Market,34,Hardware,Mitigation,0,0,4,788716493,3121194700,2332478207,10,4,1,5
+Mobility,Micro-Mobility,Last Mile Electric Mobility and Delivery Platforms,Market Scale,21,Hardware,Mitigation,1,0,5,8121262,95743221,87621959,5,5,1,3
+Mobility,Micro-Mobility,Electric 3-Wheel Vehicles and Cargo Bikes,Mature Market,34,Hardware,Mitigation,1,0,1,2816034,81413704,78597670,4,1,1,2
+Mobility,Micro-Mobility,Electric Motorcycles and ORV,Market Scale,21,Hardware,Mitigation,5,0,2,133109510,312435099,179325589,7,2,5,3
+Mobility,Trucks,"Light, Medium and Class 5-8 EV Trucks",Market Scale,21,Hardware,Mitigation,2,1,6,4017219823,16034123227,12016903404,10,5,2,5
+Mobility,Trucks,"EV, Biofuel and H2 Truck and Bus Retrofit",Early Market,13,Hardware,Mitigation,2,1,7,23061108,140669009,117607901,5,6,2,4
+Mobility,Trucks,Truck Efficiency and Aerodynamics Retrofit,Market Scale,21,Hardware,Mitigation,0,0,3,4364712,102592343,98227631,5,3,1,3
+Mobility,Trucks,EV Delivery Vehicles,Early Market,13,Hardware,Mitigation,1,0,3,56515822,810560230,754044408,9,3,1,4
+Mobility,Trucks,Electric Recreational Vehicles (RV),Early Market,13,Hardware,Mitigation,0,0,2,0,74814778,74814778,4,2,1,2
+Mobility,Vehicle Digitization and Autonomy,Autonomous Trucks,Early Market,13,Hardware,Mitigation,1,0,7,462022197,2065677586,1603655389,10,6,1,5
+Mobility,Vehicle Digitization and Autonomy,Autonomous Cars / Taxis,Commercial,8,Hardware,Mitigation,0,0,2,0,1294298451,1294298451,10,2,1,4
+Mobility,Vehicle Digitization and Autonomy,"Vehicle Digitization, Autonomous Driving, Telematics",Market Scale,21,HW/SW,Mitigation,3,1,9,213290297,1073043196,857139980,10,7,3,5
+Mobility,Heavy Vehicles,"Municipal EV: Fire, Ambulance, Garbage Trucks",Early Market,13,Hardware,Mitigation,0,0,2,0,270000000,270000000,7,2,1,3
+Mobility,Heavy Vehicles,"Cargo EV, incl. Semi Haulers",Early Market,13,Hardware,Mitigation,0,2,2,50250000,1074151298,1020901298,10,2,1,4
+Mobility,Heavy Vehicles,Off-Highway Vehicles,Market Scale,21,Hardware,Mitigation,1,1,0,250000,8750000,8500000,1,1,1,1
+Mobility,Heavy Vehicles,Hydrogen Powered Vehicles,Market Scale,21,Hardware,Mitigation,2,1,3,5585290,65394279,39663022,4,3,2,2
+Mobility,Fleet Electrification,EV Fleet and Commercial Charging Systems,Market Scale,21,HW/SW,Mitigation,1,1,6,126251411,1791020673,1664769262,10,5,1,5
+Mobility,Fleet Electrification,EV Fleet Management and Optimization Systems,Market Scale,21,Software,Mitigation,7,1,2,21956331,376838625,354882294,8,2,6,3
+Mobility,Fleet Electrification,EV Charger Site Assessment and Fleet Planning,Early Market,13,Software,Mitigation,7,1,4,25000000,89602901,64572535,5,4,6,3
+Mobility,Charging Networks And Management,EV Charging Networks and Hardware,Market Scale,21,HW/SW,Mitigation,5,4,8,764842811,2784292370,1843610671,10,7,5,5
+Mobility,Charging Networks And Management,Curbside EV Charging,Early Market,13,HW/SW,Mitigation,2,1,2,4599477,235229350,230629873,7,2,2,3
+Mobility,Charging Networks And Management,Residential EV Chargers,Market Scale,21,HW/SW,Mitigation,1,0,2,6796167,30235844,23439677,3,2,1,2
+Mobility,Charging Networks And Management,EV Charging for Real Estate / Rental and Condo,Early Market,13,HW/SW,Mitigation,1,0,2,14437911,114575447,100137536,5,2,1,2
+Mobility,Charging Networks And Management,EV Charging Management Platforms,Early Market,13,Software,Mitigation,6,2,8,8212630,336393967,328181337,7,7,6,5
+Mobility,Charging Networks And Management,Vehicle to Grid (V2G) and Bidirectional Charging,Early Market,13,HW/SW,Hybrid,1,1,4,40850000,199771065,158921065,6,4,1,3
+Mobility,Charging Networks And Management,"Charger Installation, Operations and Maintenance",Early Market,13,Service,Mitigation,0,0,2,0,99025000,99025000,5,2,1,2
+Mobility,Charging Networks And Management,Wireless and Road Charging,Early Market,13,Hardware,Mitigation,2,0,2,312140,63510349,63198209,4,2,2,2
+Mobility,Charging Networks And Management,Robotic EV Chargers,Commercial,8,HW/SW,Mitigation,1,1,2,33000000,345270816,312270816,7,2,1,3
+Mobility,Charging Networks And Management,Micro-mobility Charging,Early Market,13,HW/SW,Mitigation,3,1,3,48899251,540051027,491151776,9,3,3,4
+Mobility,Public Transit,EV Buses,Mature Market,34,Hardware,Mitigation,1,0,2,18997855,58497855,39500000,4,2,1,2
+Mobility,Public Transit,Electric School Buses,Market Scale,21,Hardware,Mitigation,0,1,1,58579482,520479476,344999994,8,1,1,3
+Mobility,Public Transit,"Transit Planning, Management and Fare Collection",Market Scale,21,Software,Hybrid,1,1,9,24532436,618422970,593890534,9,7,1,5
+Mobility,Public Transit,Mode-Shifting Behavior Change,Market Scale,21,Software,Hybrid,2,0,1,13500000,205691252,192191252,6,1,2,2
+Mobility,Public Transit,Traffic and Curb Management and Analytics,Early Market,13,HW/SW,Hybrid,3,1,7,152195815,630102248,477386433,9,6,3,5
+Mobility,Public Transit,"Tolling, Road Usage and Congestion Pricing",Early Market,13,HW/SW,Hybrid,1,0,2,0,16450000,16450000,2,2,1,1
+Mobility,Public Transit,Controlled Route Autonomous Transit,Commercial,8,HW/SW,Mitigation,0,0,3,1812785,247290424,245477639,7,3,1,3
+Mobility,Aviation,Electric / Hybrid Airplanes and Propulsion,Commercial,8,Hardware,Mitigation,4,3,7,181988962,1385261750,1203272788,10,6,4,5
+Mobility,Aviation,eVTOL Aircraft,Early Market,13,Hardware,Mitigation,2,1,3,81868,2335166498,2335084630,10,3,2,4
+Mobility,Aviation,Hydrogen / Hybrid Aircraft,Commercial,8,Hardware,Mitigation,1,1,2,20250000,371400000,351150000,8,2,1,3
+Mobility,Aviation,Hypersonic and Supersonic Aircraft,Pilot,3,Hardware,Mitigation,1,1,2,149155920,441647204,292491284,8,2,1,3
+Mobility,Aviation,Airships,Pilot,3,Hardware,Mitigation,2,0,3,2585791,205459700,202873909,6,3,2,3
+Mobility,Aviation,Electric Ground Support and Battery Charging for Aircraft,Early Market,13,Hardware,Mitigation,1,0,1,52287901,96344542,44056641,5,1,1,2
+Mobility,Aviation,Autonomous Cargo Aircraft,Pilot,3,Software,Mitigation,0,0,4,0,340507537,340507537,7,4,1,4
+Mobility,Aviation,Coastal Aircraft,Early Market,13,Hardware,Mitigation,1,0,0,0,87000000,87000000,5,1,1,2
+Mobility,Aviation,Drone Delivery,Early Market,13,Software,Mitigation,2,2,4,63384125,355956284,292572159,8,4,2,4
+Mobility,Aviation,"Aviation Efficiency, Emissions Control and Contrail Reduction",Early Market,13,Software,Mitigation,5,2,0,3894388,23292369,19365825,2,1,5,1
+Mobility,Trains,High Speed Rail,Market Scale,21,Hardware,Mitigation,0,1,0,0,291648000,75000000,7,1,1,3
+Mobility,Trains,Hyperloop,Pilot,3,Hardware,Mitigation,2,2,3,12719435,120598683,107879248,5,3,2,3
+Mobility,Trains,Locomotive Electrification,Mature Market,34,Hardware,Mitigation,0,0,2,250000,66337913,66087913,4,2,1,2
+Mobility,Trains,"Rail Efficiency, Monitoring and Automation",Market Scale,21,HW/SW,Mitigation,5,0,6,224538,165738574,165334036,6,5,5,4
+Mobility,Ships,Electric and Hydrogen Ships and Ferries,Early Market,13,Hardware,Mitigation,3,0,2,0,36728056,36728056,3,2,3,2
+Mobility,Ships,Cargo Ship Sails,Commercial,8,Hardware,Mitigation,1,0,1,1664983,50782200,49117217,4,1,1,2
+Mobility,Ships,Autonomous Ships and Robotics,Commercial,8,HW/SW,Mitigation,3,1,2,1050000,63066300,62016300,4,2,3,2
+Mobility,Ships,Ocean Freight Efficiency and Optimization,Early Market,13,Software,Mitigation,3,0,4,242500,164126020,163883520,6,4,3,3
+Mobility,Ships,Electric Recreational Watercraft and Yachts,Early Market,13,Hardware,Mitigation,0,0,6,8074946,519845740,511770794,8,5,1,4
+Industry,Plastics,Plant-based Plastics / Biopolymers and Bioplastics,Market Scale,21,Hardware,Mitigation,10,4,11,28023691,183146884,153096372,6,7,6,4
+Industry,Plastics,Algae-Based Bioplastics and Soluble / Edible Packaging,Early Market,13,Hardware,Mitigation,5,1,2,5305644,73348510,67867866,4,2,5,2
+Industry,Plastics,Advanced Plastic Recycling and Pyrolysis,Market Scale,21,Hardware,Mitigation,2,1,6,519075736,1640918367,721842631,10,5,2,5
+Industry,Plastics,Plastic / Polymer and Tire Upcycling,Early Market,13,Hardware,Mitigation,1,1,6,33110679,397941272,364830593,8,5,1,4
+Industry,Plastics,"Plastic Depolymerization via Enzymatic, Myco, Green Chemistry ",Early Market,13,Hardware,Mitigation,5,3,2,6863139,102653929,93553466,5,2,5,2
+Industry,Chemicals,Synbio and Catalytic Chemicals,Market Scale,21,Hardware,Mitigation,3,1,5,217712363,962486140,744773777,9,5,3,5
+Industry,Chemicals,Precision Fermentation for Chemical Production,Early Market,13,Hardware,Mitigation,4,0,2,376158883,487327450,111168567,8,2,4,3
+Industry,Chemicals,Biomass-based Green Chemicals,Early Market,13,Hardware,Mitigation,3,2,4,8401037,293410474,284898980,7,4,3,4
+Industry,Chemicals,CO2 to Chemicals via Electrocatalysis and Electrolysis,Early Market,13,Hardware,Hybrid,4,2,3,16172149,109931357,93259208,5,3,4,3
+Industry,Chemicals,Photocatalytic and Low Temp Plasma (LTP) Chemistry,Early Market,13,Hardware,Mitigation,2,2,1,1666435,120747434,107800000,5,1,2,2
+Industry,Chemicals,"Adhesives, Lubricants, Solvents and Sealants",Early Market,13,Hardware,Mitigation,3,1,2,2686472,33133676,27947205,3,2,3,2
+Industry,Chemicals,"Green Chemistry Ingredients for Cleaning, Beauty, Personal Care",Early Market,13,Hardware,Mitigation,3,4,11,122764550,297614271,150719660,7,7,3,5
+Industry,Steel and Industrial Metals,Electrochemical Low-Temperature Iron (LTI) and Electrolysis,Commercial,8,Hardware,Mitigation,1,0,2,3201034,461357769,458156735,8,2,1,3
+Industry,Steel and Industrial Metals,Direct-Reduced Iron (DRI) with Green Hydrogen,Early Market,13,Hardware,Mitigation,0,0,0,8300354676,10915957983,2615603307,10,1,1,4
+Industry,Steel and Industrial Metals,Light and Plasma-based Green Steel Production,Pilot,3,Hardware,Mitigation,0,0,0,0,0,0,1,1,1,1
+Industry,Steel and Industrial Metals,"Steel Production Efficiency, Circularity and Resiliency",Commercial,8,Software,Mitigation,3,1,1,65000,5920520,5855520,1,1,3,1
+Industry,Steel and Industrial Metals,Aluminum Production and Circularity,Commercial,8,Hardware,Mitigation,1,1,0,0,20000000,0,2,1,1,1
+Industry,Cement And Concrete,Electrification and Electrochemical Kiln Replacement,Commercial,8,Hardware,Mitigation,0,1,1,0,40000000,40000000,3,1,1,1
+Industry,Cement And Concrete,Clinker Replacement and Reduction,Commercial,8,Hardware,Mitigation,1,1,1,271877,17805896,16013524,2,1,1,1
+Industry,Cement And Concrete,Supplementary Cementing Materials (SCMs),Market Scale,21,Hardware,Mitigation,1,1,4,0,271827622,271427622,7,4,1,4
+Industry,Cement And Concrete,CO2 Injection and Utilization in Cement-Making,Market Scale,21,Hardware,Removal,5,2,5,5148657,265062358,259893701,7,5,5,4
+Industry,Cement And Concrete,"Cement-free Concrete, Alternative Cements and Binders",Commercial,8,Hardware,Mitigation,7,4,5,35532396,232648538,190603067,6,5,6,4
+Industry,Cement And Concrete,Bio-concrete,Pilot,3,Hardware,Mitigation,,,,,,,2,2,4,2
+Industry,Cement And Concrete,Production Efficiency and Waste Reduction,Early Market,13,Software,Mitigation,5,1,2,2061302,43633345,41572043,3,2,5,2
+Industry,"Paper, Pulp and Wood",Alternative Fibers and Non-Fiber Materials,Pilot,3,Hardware,Mitigation,1,1,2,0,17317191,14066325,2,2,1,1
+Industry,"Paper, Pulp and Wood",Timber Supply Chain Traceability and Marketplaces,Early Market,13,Software,Mitigation,2,0,0,150000,8786579,8636579,1,1,2,1
+Industry,Industrial Heat and Heat Recovery,"Electrified Industrial Heat, Power and Steam",Early Market,13,Hardware,Mitigation,4,4,5,173484451,441526395,268041944,8,5,4,4
+Industry,Industrial Heat and Heat Recovery,Concentrated Solar Thermal,Early Market,13,Hardware,Mitigation,1,1,2,47752512,479690982,431938470,8,2,1,3
+Industry,Industrial Heat and Heat Recovery,Waste Heat Recovery and Heat to Energy,Early Market,13,Hardware,Mitigation,3,2,3,6780505,33032979,26252474,3,3,3,2
+Industry,Industrial Heat and Heat Recovery,Waste Heat to Energy via Organic Rankine Cycle,Market Scale,21,Hardware,Mitigation,1,0,1,0,42438667,33679788,3,1,1,1
+Industry,Industrial Heat and Heat Recovery,Industrial Drying,Market Scale,21,Hardware,Mitigation,0,1,1,6104328,16854474,10750146,2,1,1,1
+Industry,Industrial Cooling,Adiabatic Cooling,Early Market,13,Hardware,Mitigation,0,1,1,1589908,17839908,16250000,2,1,1,1
+Industry,Industrial Cooling,Industrial Process Cooling / Chilling,Mature Market,34,Hardware,Mitigation,0,0,1,0,20872253,20872253,2,1,1,1
+Industry,Industrial Cooling,Compression Electrification,Early Market,13,Hardware,Mitigation,0,0,0,0,0,0,1,1,1,1
+Industry,Green Manufacturing,Additive Manufacturing,Market Scale,21,HW/SW,Mitigation,4,3,12,238563283,3641501064,3402832781,10,7,4,5
+Industry,Green Manufacturing,Circular Manufacturing and Robotic Disassembly,Early Market,13,HW/SW,Mitigation,3,1,1,2648999,33409129,30760130,3,1,3,1
+Industry,Green Manufacturing,Circular and Sustainability Enterprise Resource Planning (ERP),Market Scale,21,Software,Mitigation,0,0,1,0,65900000,65900000,4,1,1,2
+Industry,Mining,Direct Lithium Extraction (DLE) and Processing,Early Market,13,Hardware,Mitigation,0,2,5,50000000,998443983,948443983,9,5,1,5
+Industry,Mining,Electrochemical extraction,Commercial,8,Hardware,Mitigation,2,0,2,13135973,85835974,72700001,4,2,2,2
+Industry,Mining,Bio-based Extraction / Phytomining,Pilot,3,Hardware,Mitigation,2,1,1,11550000,26893534,15343534,2,1,2,1
+Industry,Mining,Exploration Optimization,Early Market,13,Software,Mitigation,3,0,7,580773,559714008,559133235,9,6,3,5
+Industry,Mining,Mining Precision and Operations Efficiency,Early Market,13,Software,Hybrid,5,1,3,10698948,184628202,173929254,6,3,5,3
+Industry,Mining,Brine and Tailings Extraction,Commercial,8,Hardware,Hybrid,2,1,1,0,15340000,0,2,1,2,1
+Industry,Mining,Extraction Efficiency and Energy Reduction,Early Market,13,HW/SW,Hybrid,2,2,6,3174041,475383681,472209640,8,5,2,4
+Industry,Mining,Deep Sea Mining,Pilot,3,Hardware,Mitigation,0,0,0,0,294850000,294850000,7,1,1,3
+Industry,Mining,Slag Mineral Extraction,Early Market,13,Hardware,Hybrid,0,0,1,5359539,24890722,19531183,2,1,1,1
+Industry,Mining,E-Waste Mineral Extraction and Biorefining,Commercial,8,Hardware,Mitigation,1,0,1,0,37117206,37117206,3,1,1,1
+Industry,Mining,Space Mining,Research,1,Hardware,Mitigation,4,0,0,0,57369000,57369000,4,1,4,2
+Industry,Metals Recycling,Metals and REE Sorting and Recycling,Market Scale,21,HW/SW,Hybrid,1,0,1,3600000,40207700,36607700,3,1,1,1
+Industry,Metals Recycling,Recycled Metals Marketplaces,Early Market,13,Software,Mitigation,2,0,3,0,179792943,179792943,6,3,2,3
+Industry,Supply Chains,"Supply Chain Resiliance, Traceability and Analytics",Market Scale,21,Software,Mitigation,6,2,15,8827574,1622717235,1613289661,10,7,6,5
+Industry,Supply Chains,Digital Product Passports and Circular Enablement,Early Market,13,HW/SW,Mitigation,4,1,2,11192114,96102938,84910824,5,2,4,2
+Industry,Supply Chains,"Supply Chain Planning, Optimization and Demand Forecasting",Market Scale,21,Software,Mitigation,2,0,1,0,547540000,547540000,9,1,2,3
+Industry,Supply Chains,"Routing, Utilization / Fill Rate and Intermodal Optimization ",Market Scale,21,Software,Mitigation,2,3,6,9776185,230125471,220099286,6,5,2,4
+Industry,Supply Chains,Reverse Logistics and Returns Recovery,Market Scale,21,Software,Mitigation,3,0,4,40000000,394011769,354011769,8,4,3,4
+Industry,Supply Chains,Cargo Containers,Early Market,13,Hardware,Mitigation,1,0,0,101190,164585629,164484439,6,1,1,2
+Industry,Supply Chains,Yard Management and Automation,Market Scale,21,Software,Mitigation,1,0,3,0,209155782,209155782,6,3,1,3
+Industry,Supply Chains,"Logistics Platforms, Marketplaces, Freight Matching and Dispatch",Mature Market,34,Software,Mitigation,2,1,11,574210000,4758125879,4183915879,10,7,2,5
+Industry,Supply Chains,Warehouse Automation and Robotics,Market Scale,21,HW/SW,Mitigation,2,0,7,20000,1201397108,1201377108,10,6,2,5
+Agriculture,Controlled Environment Agriculture (CEA),Indoor / Vertical and Greenhouse-based Farms,Mature Market,34,HW/SW,Mitigation,2,0,14,188514376,2047651988,1859137612,10,7,2,5
+Agriculture,Regenerative Agriculture,Agricultural Sequestration and Carbon Programs,Early Market,13,Software,Hybrid,5,1,8,37277650,1819554930,1782277280,10,7,5,5
+Agriculture,Controlled Environment Agriculture (CEA),Controlled Environment Agriculture (CEA) Systems,Market Scale,21,HW/SW,Mitigation,7,0,13,34455937,1391338866,1356882929,10,7,6,5
+Agriculture,Crop Protection and Biotechnology,Biological Pest Controls and Crop Protection,Market Scale,21,Hardware,Adaptation,8,5,11,127478790,1315564758,1187860968,10,7,6,5
+Agriculture,Fertilizer,"Microbial Nitrogen Fixation, Biocontrols and Biostimulants",Early Market,13,Hardware,Mitigation,6,3,6,14458808,1029010890,1014552082,9,5,6,5
+Agriculture,Agriculture Services and Marketplaces,Market Access for Farmers and Sustainable Sourcing,Early Market,13,Software,Mitigation,9,0,3,9242000,1010383094,1001141094,9,3,6,4
+Agriculture,Feeds,Insect-Based Animal Feeds,Early Market,13,Hardware,Mitigation,4,2,10,64391995,860178208,795786213,9,7,4,5
+Agriculture,Crop Protection and Biotechnology,"Seed Genome Editing, Trait Discovery and Selection",Early Market,13,HW/SW,Adaptation,4,1,10,6887463,675491459,668603996,9,7,4,5
+Agriculture,Fishing and Aquaculture,Aquaculture and Precision Aquafarming,Early Market,13,HW/SW,Hybrid,6,2,6,70315623,493660412,421539789,8,5,6,4
+Agriculture,Agriculture Services and Marketplaces,"Farm Digitization, Data and Management Software",Market Scale,21,Software,Mitigation,1,0,7,54050473,492671610,438621137,8,6,1,5
+Agriculture,Fishing and Aquaculture,Aquaculture Farms and Systems,Market Scale,21,Hardware,Mitigation,1,1,4,165398967,467642532,302243565,8,4,1,4
+Agriculture,Precision Agriculture and Agronomics,Autonomous Tractors and Farm Machinery,Early Market,13,HW/SW,Mitigation,6,2,7,9208142,423641563,414433421,8,6,6,5
+Agriculture,Precision Agriculture and Agronomics,Crop Protection Weeding Robotics and Drones,Early Market,13,HW/SW,Mitigation,2,2,8,9808720,407223825,397415105,8,7,2,5
+Agriculture,Fertilizer,Renewable-powered Nitrogen Fixation,Commercial,8,Hardware,Mitigation,1,1,3,3631813,366506955,362875142,8,3,1,4
+Agriculture,Precision Agriculture and Agronomics,In-Field Farmland Sensors and Monitoring,Market Scale,21,HW/SW,Mitigation,4,1,6,43589484,346602423,303012939,7,5,4,4
+Agriculture,Precision Agriculture and Agronomics,Agronomics and Computational Agroecology,Market Scale,21,Software,Hybrid,8,3,10,10768363,340046721,326278358,7,7,6,5
+Agriculture,Precision Agriculture and Agronomics,Precision Irrigation,Mature Market,34,HW/SW,Hybrid,4,2,5,16500000,322343102,305793102,7,5,4,4
+Agriculture,Precision Agriculture and Agronomics,Remote Sensing for Precision Ag and Regen Ag Monitoring,Market Scale,21,Software,Mitigation,3,2,6,15258103,321023634,305036447,7,5,3,4
+Agriculture,Agriculture Services and Marketplaces,"Food Chain Transparency, Quality and Compliance",Early Market,13,HW/SW,Mitigation,5,0,7,3812890,238490839,234677949,7,6,5,4
+Agriculture,Precision Agriculture and Agronomics,Pollination Improvement and Monitoring,Early Market,13,HW/SW,Hybrid,3,2,5,10413010,230705290,220292280,6,5,3,4
+Agriculture,Feeds,"Enteric Methane Suppression Feeds, Supplements and Vaccines",Early Market,13,Hardware,Hybrid,6,1,5,300000,205530795,205230795,6,5,6,4
+Agriculture,Agriculture Services and Marketplaces,Agriculture Supply Chain Digitization,Early Market,13,Software,Mitigation,3,0,3,2100000,204145458,202045458,6,3,3,3
+Agriculture,Regenerative Agriculture,Degraded Farmland Restoration,Early Market,13,Software,Hybrid,1,0,3,10000000,179274866,169274866,6,3,1,3
+Agriculture,Cold Chain,Cold Chain Solutions,Market Scale,21,Hardware,Hybrid,2,2,5,13984583,159413444,145288943,6,5,2,4
+Agriculture,Regenerative Agriculture,Grazing and Livestock Management,Commercial,8,Software,Hybrid,2,0,2,449386,152230722,151781336,6,2,2,3
+Agriculture,Cold Chain,Refrigeration and Solar Cooling for Developing Markets,Early Market,13,Hardware,Hybrid,2,2,3,13555767,116645912,102190145,5,3,2,3
+Agriculture,Regenerative Agriculture,Soil Carbon Measurement,Early Market,13,HW/SW,Hybrid,3,1,3,28200995,115286449,87085454,5,3,3,3
+Agriculture,Agriculture Services and Marketplaces,Farming Marketplaces and Training,Early Market,13,Service,Mitigation,2,0,1,22086032,85896668,63810636,4,1,2,2
+Agriculture,Regenerative Agriculture,Regenerative Agriculture Practices,Early Market,13,Software,Hybrid,1,0,3,150000,77202465,77052465,4,3,1,2
+Agriculture,Fishing and Aquaculture,Seaweed Farming,Market Scale,21,Hardware,Mitigation,6,1,3,15427324,74832388,50205064,4,3,6,2
+Agriculture,Fertilizer,Circular Fertilizer Inputs and Manure Management,Early Market,13,Hardware,Mitigation,1,1,1,12543149,60923744,48380595,4,1,1,2
+Agriculture,Precision Agriculture and Agronomics,Local Weather Forecasting and Stations for Farmers,Market Scale,21,HW/SW,Mitigation,1,0,4,1013232,57387488,56374256,4,4,1,3
+Agriculture,Feeds,Biomass and Fermentation-Based Feeds,Early Market,13,Hardware,Mitigation,1,0,2,300000,52367158,52067158,4,2,1,2
+Agriculture,Agriculture Services and Marketplaces,Farming Equipment Pre-Owned Trading and Sharing,Market Scale,21,Software,Mitigation,0,1,3,1350000,37814077,36364077,3,3,1,2
+Agriculture,Fertilizer,Methane to Fertilizer,Commercial,8,Hardware,Mitigation,0,0,1,0,37000000,37000000,3,1,1,1
+Agriculture,Fertilizer,Waste Streams and CO2 to Fertilizer,Early Market,13,Hardware,Hybrid,0,1,2,82941,33336519,1790459,3,2,1,2
+Agriculture,Fertilizer,Green Ammonia for Fertilizer Production,Commercial,8,Hardware,Mitigation,1,0,1,0,27250000,27250000,2,1,1,1
+Agriculture,Crop Protection and Biotechnology,Plant Cell Culturing,Commercial,8,HW/SW,Mitigation,4,3,1,6777876,24406502,17628626,2,1,4,1
+Agriculture,Controlled Environment Agriculture (CEA),CEA AI and Yield Optimization Software,Early Market,13,Software,Mitigation,3,0,1,3770000,22342074,18572074,2,1,3,1
+Agriculture,Regenerative Agriculture,Agroforestry and Forest-Steward Communities,Early Market,13,Software,Hybrid,0,0,1,0,17370000,17370000,2,1,1,1
+Agriculture,Fishing and Aquaculture,Fishing Verification and Traceability,Early Market,13,Software,Mitigation,1,0,0,0,5240003,5240003,1,1,1,1
+Agriculture,Precision Agriculture and Agronomics,Sustainable Rice Cultivation,Commercial,8,HW/SW,Hybrid,2,1,0,0,4549568,4399568,1,1,2,1
+Agriculture,Crop Protection and Biotechnology,Crop Microbiome Engineering,Commercial,8,HW/SW,Adaptation,1,1,1,0,4350000,4200000,1,1,1,1
+Agriculture,Cold Chain,Dehydration and Vacuum Freeze Drying,Market Scale,21,Hardware,Hybrid,3,2,0,1511569,3836569,2325000,1,1,3,1
+Agriculture,Fishing and Aquaculture,Bycatch and Overfishing Reduction,Commercial,8,HW/SW,Mitigation,2,1,0,59465,2620704,2561239,1,1,2,1
+Agriculture,Fertilizer,Biomass-derived Fertilizer,Commercial,8,Hardware,Mitigation,0,2,0,0,1749460,0,1,1,1,1
+Foods,Plant-based Foods,Plant-based Meats,Mature Market,34,Hardware,Mitigation,6,2,10,6094090,1053862122,1047763032,9,7,6,5
+Foods,Plant-based Foods,Plant-based Dairy Products,Mature Market,34,Hardware,Mitigation,3,0,7,10000000,736489382,726489382,9,6,3,5
+Foods,Plant-based Foods,Plant and Fermentation-based Eggs,Market Scale,21,Hardware,Mitigation,1,0,2,14728862,522271955,507543093,8,2,1,3
+Foods,Plant-based Foods,Plant-based Seafood,Market Scale,21,Hardware,Mitigation,7,4,0,9061075,29123093,19942018,2,1,6,1
+Foods,Plant-based Foods,Mycelium-based Proteins,Early Market,13,Hardware,Mitigation,1,0,4,22141730,527836135,505694405,8,4,1,4
+Foods,Plant-based Foods,Rubisco proteins,Early Market,13,Hardware,Mitigation,1,0,6,5669467,122229228,116559761,5,5,1,3
+Foods,Cultured Foods,Cultivated Meats,Early Market,13,Hardware,Mitigation,3,2,10,31022973,1615022864,1583999891,10,7,3,5
+Foods,Cultured Foods,Cultivated Seafood,Early Market,13,Hardware,Mitigation,4,0,3,60250000,326294060,266044060,7,3,4,3
+Foods,Cultured Foods,Cultured Dairy Products,Early Market,13,Hardware,Mitigation,4,0,3,410000,64885378,62375378,4,3,4,2
+Foods,Cultured Foods,Growth Media and Growth Factors,Early Market,13,Hardware,Mitigation,2,3,2,5427333,32547167,27119834,3,2,2,2
+Foods,Fermentation-based Foods,Precision Fermentation-based Proteins,Early Market,13,Hardware,Mitigation,1,0,2,0,265626386,265626386,7,2,1,3
+Foods,Fermentation-based Foods,Precision Fermentation-based Dairy and Cheese,Market Scale,21,Hardware,Mitigation,4,0,6,6993239,351669172,344675933,8,5,4,4
+Foods,Fermentation-based Foods,Biomass and Mycoprotein Fermentation,Early Market,13,Hardware,Mitigation,4,1,3,65528526,697579653,631556277,9,3,4,4
+Foods,Fermentation-based Foods,Gas Fermentation and CO2 / Methane to Proteins,Early Market,13,Hardware,Hybrid,4,0,5,19085230,443618741,424533511,8,5,4,4
+Foods,Ingredients,"Functional Ingredients, Bioactives and Nutrition",Early Market,13,Hardware,Mitigation,4,1,8,50276995,367394829,316876334,8,7,4,5
+Foods,Ingredients,"Fats, Oils and Lipids",Market Scale,21,Hardware,Mitigation,6,1,7,7142100,261764027,252681927,7,6,6,4
+Foods,Ingredients,Plant-derived Sweeteners and Bitterness Blockers,Market Scale,21,Hardware,Mitigation,3,0,6,1420975,422495885,420037764,8,5,3,4
+Foods,Ingredients,"Scaffolding, Microcarriers and Texturization",Early Market,13,Hardware,Mitigation,3,0,0,0,10345000,10345000,2,1,3,1
+Foods,Ingredients,Cacao-free Chocolate and Cultivated Cocoa,Early Market,13,Hardware,Mitigation,5,0,2,0,167586927,167586927,6,2,5,3
+Foods,Ingredients,Coffee,Commercial,8,Hardware,Mitigation,4,0,1,0,66138178,66138178,4,1,4,2
+Foods,Ingredients,"Colorants, Aromas and Flavorants",Early Market,13,Hardware,Mitigation,2,0,2,2343492,55452856,53109364,4,2,2,2
+Foods,Ingredients,Insect-based Proteins and Ingredients,Early Market,13,Hardware,Mitigation,1,1,2,800000,4260529,3279029,1,2,1,1
+Foods,Ingredients,Microalgae-based Proteins and Ingredients,Early Market,13,Hardware,Mitigation,3,1,2,5430704,42949212,37518508,3,2,3,2
+Foods,Ingredients,"Ingredients Discovery, Analytics and Planning",Early Market,13,Software,Mitigation,1,1,0,0,225000,0,1,1,1,1
+Foods,Food Waste Reduction (Upstream),Post-Harvest Optimization and Loss Reduction,Early Market,13,HW/SW,Hybrid,2,2,3,1215804,167463703,166247899,6,3,2,3
+Foods,Food Waste Reduction (Upstream),Food Freshness Protection and Shelf Life Extention,Early Market,13,Hardware,Hybrid,6,2,9,86865019,993805410,906690391,9,7,6,5
+Foods,Food Waste Reduction (Upstream),Food Chain Contaminant Reduction,Early Market,13,Hardware,Mitigation,0,0,2,5999000,25498995,19499995,2,2,1,1
+Foods,Food Waste Reduction (Upstream),Food Supply Chain Robotics and Automation,Early Market,13,HW/SW,Hybrid,3,0,2,4250000,114822353,110572353,5,2,3,2
+Foods,Food Waste Reduction (Downstream),Food Waste / Side-Stream Re-use and Upcycling,Market Scale,21,Hardware,Mitigation,10,2,6,1320579,62684001,58979148,4,5,6,3
+Foods,Food Waste Reduction (Downstream),Food Service Waste Measurement and Optimization,Market Scale,21,HW/SW,Mitigation,1,0,0,10776302,53020163,34743861,4,1,1,2
+Foods,Food Waste Reduction (Downstream),Food Service Operations and Ordering Management,Market Scale,21,Software,Mitigation,3,0,2,0,48269884,48269884,3,2,3,2
+Foods,Food Waste Reduction (Downstream),Grocery Store Operations and Optimization,Market Scale,21,HW/SW,Mitigation,2,0,5,13895102,297778008,283882906,7,5,2,4
+Foods,Food Waste Reduction (Downstream),Surplus Food Management and Discount Sales,Market Scale,21,Software,Mitigation,2,0,4,350000,181978818,181628818,6,4,2,3
+Foods,Food Waste Reduction (Downstream),Surplus and Imperfect Food Consumer Marketplaces,Market Scale,21,Software,Mitigation,2,1,9,6493954,910871405,904377451,9,7,2,5
+Foods,Food Waste Reduction (Downstream),Food Waste Reduction Apps,Commercial,,Software,Mitigation,1,1,0,0,94706,0,1,1,1,1
+Buildings,Heating And Cooling,Air Source Heat Pumps,Market Scale,21,Hardware,Mitigation,2,0,5,223712257,604116456,380404199,9,5,2,5
+Buildings,Heating And Cooling,Magnetocaloric Cooling,Early Market,13,Hardware,Mitigation,3,1,0,2888504,12059207,9170703,2,1,3,1
+Buildings,Heating And Cooling,Vapor Phase Separation Cooling,Early Market,13,Hardware,Mitigation,0,0,1,1519688,9670528,8150840,1,1,1,1
+Buildings,Heating And Cooling,Liquid Desiccant Air Conditioning,Early Market,13,Hardware,Mitigation,1,0,1,0,50473854,50473854,3,1,1,1
+Buildings,Heating And Cooling,Solid State Thermoelectric and Thermoacoustic,Early Market,13,Hardware,Mitigation,2,0,1,0,180266373,180266373,6,1,2,2
+Buildings,Heating And Cooling,"Evaporative, Passive and Radiative Cooling",Market Scale,21,Hardware,Mitigation,2,0,1,990000,22403184,21413184,2,1,2,1
+Buildings,Heating And Cooling,Geothermal Heat Pumps,Market Scale,21,Hardware,Mitigation,1,0,1,0,143000000,143000000,5,1,1,2
+Buildings,Heating And Cooling,Refrigerant Solutions,Market Scale,21,Hardware,Mitigation,3,1,2,5356435,51973091,46616656,4,2,3,2
+Buildings,Heating And Cooling,Refrigerant Leak Detection,Market Scale,21,HW/SW,Mitigation,0,0,2,5500000,91013661,85513661,5,2,1,2
+Buildings,Heating And Cooling,Energy / Heat Recovery Ventilation and HVAC Load Reduction,Early Market,13,Hardware,Mitigation,1,0,3,3383264,51984893,48601629,4,3,1,2
+Buildings,Heating And Cooling,Passive Airflow Control,Early Market,13,Hardware,Mitigation,0,0,1,0,3930495,3930495,1,1,1,1
+Buildings,Heating And Cooling,Energy Efficient Fans,Mature Market,34,Hardware,Hybrid,0,0,1,0,126494635,126494635,5,1,1,2
+Buildings,Heating And Cooling,Phase Change Materials (PCM),Market Scale,21,Hardware,Hybrid,1,2,3,10018,11506352,3296346,2,3,1,2
+Buildings,Heating And Cooling,"HVAC Monitoring, Control and Analytics",Market Scale,21,Software,Mitigation,6,0,9,17555423,280745237,263189814,7,7,6,5
+Buildings,Heating And Cooling,Solar and Electric Water Heating,Market Scale,21,Hardware,Mitigation,1,0,2,2840000,83792967,80952967,4,2,1,2
+Buildings,Heating And Cooling,Software Tools for Installers and Energy Auditors,Early Market,13,Software,Mitigation,6,1,1,9025000,62544656,52759656,4,1,6,2
+Buildings,Heating And Cooling,District Heating/Cooling,Market Scale,21,Hardware,Mitigation,0,1,1,1589908,17839908,16250000,2,1,1,1
+Buildings,Energy Efficiency And Retrofit,Energy Efficiency as a Service,Mature Market,34,Service,Mitigation,1,0,5,703185032,1888260078,585075046,10,5,1,5
+Buildings,Energy Efficiency And Retrofit,"Smart Thermostats, Smart Home, Consumer Energy Mgmt.",Mature Market,34,HW/SW,Mitigation,2,0,8,5062189,748796761,743734572,9,7,2,5
+Buildings,Energy Efficiency And Retrofit,Residential Electrification Installation Services,Market Scale,21,Service,Mitigation,9,1,6,237715476,557393157,319612681,9,5,6,5
+Buildings,Energy Efficiency And Retrofit,Commercial Real Estate Decarbonization Planning,Market Scale,21,Software,Mitigation,5,1,1,10177243,44704328,32835429,3,1,5,1
+Buildings,Electrical Systems,"Building Energy Management, Maintenance and Optimization",Mature Market,34,Software,Mitigation,5,0,13,232405000,990331677,757488667,9,7,5,5
+Buildings,Electrical Systems,"Smart Electrical Panels, Breakers and DC Power Distribution",Market Scale,21,HW/SW,Mitigation,2,1,4,3477000,293592696,290115696,7,4,2,4
+Buildings,Electrical Systems,Space Occupancy and Utilitization Systems,Market Scale,21,HW/SW,Mitigation,2,1,1,1700000,48221023,46521023,3,1,2,1
+Buildings,Building Materials,Insulation,Mature Market,34,Hardware,Mitigation,4,1,4,25066663,237291351,212224688,7,4,4,4
+Buildings,Building Materials,Building Envelope,Mature Market,34,HW/SW,Mitigation,3,0,1,10580372,97056070,86475698,5,1,3,2
+Buildings,Building Materials,Lighting,Mature Market,34,Hardware,Mitigation,2,0,4,107450738,375351444,267900706,8,4,2,4
+Buildings,Building Materials,Vacuum Insulation Panels (VIPs),Market Scale,21,Hardware,Mitigation,0,1,1,0,0,0,1,1,1,1
+Buildings,Building Materials,Bio-based Building Materials,Market Scale,21,Hardware,Mitigation,4,2,2,0,34094192,33905796,3,2,4,2
+Buildings,Building Materials,Circular and Carbon-Negative Building Materials,Market Scale,21,Hardware,Mitigation,7,1,1,1333970,38116703,34620553,3,1,6,1
+Buildings,Building Materials,"Mass Timber, Engineered Wood and Cross-Laminated Timber (CLT) ",Market Scale,21,Hardware,Mitigation,2,1,3,3000000,72352113,49352113,4,3,2,2
+Buildings,Building Materials,Dynamic / Electrochromic Glass,Market Scale,21,Hardware,Mitigation,3,2,2,371695890,3039747976,2668052086,10,2,3,4
+Buildings,Building Materials,Window Coatings,Market Scale,21,Hardware,Mitigation,2,0,0,9380865,47480865,38100000,3,1,2,1
+Buildings,Building Materials,Vacuum-Insulated Glass,Market Scale,21,Hardware,Mitigation,0,1,1,0,40619999,39019999,3,1,1,1
+Buildings,Building Materials,Pre-Fabricated Panels for Retrofit and New Construction,Market Scale,21,Hardware,Mitigation,0,0,2,73399000,297979376,221535376,7,2,1,3
+Buildings,Building Materials,Green Roof and Rooftop / Urban Farming,Early Market,13,Hardware,Mitigation,1,0,0,0,150000,150000,1,1,1,1
+Buildings,Building Materials,"Cool Roof, Cool Coatings and Reflective Pavements",Early Market,13,Hardware,Mitigation,0,1,2,1400000,27267829,25342833,2,2,1,1
+Buildings,Construction,Modular Pre-Fabrication and Home / Community Builders,Market Scale,21,Hardware,Mitigation,2,0,14,61208531,935404212,872445681,9,7,2,5
+Buildings,Construction,Additional Dwelling Units (ADU),Market Scale,21,Hardware,Mitigation,1,0,3,0,312333394,312333394,7,3,1,3
+Buildings,Construction,Construction Equipment Resale Marketplaces,Commercial,,Software,Mitigation,2,0,1,55000000,153703847,98703847,6,1,2,2
+Buildings,Construction,Construction Robotics,Early Market,13,HW/SW,Mitigation,4,0,6,0,626720389,626720389,9,5,4,5
+Buildings,Construction,Building Code Compliance and Permitting,Early Market,13,Software,Mitigation,4,0,3,1752373,71243432,69491059,4,3,4,2
+Buildings,Construction,Materials Planning and Management,Early Market,13,Software,Mitigation,6,1,2,489514,102882106,102392592,5,2,6,2
+Buildings,Construction,Building Planning And Design,Early Market,13,Software,Mitigation,5,0,2,0,70351316,70351316,4,2,5,2
+Buildings,Construction,"Construction Controls, Management and Optimization",Early Market,13,Software,Mitigation,9,0,12,5246793,523475569,518228776,8,7,6,5
+Buildings,Construction,Home / Apartment Coliving and Storage Sharing,Market Scale,21,Software,Mitigation,1,0,8,166511684,647904946,481393262,9,7,1,5
+Buildings,Urban Design,City Decarbonization Planning Tools,Early Market,13,Software,Mitigation,2,0,3,0,39501489,39501489,3,3,2,2
+Buildings,Urban Design,"Floating Infrastructure, Cities and Homes",Commercial,8,Hardware,Adaptation,0,0,1,0,4099999,4099999,1,1,1,1
+Buildings,Urban Design,"Urban Planning, Walkable / Bikeable Cities and Placemaking",Early Market,13,Software,Hybrid,4,1,0,150000,2584000,2434000,1,1,4,1
+Buildings,Urban Design,"Land Use Management, Zoning and Permitting Management",Market Scale,,Software,Hybrid,1,0,2,21752373,417400494,395648121,8,2,1,3
+Buildings,Smart Cities,Smart Cities Systems,Early Market,13,HW/SW,Hybrid,1,0,5,0,205675770,205655770,6,5,1,4
+Buildings,Smart Cities,"Infrastructure Monitoring, Planning and Repair",Early Market,13,Software,Hybrid,4,1,3,986559,84726604,83740045,4,3,4,2
+Consumer,Apparel And Textiles,Footwear from Recycled and Sustainable Materials,Early Market,13,Hardware,Mitigation,4,1,0,0,34817357,34792357,3,1,4,1
+Consumer,Apparel And Textiles,Apparel from Recycled / Recycleable Materials,Market Scale,21,Hardware,Mitigation,1,0,1,0,0,0,1,1,1,1
+Consumer,Apparel And Textiles,Plant and Biomass-based Fibers / Textiles,Early Market,13,Hardware,Mitigation,6,1,3,50276968,260353700,209651839,7,3,6,3
+Consumer,Apparel And Textiles,CO2 and Methane to Fibers,Commercial,8,Hardware,Hybrid,1,1,2,75737664,1078774351,1001609490,10,2,1,4
+Consumer,Apparel And Textiles,Synthetic Bio-based Textiles,Commercial,8,Hardware,Mitigation,4,1,1,3728000,105397940,101669940,5,1,4,2
+Consumer,Apparel And Textiles,Alternative Leathers,Commercial,8,Hardware,Mitigation,5,0,4,605987,261364396,260758409,7,4,5,4
+Consumer,Apparel And Textiles,Synbio / Plant-based Dyes and Pigments & Low Water / Low Temp Dyeing,Commercial,8,Hardware,Mitigation,3,1,6,2399619,115674183,111958144,5,5,3,3
+Consumer,Apparel And Textiles,Textile-to-Textile and Fiber Recycling,Early Market,13,Hardware,Mitigation,4,0,8,12632734,320332546,307449812,7,7,4,5
+Consumer,Apparel And Textiles,"Apparel Robotics, Disassembly and Design for Recycling",Commercial,8,HW/SW,Mitigation,2,0,3,5063998,86891378,81827380,5,3,2,3
+Consumer,Apparel And Textiles,Sustainable Textile Sourcing and Marketplaces,Early Market,13,Software,Mitigation,2,0,2,1024818,60304945,59280127,4,2,2,2
+Consumer,Apparel And Textiles,Apparel And Textile Traceability,Early Market,13,Software,Mitigation,0,0,0,0,0,0,1,1,1,1
+Consumer,Apparel And Textiles,Laundry and Textile Care,Mature Market,,HW/SW,Mitigation,0,0,1,0,19411181,19411181,2,1,1,1
+Consumer,Consumer Goods Reuse,Apparel as a Service / Leased Clothing and Trade-In,Early Market,13,HW/SW,Mitigation,2,0,2,0,11000000,11000000,2,2,2,1
+Consumer,Consumer Goods Reuse,Second Hand Markets for Apparel and Consumer Products,Mature Market,34,Software,Mitigation,5,0,5,54462909,1171950582,1117487673,10,5,5,5
+Consumer,Consumer Goods Reuse,"Refurbished, Recycled, Rental Consumer Electronics",Mature Market,34,Software,Mitigation,3,0,4,2233479069,3591794019,1358314950,10,4,3,5
+Consumer,Consumer Goods Reuse,Consumer Goods Rental,Early Market,13,HW/SW,Mitigation,1,0,1,0,31066948,31066948,3,1,1,1
+Consumer,Consumer Goods Reuse,Refurbished E-Bikes and Second Hand Bike Marketplaces,Early Market,13,Software,Mitigation,2,0,0,0,1683198,1683198,1,1,2,1
+Consumer,Consumer Goods Reuse,Repair Services,Early Market,13,Service,Mitigation,2,0,1,0,33418398,33418398,3,1,2,1
+Consumer,Appliances,Induction Stoves,Mature Market,34,Hardware,Mitigation,0,0,1,0,25000000,25000000,2,1,1,1
+Consumer,Appliances,Clean Cookstoves,Mature Market,34,Hardware,Mitigation,0,1,3,18214150,36651740,17098166,3,3,1,2
+Consumer,Appliances,Electric Coffee Roasting,Early Market,13,Hardware,Mitigation,0,1,1,4054000,60054000,56000000,4,1,1,2
+Consumer,Appliances,Energy-Efficient Appliances and Electrification Marketplaces,Mature Market,34,Software,Mitigation,0,0,0,0,0,0,1,1,1,1
+Consumer,Household Goods,Home Goods,Mature Market,34,Hardware,Mitigation,2,0,5,225000,256981326,256756326,7,5,2,4
+Consumer,Household Goods,Sustainable Travel and Ecotourism,Mature Market,34,Software,Mitigation,2,1,2,0,30059610,28260328,3,2,2,2
+Consumer,Alternative Lawns,Alternative Lawns and Sustainable Lawn Care,Early Market,13,Hardware,Mitigation,3,0,1,1200000,34859000,33659000,3,1,3,1
+Consumer,Health,Personal Care and Cosmetics,Mature Market,34,Hardware,Mitigation,10,1,6,1297617,261535186,260237569,7,5,6,4
+Consumer,Health,Pharmaceutical Biomanufacturing and Process Decarbonization,Market Scale,21,Hardware,Mitigation,1,0,2,46458952,154344402,107885450,6,2,1,3
+Consumer,Health,Medical Waste Reduction and Circularity,Early Market,13,Hardware,Mitigation,2,1,1,167547,17458303,17244967,2,1,2,1
+Consumer,Packaging,Paper / Molded Fiber and Bioplastic Compostable Packaging,Market Scale,21,Hardware,Mitigation,8,3,5,196123870,1524587068,1328463198,10,5,6,5
+Consumer,Packaging,Insulated Packaging and Foam Replacement,Early Market,13,Hardware,Mitigation,3,1,4,2000474,265993860,263829990,7,4,3,4
+Consumer,Packaging,Biodegradeable / Recyclable Packaging,Market Scale,21,Hardware,Mitigation,4,0,4,15732837,384245101,368512264,8,4,4,4
+Consumer,Packaging,"Mono-Material, Laminants, Coatings and Barriers ",Early Market,13,Hardware,Mitigation,3,0,3,838779,510921231,49301232,8,3,3,4
+Consumer,Packaging,Modified Atmosphere Packaging (MAP),Market Scale,21,Hardware,Mitigation,0,0,0,0,0,0,1,1,1,1
+Consumer,Packaging,Antimicrobial Packaging and Coatings,Market Scale,,Hardware,Mitigation,5,1,3,8451700,16669866,7970747,2,3,5,2
+Consumer,Packaging,Sustainable Packaging Marketplaces,Early Market,13,Software,Mitigation,1,0,2,0,43004196,43004196,3,2,1,2
+Consumer,Reusable Containers and Dishware,Reusable Packaging and Containers,Early Market,13,Hardware,Mitigation,5,2,1,3418500,16362222,12893722,2,1,5,1
+Consumer,Reusable Containers and Dishware,Closed-Loop Reusable Packaging Systems,Early Market,13,HW/SW,Mitigation,9,1,0,1450185,35726018,34275833,3,1,6,1
+Consumer,Reusable Containers and Dishware,Reusable Containers / Refill At Home,Early Market,13,Hardware,Mitigation,4,0,1,0,140064016,140064016,5,1,4,2
+Consumer,Reusable Containers and Dishware,Package-free / Refill On The Go,Early Market,13,Hardware,Mitigation,1,1,2,6469145,18202780,11733635,2,2,1,1
+Consumer,Reusable Containers and Dishware,Refill Water Dispensers and Vending Machines,Early Market,13,Hardware,Mitigation,2,0,3,1575000,269690262,268115262,7,3,2,3
+Consumer,Reusable Containers and Dishware,Refillable Water Bottles,Mature Market,,Hardware,Mitigation,0,0,1,0,8641094,8641094,1,1,1,1
+Water and Sanitation,Water Quality and Availability,"Wastewater Treatment, Reclamation and Material Recovery",Market Scale,21,Hardware,Adaptation,3,1,9,31241256,881787487,850546231,9,7,3,5
+Water and Sanitation,Water Quality and Availability,Distributed Wastewater Treatment,Market Scale,21,Hardware,Adaptation,2,0,4,3028200,65808172,61556333,4,4,2,3
+Water and Sanitation,Water Quality and Availability,Solar Water Pumps,Market Scale,21,Hardware,Adaptation,3,0,1,1100000,6420775,5320775,1,1,3,1
+Water and Sanitation,Water Quality and Availability,Purification and Filtration,Market Scale,21,Hardware,Adaptation,0,2,3,5116929,229860874,224604822,6,3,1,3
+Water and Sanitation,Water Quality and Availability,"Monitoring, Surveillance, Efficiency And Conservation",Early Market,13,HW/SW,Adaptation,3,1,6,291230,148903570,144350699,6,5,3,4
+Water and Sanitation,Remediation,"Bioremediation, PFAS and Microplastic Removal",Early Market,13,Hardware,Adaptation,7,2,5,20435137,167909044,147473907,6,5,6,4
+Water and Sanitation,Water Conservation,"Water Use Reduction, Recycling and Greywater Harvesting",Market Scale,21,Hardware,Adaptation,6,3,5,4444225,50379425,45922708,3,5,6,3
+Water and Sanitation,Water Conservation,Leak Detection and Water Loss Reduction for Utilities,Market Scale,21,HW/SW,Adaptation,2,0,7,350459,129799553,129449094,5,6,2,4
+Water and Sanitation,Water Conservation,"Water Usage Monitoring, Optimization for Buildings and Industry",Early Market,13,HW/SW,Adaptation,2,0,2,3260000,25577630,22317630,2,2,2,1
+Water and Sanitation,Water Conservation,"Water Availability Planning, Usage Reporting and Risk Monitoring",Early Market,13,Software,Adaptation,0,0,1,0,18125000,18125000,2,1,1,1
+Water and Sanitation,Water Conservation,"Groundwater Risk Analysis, Monitoring and Recharge",Early Market,13,HW/SW,Adaptation,1,0,0,0,2200000,2200000,1,1,1,1
+Water and Sanitation,Water Extraction,Desalination,Market Scale,21,Hardware,Adaptation,4,2,2,11891161,29886895,17373806,2,2,4,1
+Water and Sanitation,Water Extraction,Atmospheric Water Harvesting,Early Market,13,Hardware,Adaptation,4,2,0,80000,18696622,17270652,2,1,4,1
+Water and Sanitation,Water Extraction,Rainwater Harvesting,Market Scale,21,Hardware,Adaptation,0,0,0,0,0,0,1,1,1,1
+Water and Sanitation,Water Extraction,Cloud Seeding,Early Market,13,Hardware,Adaptation,0,0,0,0,0,0,1,1,1,1
+Water and Sanitation,Water Utility Systems,"Water Utility Digitization, Planning and Optimization",Market Scale,21,Software,Adaptation,3,0,5,9364088,72452121,63088033,4,5,3,3
+Water and Sanitation,Water Utility Systems,Underground Asset Inspection,Early Market,13,HW/SW,Adaptation,2,0,2,10002,22064523,22054521,2,2,2,1
+Water and Sanitation,Water Utility Systems,Water Pipeline Energy Recovery,Early Market,13,Hardware,Adaptation,0,0,0,0,0,0,1,1,1,1
+Water and Sanitation,Solid Waste,Sanitation Access,Early Market,13,Hardware,Adaptation,2,0,0,0,13251376,13251376,2,1,2,1
+Water and Sanitation,Solid Waste,Solid Waste Utilization and Manure Management,Commercial,8,Hardware,Adaptation,0,0,0,9250000,30650000,21400000,3,1,1,1
+Water and Sanitation,Waste Collection,Smart Waste Containers and Bins,Market Scale,21,HW/SW,Adaptation,3,3,5,1223491,57755680,56532189,4,5,3,3
+Water and Sanitation,Waste Collection,Waste Collection Analytics and Optimization,Early Market,13,Software,Adaptation,8,1,1,16608537,84111446,67447152,4,1,6,2
+Water and Sanitation,Waste Collection,Waste Management and Recycling Digitization,Market Scale,21,Software,Adaptation,5,0,10,11424252,469883035,458458783,8,7,5,5
+Water and Sanitation,Waste Collection,Litter Analytics and Clean-up,Early Market,13,Software,Adaptation,1,0,0,1360996,1512428,151432,1,1,1,1
+Water and Sanitation,Recycling,"Robotics for Waste Sorting, Collection and Recycling",Market Scale,21,HW/SW,Adaptation,3,0,6,4000000,135980424,131891060,5,5,3,3
+Water and Sanitation,Recycling,"Deposit Return Scheme (DRS), EPR, Reverse Vending and Take-Back",Early Market,13,Hardware,Adaptation,0,0,4,1495179,96620751,95125572,5,4,1,3
+Water and Sanitation,Recycling,E-Waste Recycling and Urban Mining,Early Market,13,Hardware,Adaptation,5,0,0,1217496,8374682,7157186,1,1,5,1
+Water and Sanitation,Recycling,Recyclers and Materials Recovery Facilities (MRF),Mature Market,34,Hardware,Adaptation,2,0,2,1000000,70695587,69695587,4,2,2,2
+Water and Sanitation,Recycling,Recycled Products Sourcing Marketplaces,Early Market,13,Software,Adaptation,1,0,2,0,71635828,71417974,4,2,1,2
+Water and Sanitation,Recycling,Ocean and River Plastic Recovery and Reuse,Early Market,13,Hardware,Adaptation,4,0,1,1270000,29905921,28635921,3,1,4,1
+Water and Sanitation,Recycling,Circular Material Recovery Networks,Early Market,13,Software,Adaptation,3,0,0,0,4154061,4154061,1,1,3,1
+Water and Sanitation,Composting and Food Waste Tracking,Residential and Commercial On-Site Composting,Market Scale,21,HW/SW,Adaptation,4,0,1,0,92462334,92462334,5,1,4,2
+Water and Sanitation,Composting and Food Waste Tracking,Organic Waste Diversion and Municipal Composting Services,Market Scale,21,Service,Adaptation,0,0,2,60000,15555363,15495363,2,2,1,1
+"Workforce, Policy, Community Engagement and Media",Workforce Management,Workforce Development and Training,Market Scale,21,Service,Mitigation,5,1,1,8145828,75903651,67757823,4,1,5,2
+"Workforce, Policy, Community Engagement and Media",Workforce Management,Climate Job Recruiting,Market Scale,21,Software,Mitigation,6,0,2,0,49255604,49255604,3,2,6,2
+"Workforce, Policy, Community Engagement and Media",Workforce Management,Workforce Engagement and Benefits,Early Market,13,Software,Mitigation,12,0,1,16162743,44650891,28488148,3,1,6,1
+"Workforce, Policy, Community Engagement and Media",Workforce Management,Field Work Digitization and Management,Market Scale,21,Software,Mitigation,0,0,3,0,363711289,363711289,8,3,1,4
+"Workforce, Policy, Community Engagement and Media",Employee Travel Reduction,Remote / Hybrid Work Enablement,Market Scale,21,Software,Mitigation,2,0,1,0,10157683,10157683,2,1,2,1
+"Workforce, Policy, Community Engagement and Media",Employee Travel Reduction,Virtual / Hybrid Events and Travel Reduction,Market Scale,21,Software,Mitigation,0,0,2,0,111495000,111495000,5,2,1,2
+"Workforce, Policy, Community Engagement and Media",Policy and Community Engagement,Policy Analysis,Early Market,13,Software,Hybrid,1,0,0,500000,7300000,6800000,1,1,1,1
+"Workforce, Policy, Community Engagement and Media",Policy and Community Engagement,Community Engagement and Civic Tech,Early Market,13,Software,Hybrid,,,,,,,2,1,3,2
+"Workforce, Policy, Community Engagement and Media",Media,Climate Content for Advocacy and Awareness,Market Scale,21,Service,Mitigation,3,0,1,0,10324987,10324987,2,1,3,1
+"Workforce, Policy, Community Engagement and Media",Media,Advertising Emissions Measurement and Impact,Early Market,13,Software,Mitigation,0,0,1,0,20000000,20000000,2,1,1,1
+"Workforce, Policy, Community Engagement and Media",Media,Disinformation Detection and Protection,Early Market,13,Software,Mitigation,2,0,4,50000,222198285,222148285,6,4,2,3
+Carbon Management,Carbon Accounting And Reporting,"Carbon Accounting, Reporting and Management",Mature Market,34,Software,Mitigation,8,0,11,6516406,842978441,836212035,9,7,6,5
+Carbon Management,Carbon Accounting And Reporting,Industry-Specific Carbon Accounting,Market Scale,21,Software,Mitigation,7,0,13,8030305,710088082,702057777,9,7,6,5
+Carbon Management,Carbon Accounting And Reporting,Environmental and Carbon Accounting Data Platforms,Early Market,13,Software,Mitigation,2,0,1,0,10032899,10032899,2,1,2,1
+Carbon Management,Carbon Accounting And Reporting,"Life Cycle Assessment (LCA), Env. Product Declarations (EPD) and Product Claims Mgmt.",Early Market,13,Software,Mitigation,4,0,6,455133,118770029,118314896,5,5,4,3
+Carbon Management,Carbon Accounting And Reporting,Supplier Engagement for Scope 3 Emissions Reduction,Early Market,13,Software,Mitigation,4,0,5,75000,177851612,177776612,6,5,4,4
+Carbon Management,Carbon Accounting And Reporting,Environmental Regulatory Compliance and Analytics,Market Scale,21,Software,Mitigation,3,0,6,0,304197623,304197623,7,5,3,4
+Carbon Management,Carbon Accounting And Reporting,Consumer Action and Offsetting,Market Scale,21,Software,Mitigation,4,0,4,0,128815031,128815031,5,4,4,3
+Carbon Management,Monitoring And Detection,Pollution and Air Quality Monitoring,Early Market,13,HW/SW,Adaptation,3,4,2,442404,124167707,122127305,5,2,3,2
+Carbon Management,Monitoring And Detection,Methane Leak Detection,Market Scale,21,HW/SW,Adaptation,4,0,10,207939382,635897678,427958296,9,7,4,5
+Carbon Management,Monitoring And Detection,Fugitive Methane Reduction and Well Plugging,Early Market,13,Hardware,Adaptation,3,0,2,55915,53455915,53400000,4,2,3,2
+Carbon Management,Climate Project Markets and MRV,Carbon Project Marketplaces,Mature Market,34,Software,Mitigation,5,0,7,0,174117451,174117451,6,6,5,4
+Carbon Management,Climate Project Markets and MRV,Climate Action Integration and APIs,Mature Market,34,Software,Mitigation,3,1,4,1874487,103373383,101498896,5,4,3,3
+Carbon Management,Climate Project Markets and MRV,Carbon Project Reviewers and Services for Project Originators,Early Market,13,Software,Mitigation,3,0,1,20000,17430164,17410164,2,1,3,1
+Carbon Management,Climate Project Markets and MRV,"Certification and Measurement, Reporting and Verification (MRV)",Early Market,13,Software,Mitigation,3,0,2,202393,75836214,75633821,4,2,3,2
+Carbon Management,Climate Project Markets and MRV,Carbon Project Portfolios,Market Scale,21,Software,Mitigation,3,0,0,0,62898400,62898400,4,1,3,2
+Carbon Management,Climate Project Markets and MRV,"Nature-Based Project Portfolios, Financing and Services",Market Scale,21,Software,Mitigation,5,0,4,0,197096532,197096532,6,4,5,3
+Carbon Management,Climate Project Markets and MRV,Carbon Project Carbon Removal Registries and Certifiers,Early Market,13,Software,Removal,2,0,0,0,26614101,26614101,2,1,2,1
+Nature-based Carbon Removal,Forests,Reforestation and Nature Restoration Solutions,Market Scale,21,Software,Hybrid,3,1,3,18326767,121646086,103319319,5,3,3,3
+Nature-based Carbon Removal,Forests,"Forest Project Origination, Management and Measurement",Market Scale,21,Service,Hybrid,2,2,6,5509215,265517550,260008335,7,5,2,4
+Nature-based Carbon Removal,Forests,Forest Inventory Measurement and Health Monitoring,Early Market,13,Software,Hybrid,2,0,2,539911,33027508,32487597,3,2,2,2
+Nature-based Carbon Removal,Forests,Deforestation-free Compliance and Reporting,Early Market,13,Software,Hybrid,2,0,2,100000,31135203,31035203,3,2,2,2
+Nature-based Carbon Removal,Oceans,"Coastal, Mangrove, Seagrass and Kelp Forest Restoration",Commercial,8,Hardware,Hybrid,1,1,0,306000,3806000,3500000,1,1,1,1
+Nature-based Carbon Removal,Oceans,Coral Reef Restoration,Early Market,13,Hardware,Hybrid,3,1,1,0,5172756,5172756,1,1,3,1
+Nature-based Carbon Removal,Wetlands,Wetlands and Peatlands Restoration,Early Market,13,Hardware,Hybrid,0,0,1,0,250000000,250000000,7,1,1,3
+Nature-based Carbon Removal,Watersheds,Watershed Restoration and Groundwater Recharge,Early Market,13,Hardware,Hybrid,0,0,1,2288287,9897428,7609141,2,1,1,1
+Nature-based Carbon Removal,Biodiversity,"Wildlife Conservation, Restoration and Rewilding",Early Market,13,Software,Hybrid,0,1,1,0,235724954,235500001,7,1,1,3
+Nature-based Carbon Removal,Biodiversity,Invasive Species Monitoring and Control,Early Market,13,Hardware,Hybrid,2,0,0,0,2750000,2750000,1,1,2,1
+Nature-based Carbon Removal,Biodiversity,Biodiversity Measurement and Reporting,Early Market,13,HW/SW,Hybrid,4,1,2,0,35459683,33762106,3,2,4,2
+Nature-based Carbon Removal,Urban,"Street Trees, Green Spaces and Rurbanisation",Commercial,8,Software,Hybrid,0,1,0,0,100000,0,1,1,1,1
+Engineered Carbon Removal,DAC,Direct Air Capture (DAC),Market Scale,21,Hardware,Removal,9,7,7,43149616,1214343601,1171193985,10,6,6,5
+Engineered Carbon Removal,BiRCS,"Biochar, Biomass Carbon Removal and Storage (BiRCS)",Mature Market,34,Hardware,Removal,8,3,7,11012368,251878428,240231766,7,6,6,4
+Engineered Carbon Removal,BECCS,Bioenergy with Carbon Capture and Storage (BECCS),Early Market,13,Hardware,Removal,0,0,0,0,0,0,1,1,1,1
+Engineered Carbon Removal,"Plant, Synbio-Based",Plant And Synthetic Biology-Based Carbon Removal,Commercial,8,Hardware,Removal,4,2,1,4302982,45720856,41377874,3,1,4,1
+Engineered Carbon Removal,Ocean Systems-Based,Ocean Alkalinity Enhancement,Commercial,8,Hardware,Removal,2,1,1,3849928,31649928,27800000,3,1,2,1
+Engineered Carbon Removal,Ocean Systems-Based,Biomass Sinking and Upwelling,Early Market,13,Hardware,Removal,3,3,1,275000,54765467,54125000,4,1,3,2
+Engineered Carbon Removal,Ocean Systems-Based,Direct Ocean Capture (DOC),Commercial,8,Hardware,Removal,2,1,1,1000000,42875000,41875000,3,1,2,1
+Engineered Carbon Removal,Geologic,Mineralization,Early Market,13,Hardware,Removal,3,4,1,2485161,186474884,66969723,6,1,3,2
+Engineered Carbon Removal,Geologic,Enhanced Weathering,Early Market,13,Hardware,Removal,4,1,2,0,36469176,36369176,3,2,4,2
+Engineered Carbon Removal,Electrochemical,Electrochemical,Commercial,8,Hardware,Removal,1,0,1,5931087,38675669,32744582,3,1,1,1
+Engineered Carbon Removal,Hybrid CDR,Hybrid Carbon Removal,Commercial,8,Hardware,Removal,5,2,1,520369,133375369,131855000,5,1,5,2
+Engineered Carbon Removal,Carbon Capture and Storage (CCS),Point Source CCS,Market Scale,21,Hardware,Removal,9,0,8,42465792,807776899,765311107,9,7,6,5
+Engineered Carbon Removal,Carbon Capture and Storage (CCS),CCS with Geological Storage,Early Market,13,Hardware,Removal,1,0,1,280000,47480000,47200000,3,1,1,1
+Engineered Carbon Removal,Carbon Capture and Storage (CCS),Methane Capture,Pilot,3,Hardware,Removal,1,0,1,0,11300000,11300000,2,1,1,1
+Engineered Carbon Removal,CDR Project Dev.,CDR Project Development,Early Market,13,Service,Removal,1,0,1,0,7199997,7199997,1,1,1,1
+Finance,Climate Capital,Venture Debt and Growth Equity,Mature Market,34,Service,Mitigation,0,0,1,0,146867385,146867385,5,1,1,2
+Finance,Climate Capital,Project Finance and Infrastructure Finance,Mature Market,34,Service,Mitigation,2,0,4,63460229,521831910,457621681,8,4,2,4
+Finance,Climate Capital,EV and Mobility Financing,Mature Market,34,Service,Mitigation,3,0,3,3200000,502000258,490800258,8,3,3,4
+Finance,Climate Capital,Catalytic Capital,Market Scale,21,Service,Mitigation,0,0,1,0,0,0,1,1,1,1
+Finance,Climate Capital,Grant Advance Financing,Early Market,13,Service,Mitigation,1,0,0,2600000,205000000,2400000,6,1,1,2
+Finance,Climate Capital,Grant Discovery and Application,Early Market,13,Software,Mitigation,1,0,1,300000,65444000,65144000,4,1,1,2
+Finance,Climate Capital,Regen Farming Financing and Credit Access,Market Scale,21,Service,Mitigation,4,1,6,288879437,519920475,230791038,8,5,4,4
+Finance,Insurance,Climate and WX-Related Insurance,Market Scale,21,Software,Adaptation,3,1,9,196981000,814057952,617076952,9,7,3,5
+Finance,Insurance,Insurance Tech and AI Solutions,Early Market,13,Software,Adaptation,2,1,3,125000,279581084,279456084,7,3,2,3
+Finance,Insurance,Climate Risk Modeling and Analytics,Market Scale,21,Software,Adaptation,8,1,7,26626159,425525115,398898956,8,6,6,5
+Finance,Insurance,Renewable Energy Project Insurance,Early Market,13,Service,Mitigation,0,0,1,1805000,26805000,25000000,2,1,1,1
+Finance,Insurance,Carbon Project Insurance,Commercial,8,Service,Mitigation,3,0,0,0,34444760,34444760,3,1,3,1
+Finance,Fintech,"Carbon Credit, Commodity Trading and Markets",Mature Market,34,Software,Mitigation,3,0,1,580779195,921673460,340894265,9,1,3,3
+Finance,Fintech,"Renewable Energy Certificate (REC, EAC, SAFc) Trading ",Mature Market,34,Software,Mitigation,4,0,0,0,14134821,14134821,2,1,4,1
+Finance,Fintech,Asset and Lending Management,Early Market,13,Software,Mitigation,1,0,1,0,312694913,312694913,7,1,1,3
+Finance,Fintech,Tax Credit Monetization and Incentives Management,Early Market,13,Software,Mitigation,3,0,1,0,52750000,52750000,4,1,3,2
+Finance,Fintech,Blockchain Climate Solutions,Early Market,13,Software,Mitigation,4,1,1,8000000,50128383,42128383,3,1,4,1
+Finance,Ratings,Carbon Project Ratings,Market Scale,21,Software,Mitigation,1,0,2,0,167605036,167605036,6,2,1,3
+Finance,Ratings,Sustainability Ratings and Investment Analysis,Mature Market,34,Software,Mitigation,2,0,4,2500000,1013267653,1010767653,9,4,2,4
+Finance,Consumer Finance,Solar Loan Financing,Mature Market,34,Service,Mitigation,4,1,4,140093208,335796160,195702952,7,4,4,4
+Finance,Consumer Finance,Financing for Electrification and Retrofits,Market Scale,21,Service,Mitigation,2,0,2,326596240,1326750620,200054380,10,2,2,4
+Finance,Consumer Finance,Impact Investing and Sustainable Banking,Market Scale,21,Software,Mitigation,5,0,3,2465391,397403033,394937642,8,3,5,4
+Finance,Consumer Finance,Climate Crowdfunding and Impact Investing Platforms,Market Scale,21,Software,Mitigation,4,1,5,11801619,67607819,55806200,4,5,4,3
+Adaptation,Wildfire,"Wildfire Prediction, Detection and Alerting",Early Market,13,HW/SW,Adaptation,5,0,3,16297801,95911837,79614036,5,3,5,3
+Adaptation,Wildfire,Wildfire Resiliance Planning and Defense,Early Market,13,Software,Adaptation,1,0,2,0,55804091,55804091,4,2,1,2
+Adaptation,Wildfire,Firefighting Robotics,Commercial,8,HW/SW,Adaptation,2,1,1,1225000,18875001,17650001,2,1,2,1
+Adaptation,Wildfire,Controlled Burn and Fire Management,Commercial,8,HW/SW,Adaptation,2,1,1,1208675,27328675,26120000,2,1,2,1
+Adaptation,Wildfire,Tree Thinning and Vegetation Management Automation,Early Market,13,HW/SW,Adaptation,3,0,2,0,134384815,134384815,5,2,3,2
+Adaptation,Heat,Heat Stress Protection Clothing,Early Market,13,Hardware,Adaptation,0,1,0,0,15000,0,1,1,1,1
+Adaptation,Heat,Heat Illness Monitoring and Prevention,Early Market,13,HW/SW,Adaptation,3,0,0,4024143,13824143,9800000,2,1,3,1
+Adaptation,Flood And Water,Urban Stormwater Management and Drainage Infrastructure,Market Scale,21,HW/SW,Adaptation,1,1,3,1607500,22160828,20353332,2,3,1,2
+Adaptation,Flood And Water,"Seawalls, Revetments and Engineered Coastal Protection",Market Scale,21,Hardware,Adaptation,2,0,1,40000,19115000,19075000,2,1,2,1
+Adaptation,Flood And Water,"Flood Hazard Analytics, Planning and Response",Early Market,13,Software,Adaptation,3,1,3,4480122,33188668,28658546,3,3,3,2
+Adaptation,Air Pollution,Air Pollution Control and Air Purification,Market Scale,21,Hardware,Adaptation,4,0,3,2603626,52703628,50100002,4,3,4,2
+Adaptation,Safety And Security,First Responder and Public Safety Tech,Market Scale,21,Software,Adaptation,0,0,4,575000,715754998,715179998,9,4,1,4
+Adaptation,Safety And Security,Emergency Communications / Early Warning Platforms,Market Scale,21,Software,Adaptation,2,1,2,20100000,169025000,148800000,6,2,2,3
+Adaptation,Migration,"Migration, Relocation and Managed Retreat",Early Market,13,Software,Adaptation,2,0,0,0,3516945,3516945,1,1,2,1
+Adaptation,Bio-Surveillance,"Pathogen Detection, Prevention and Response ",Market Scale,21,HW/SW,Adaptation,1,2,3,0,84304828,84169641,4,3,1,2
+Adaptation,Geoengineering,"Marine Cloud Brightening, Solar Radiation Mgmt. (SRM), Iron Aerosols",Research,1,Hardware,Adaptation,1,0,0,0,750000,750000,1,1,1,1
+Adaptation,Geoengineering,Sea Ice Restoration and Glacier Protection,Research,1,Hardware,Adaptation,0,0,0,0,0,0,1,1,1,1
+Transversal Technologies,AI,Artificial Intelligence,Market Scale,21,Software,Mitigation,4,0,12,8469542,1266035588,1257390883,10,7,4,5
+Transversal Technologies,Quantum Computing,Quantum Computing,Early Market,13,HW/SW,Mitigation,3,2,2,16068924,845987390,829918466,9,2,3,4
+Transversal Technologies,Synthetic Biology,Lab Automation and Robotics,Early Market,13,HW/SW,Mitigation,2,0,6,0,447375742,447375742,8,5,2,4
+Transversal Technologies,Synthetic Biology,Lab Optimization and Workflow Software,Early Market,13,HW/SW,Mitigation,3,0,3,771052,595021153,594250101,9,3,3,4
+Transversal Technologies,Synthetic Biology,Biomanufacturing Infrastructure,Market Scale,21,Hardware,Mitigation,6,1,7,72574999,897643510,825068511,9,6,6,5
+Transversal Technologies,Synthetic Biology,"Biocatalysts, Reagents and Growth Media",Market Scale,21,Hardware,Mitigation,1,0,3,2847005,505197723,502350718,8,3,1,4
+Transversal Technologies,Synthetic Biology,"Bioengineering Research, Design and Development",Market Scale,21,HW/SW,Mitigation,5,1,10,4979070,641144556,636082545,9,7,5,5
+Transversal Technologies,Synthetic Biology,Enzyme Engineering,Early Market,13,HW/SW,Mitigation,1,1,4,11591045,172714848,157353803,6,4,1,3
+Transversal Technologies,Motors and Magnets,High Power Density Electric Motors,Market Scale,21,Hardware,Mitigation,6,1,11,326924794,1211608384,884683590,10,7,6,5
+Transversal Technologies,Motors and Magnets,"Magnets, Material Circularity and Rare Earth-free",Market Scale,21,Hardware,Mitigation,1,1,2,42500000,237099999,194599999,7,2,1,3
+Transversal Technologies,Materials Innovation,Membranes and Materials Separation,Market Scale,21,Hardware,Mitigation,5,4,5,23858542,184432477,154869714,6,5,5,4
+Transversal Technologies,Materials Innovation,Metal Organic Framework-based Materials,Early Market,13,Hardware,Mitigation,1,1,3,633623,4827951,4194328,1,3,1,1
+Transversal Technologies,Materials Innovation,Nanomaterials and Nanobubbles,Early Market,13,Hardware,Mitigation,5,1,7,39159440,287132048,247889667,7,6,5,4
+Transversal Technologies,Materials Innovation,Biomass to Materials,Early Market,13,Hardware,Mitigation,5,2,3,38887367,180869247,141981880,6,3,5,3
+Transversal Technologies,Materials Innovation,Fungi / Mycelium-based Materials,Early Market,13,Hardware,Mitigation,4,0,2,9671492,147695739,138024247,5,2,4,2
+Transversal Technologies,Materials Innovation,Algae and Plant-based Materials,Early Market,13,Hardware,Mitigation,4,0,2,18601897,110441460,91839563,5,2,4,2
+Transversal Technologies,Materials Innovation,Bioengineered Materials,Early Market,13,Hardware,Mitigation,0,1,3,398218850,1528894605,1130299755,10,3,1,4
+Transversal Technologies,Materials Innovation,CO2 to Materials,Early Market,13,Hardware,Hybrid,2,1,2,0,234241130,234241130,6,2,2,3
+Transversal Technologies,Materials Innovation,Self-healing and Repairable Materials,Early Market,13,Hardware,Mitigation,3,0,1,2147074,6298983,4151909,1,1,3,1
+Transversal Technologies,Materials Innovation,"Graphene, Carbon Fiber, Nanotubes and Lightweight Composites",Market Scale,21,Hardware,Mitigation,9,4,8,19763265,713589786,692913895,9,7,6,5
+Transversal Technologies,Materials Innovation,Biocarbon Materials,Early Market,,Hardware,Mitigation,0,1,0,3844306,270133869,4990643,7,1,1,3
+Transversal Technologies,Materials Innovation,Materials Marketplaces,Early Market,13,Software,Mitigation,1,0,1,0,4738906,4738906,1,1,1,1
+Transversal Technologies,Materials Innovation,Materials Acceleration Platforms (MAPs),Early Market,13,Software,Mitigation,9,2,4,8349222,151155777,140545180,6,4,6,3
+Transversal Technologies,Process Digitalization,Computational and Generative Design,Early Market,13,Software,Mitigation,1,1,2,565856,73737327,73141471,4,2,1,2
+Transversal Technologies,Process Digitalization,"Automation, Digitalization and Optimization ",Market Scale,21,Software,Mitigation,1,0,10,33981126,630509133,596528007,9,7,1,5
+Transversal Technologies,Process Digitalization,"Supervisory Control (SCADA), Data Management and Edge Orchestration",Market Scale,21,Software,Mitigation,0,0,5,6000000,319499508,313499508,7,5,1,4
+Transversal Technologies,Process Digitalization,Digital Twins and Simulation,Mature Market,34,Software,Mitigation,4,1,6,120025721,449526082,329470361,8,5,4,4
+Transversal Technologies,Process Digitalization,Process Energy Management and Optimization,Market Scale,21,Software,Mitigation,3,0,4,2183257,156525861,154342604,6,4,3,3
+Transversal Technologies,Process Digitalization,Predictive Maintenance and Performance Management,Market Scale,21,Software,Mitigation,2,1,7,12711753,494195212,481483459,8,6,2,5
+Transversal Technologies,Process Digitalization,Industrial Robotics,Market Scale,21,HW/SW,Mitigation,4,1,8,446483,1016428782,1015982299,9,7,4,5
+Transversal Technologies,Process Digitalization,"Internet of Things (IoT) Sensors, Monitoring and Integration",Mature Market,34,HW/SW,Mitigation,3,1,9,1552000,722818623,721266623,9,7,3,5
+Transversal Technologies,Process Digitalization,Energy Harvesting,Early Market,13,Hardware,Mitigation,2,1,2,4184656,171699138,164064840,6,2,2,3
+Transversal Technologies,Earth Observation,Weather Forecasting and Extreme WX Prediction,Market Scale,21,Software,Hybrid,4,2,5,3241820,459008604,454581280,8,5,4,4
+Transversal Technologies,Earth Observation,Earth Observation Platforms and Intelligence,Mature Market,34,Software,Hybrid,7,2,8,39336991,808236635,768899644,9,7,6,5
+Transversal Technologies,Earth Observation,Geospatial and Multispectral Imaging,Market Scale,21,Hardware,Hybrid,2,0,10,14582112,766264067,751681955,9,7,2,5
+Transversal Technologies,Earth Observation,Drone-based Observation and Analytics,Market Scale,21,HW/SW,Hybrid,1,0,5,8170000,553053574,544883574,9,5,1,5
+Transversal Technologies,Earth Observation,Ocean Monitoring,Early Market,13,HW/SW,Hybrid,6,1,6,28754471,505284400,473649455,8,5,6,4
+Transversal Technologies,Data Centers,Data Center Heat Recovery,Commercial,8,Hardware,Mitigation,1,0,1,26785832,307823725,281037893,7,1,1,3
+Transversal Technologies,Data Centers,Data Center Chip Cooling,Early Market,13,Hardware,Mitigation,1,1,5,5226183,357031873,351805690,8,5,1,4
+Transversal Technologies,Data Centers,Modular Data Center Energy Efficiency and Energy Provisioning,Early Market,13,HW/SW,Mitigation,3,0,1,40025000,209340488,169315488,6,1,3,2
+Transversal Technologies,Data Centers,"Cloud Efficiency, Virtualization and Green Software",Market Scale,21,Software,Mitigation,3,0,9,832482368,1533778699,701296331,10,7,3,5
+Transversal Technologies,Data Centers,Chip Design,Mature Market,34,Hardware,Mitigation,0,0,6,1860755,1927596263,1925735508,10,5,1,5
+Transversal Technologies,Circularity Management,Circular Asset Management and Disposition,Early Market,13,Software,Mitigation,2,0,5,100000,85943483,85843483,5,5,2,3
+Transversal Technologies,Circularity Management,"Repair, Service and Refurb Platforms",Early Market,13,Software,Mitigation,4,0,1,544065,20703663,20159598,2,1,4,1
+Transversal Technologies,Circularity Management,Recommerce / Resale as a Service (RaaS),Market Scale,21,Software,Mitigation,4,0,8,3861340,580828492,576967152,9,7,4,5
