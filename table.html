@@ -56,6 +56,14 @@
             font-style: italic;
             color: #666;
         }
+        .error {
+            color: #dc3545;
+            padding: 20px;
+            text-align: center;
+            background-color: #f8d7da;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
     </style>
 </head>
 <body>
@@ -70,40 +78,46 @@
     </div>
 
     <script>
-        // CSV data embedded directly in the JavaScript
-        const csvData = `${await window.fs.readFile('data.csv', { encoding: 'utf8' })}`;
-
-        // Parse CSV when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            Papa.parse(csvData, {
-                header: true,
-                complete: function(results) {
-                    const data = results.data;
-                    
-                    // Get unique sectors
-                    const sectors = [...new Set(data.map(row => row.Sector))].sort();
-                    
-                    // Populate sector dropdown
-                    const sectorSelect = document.getElementById('sectorSelect');
-                    sectorSelect.innerHTML = sectors.map(sector => 
-                        `<option value="${sector}">${sector}</option>`
-                    ).join('');
-                    
-                    // Update table when sector changes
-                    sectorSelect.addEventListener('change', function(e) {
-                        updateTable(data, e.target.value);
-                    });
-                    
-                    // Show initial data
-                    updateTable(data, sectors[0]);
+        async function loadCSV(url) {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
                 }
-            });
-        });
+                const csvText = await response.text();
+                return new Promise((resolve) => {
+                    Papa.parse(csvText, {
+                        header: true,
+                        complete: function(results) {
+                            resolve(results.data);
+                        },
+                        error: function(error) {
+                            console.error('Error parsing CSV:', error);
+                            showError('Error parsing CSV data');
+                        }
+                    });
+                });
+            } catch (error) {
+                console.error('Error fetching CSV:', error);
+                showError('Error loading CSV data');
+                return [];
+            }
+        }
+
+        function showError(message) {
+            const tableContainer = document.getElementById('tableContainer');
+            tableContainer.innerHTML = `<div class="error">${message}</div>`;
+        }
 
         function updateTable(data, sector) {
             const filteredData = data.filter(row => row.Sector === sector);
             const tableContainer = document.getElementById('tableContainer');
             
+            if (filteredData.length === 0) {
+                tableContainer.innerHTML = '<div class="error">No data available for selected sector</div>';
+                return;
+            }
+
             const table = `
                 <table>
                     <thead>
@@ -118,11 +132,11 @@
                     <tbody>
                         ${filteredData.map(row => `
                             <tr>
-                                <td>${row['Climate And Business Need']}</td>
-                                <td>${row['Solutions']}</td>
-                                <td>${row['Market Maturity']}</td>
-                                <td>${row['Business Model']}</td>
-                                <td>${row['Type']}</td>
+                                <td>${row['Climate And Business Need'] || ''}</td>
+                                <td>${row['Solutions'] || ''}</td>
+                                <td>${row['Market Maturity'] || ''}</td>
+                                <td>${row['Business Model'] || ''}</td>
+                                <td>${row['Type'] || ''}</td>
                             </tr>
                         `).join('')}
                     </tbody>
@@ -131,6 +145,35 @@
             
             tableContainer.innerHTML = table;
         }
+
+        // Initialize the application
+        async function initializeApp() {
+            // Replace this URL with your GitHub raw CSV file URL
+            const csvUrl = 'data.csv';
+            
+            const data = await loadCSV(csvUrl);
+            if (data.length === 0) return;
+
+            // Get unique sectors
+            const sectors = [...new Set(data.map(row => row.Sector))].filter(Boolean).sort();
+            
+            // Populate sector dropdown
+            const sectorSelect = document.getElementById('sectorSelect');
+            sectorSelect.innerHTML = sectors.map(sector => 
+                `<option value="${sector}">${sector}</option>`
+            ).join('');
+            
+            // Update table when sector changes
+            sectorSelect.addEventListener('change', function(e) {
+                updateTable(data, e.target.value);
+            });
+            
+            // Show initial data
+            updateTable(data, sectors[0]);
+        }
+
+        // Start the application when the page loads
+        document.addEventListener('DOMContentLoaded', initializeApp);
     </script>
 </body>
 </html>
