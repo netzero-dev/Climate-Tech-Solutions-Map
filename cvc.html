@@ -80,10 +80,11 @@
         let expandedRows = new Set();
 
         // Function to create a table row
-        function createTableRow(item, index) {
+        function createTableRow(item, filteredIndex) {
             const tr = document.createElement('tr');
             tr.className = 'hover:bg-gray-50 cursor-pointer';
-            tr.dataset.index = index;
+            tr.dataset.index = filteredIndex;
+            tr.dataset.cvcName = item['CVC Name']; // Store unique identifier
             
             tr.innerHTML = `
                 <td class="px-6 py-4 whitespace-nowrap">
@@ -114,7 +115,7 @@
         }
 
         // Function to create expanded content row
-        function createExpandedRow(item) {
+        function createExpandedRow(item, index) {
             const tr = document.createElement('tr');
             tr.className = 'expanded-row';
             tr.innerHTML = `
@@ -126,6 +127,8 @@
                     </div>
                 </td>
             `;
+            tr.dataset.expandedIndex = index;
+            tr.dataset.cvcName = item['CVC Name']; // Store unique identifier
             return tr;
         }
 
@@ -133,6 +136,10 @@
         function toggleRow(index, tableBody) {
             const isExpanded = expandedRows.has(index);
             const row = tableBody.querySelector(`tr[data-index="${index}"]`);
+            const cvcName = row.dataset.cvcName;
+            
+            // Find the actual data item by CVC Name
+            const dataItem = allData.find(item => item['CVC Name'] === cvcName);
             
             if (isExpanded) {
                 expandedRows.delete(index);
@@ -144,8 +151,7 @@
             } else {
                 expandedRows.add(index);
                 row.classList.add('expanded');
-                const expandedRow = createExpandedRow(allData[index]);
-                expandedRow.dataset.expandedIndex = index;
+                const expandedRow = createExpandedRow(dataItem, index);
                 row.after(expandedRow);
             }
         }
