@@ -13,15 +13,40 @@
             border-radius: 4px;
             pointer-events: none;
             font-size: 12px;
-            max-width: 300px;
+            max-width: 400px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         .sector-label {
             font-size: 12px;
             font-family: sans-serif;
         }
+        .controls {
+            margin: 20px;
+            font-family: sans-serif;
+        }
+        .controls button {
+            padding: 8px 16px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .controls button.active {
+            background-color: #2563eb;
+            color: white;
+        }
+        .solution-list {
+            margin-top: 5px;
+            padding-left: 15px;
+        }
+        .solution-item {
+            margin: 3px 0;
+        }
     </style>
 </head>
 <body>
+    <div class="controls">
+        <button id="percentageBtn" class="active">Show Percentages</button>
+        <button id="absoluteBtn">Show Absolute Numbers</button>
+    </div>
     <div id="chart"></div>
     <script>
         const MATURITY_COLORS = {
@@ -32,6 +57,9 @@
             'Pilot': '#bfdbfe',
             'Research': '#dbeafe'
         };
+
+        let globalData = [];
+        let currentView = 'percentage';
 
         // Create the SVG container
         const margin = {top: 40, right: 200, bottom: 40, left: 200};
@@ -68,33 +96,46 @@
                         acc[row.Sector] = {
                             sector: row.Sector,
                             total: 0,
+                            businessNeeds: {}
+                        };
+                    }
+
+                    const businessNeed = row['Climate And Business Need'];
+                    if (!acc[row.Sector].businessNeeds[businessNeed]) {
+                        acc[row.Sector].businessNeeds[businessNeed] = {
                             maturityCounts: {},
                             solutions: {}
                         };
                         Object.keys(MATURITY_COLORS).forEach(maturity => {
-                            acc[row.Sector].maturityCounts[maturity] = 0;
-                            acc[row.Sector].solutions[maturity] = [];
+                            acc[row.Sector].businessNeeds[businessNeed].maturityCounts[maturity] = 0;
+                            acc[row.Sector].businessNeeds[businessNeed].solutions[maturity] = [];
                         });
                     }
                     
-                    acc[row.Sector].maturityCounts[row['Market Maturity']]++;
-                    acc[row.Sector].solutions[row['Market Maturity']].push(row.Solutions);
+                    acc[row.Sector].businessNeeds[businessNeed].maturityCounts[row['Market Maturity']]++;
+                    acc[row.Sector].businessNeeds[businessNeed].solutions[row['Market Maturity']].push(row.Solutions);
                     acc[row.Sector].total++;
                     
                     return acc;
                 }, {});
 
-                // Convert to array and calculate percentages
+                // Convert to array format
                 const data = Object.entries(sectorData).map(([sector, info]) => {
-                    const maturityData = Object.entries(info.maturityCounts).map(([maturity, count]) => ({
-                        maturity,
-                        percentage: (count / info.total) * 100,
-                        solutions: info.solutions[maturity]
-                    }));
+                    const businessNeedData = Object.entries(info.businessNeeds).map(([need, needInfo]) => {
+                        const maturityData = Object.entries(needInfo.maturityCounts).map(([maturity, count]) => ({
+                            businessNeed: need,
+                            maturity,
+                            count,
+                            percentage: (count / info.total) * 100,
+                            solutions: needInfo.solutions[maturity]
+                        }));
+                        return maturityData;
+                    }).flat();
 
                     return {
                         sector,
-                        maturityData
+                        total: info.total,
+                        data: businessNeedData
                     };
                 });
 
@@ -105,23 +146,16 @@
             }
         }
 
-        // Create the visualization
-        async function createVisualization() {
-            const data = await loadData();
-            
-            if (data.length === 0) {
-                console.error('No data loaded');
-                return;
-            }
+        function updateVisualization(data, viewType) {
+            svg.selectAll('*').remove();
 
-            // Create scales
             const y = d3.scaleBand()
                 .domain(data.map(d => d.sector))
                 .range([0, height])
                 .padding(0.1);
 
             const x = d3.scaleLinear()
-                .domain([0, 100])
+                .domain([0, viewType === 'percentage' ? 100 : d3.max(data, d => d.total)])
                 .range([0, width]);
 
             // Add axes
@@ -130,28 +164,48 @@
 
             svg.append('g')
                 .attr('transform', `translate(0,${height})`)
-                .call(d3.axisBottom(x).ticks(10).tickFormat(d => d + '%'));
+                .call(d3.axisBottom(x).ticks(10)
+                    .tickFormat(d => viewType === 'percentage' ? d + '%' : d));
 
             // Add bars
             data.forEach(d => {
                 let xOffset = 0;
-                d.maturityData.forEach(m => {
-                    const width = x(m.percentage);
+                const sortedData = [...d.data].sort((a, b) => {
+                    // First sort by business need
+                    const needCompare = a.businessNeed.localeCompare(b.businessNeed);
+                    if (needCompare !== 0) return needCompare;
+                    // Then by market maturity
+                    return Object.keys(MATURITY_COLORS).indexOf(a.maturity) - 
+                           Object.keys(MATURITY_COLORS).indexOf(b.maturity);
+                });
+
+                sortedData.forEach(m => {
+                    const barWidth = viewType === 'percentage' ? 
+                        x(m.percentage) : 
+                        x(m.count);
                     
                     svg.append('rect')
                         .attr('x', xOffset)
                         .attr('y', y(d.sector))
-                        .attr('width', width)
+                        .attr('width', barWidth)
                         .attr('height', y.bandwidth())
                         .attr('fill', MATURITY_COLORS[m.maturity])
                         .on('mouseover', (event) => {
                             tooltip.transition()
                                 .duration(200)
                                 .style('opacity', .9);
+                            
+                            const solutionsList = m.solutions
+                                .map(s => `<div class="solution-item">• ${s}</div>`)
+                                .join('');
+                            
                             tooltip.html(`
                                 <strong>${d.sector}</strong><br/>
-                                <strong>${m.maturity}</strong>: ${m.percentage.toFixed(1)}%<br/>
-                                <small>Solutions: ${m.solutions.join(', ')}</small>
+                                <strong>${m.businessNeed} - ${m.maturity}</strong><br/>
+                                <strong>${m.count} Solutions</strong>
+                                <div class="solution-list">
+                                    ${solutionsList}
+                                </div>
                             `)
                                 .style('left', (event.pageX + 10) + 'px')
                                 .style('top', (event.pageY - 28) + 'px');
@@ -162,7 +216,7 @@
                                 .style('opacity', 0);
                         });
                     
-                    xOffset += width;
+                    xOffset += barWidth;
                 });
             });
 
@@ -194,10 +248,36 @@
                 .attr('text-anchor', 'middle')
                 .style('font-size', '16px')
                 .style('font-family', 'sans-serif')
-                .text('Climate Tech Solutions by Sector and Market Maturity');
+                .text('Climate Tech Solutions by Sector, Business Need, and Market Maturity');
         }
 
-        createVisualization();
+        // Initialize visualization
+        async function init() {
+            globalData = await loadData();
+            if (globalData.length === 0) {
+                console.error('No data loaded');
+                return;
+            }
+
+            updateVisualization(globalData, 'percentage');
+
+            // Add button listeners
+            document.getElementById('percentageBtn').addEventListener('click', function() {
+                this.classList.add('active');
+                document.getElementById('absoluteBtn').classList.remove('active');
+                currentView = 'percentage';
+                updateVisualization(globalData, 'percentage');
+            });
+
+            document.getElementById('absoluteBtn').addEventListener('click', function() {
+                this.classList.add('active');
+                document.getElementById('percentageBtn').classList.remove('active');
+                currentView = 'absolute';
+                updateVisualization(globalData, 'absolute');
+            });
+        }
+
+        init();
     </script>
 </body>
 </html>
