@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climate Adaptation Solutions Database</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <style>
+        .expanded-row {
+            background-color: #f9fafb;
+        }
+        .chevron::after {
+            content: '▼';
+            display: inline-block;
+            margin-left: 5px;
+            transition: transform 0.2s;
+        }
+        .expanded .chevron::after {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="p-6 max-w-7xl mx-auto">
+        <h1 class="text-3xl font-bold mb-8 text-gray-800">Climate Adaptation Solutions Database</h1>
+        
+        <div class="grid grid-cols-1 gap-4 mb-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <select id="sourceFilter" class="p-2 border border-gray-300 rounded-lg">
+                    <option value="">All Sources</option>
+                </select>
+                <select id="categoryFilter" class="p-2 border border-gray-300 rounded-lg">
+                    <option value="">All Categories</option>
+                </select>
+                <input type="text" id="climateFilter" placeholder="Search Climate Problems..." 
+                       class="p-2 border border-gray-300 rounded-lg">
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <input type="text" id="solutionFilter" placeholder="Search Solution Names..." 
+                       class="p-2 border border-gray-300 rounded-lg">
+                <input type="text" id="techFilter" placeholder="Search Technologies..." 
+                       class="p-2 border border-gray-300 rounded-lg">
+                <input type="text" id="descriptionFilter" placeholder="Search Descriptions..." 
+                       class="p-2 border border-gray-300 rounded-lg">
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow">
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Source</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Climate Problem</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Solution Name</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Technologies</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody" class="bg-white divide-y divide-gray-200">
+                    </tbody>
+                </table>
+            </div>
+            <div class="p-4 border-t border-gray-200">
+                <p id="resultCount" class="text-sm text-gray-500">Loading data...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let allData = [];
+        let expandedRows = new Set();
+
+        function createTableRow(item, filteredIndex) {
+            const tr = document.createElement('tr');
+            tr.className = 'hover:bg-gray-50 cursor-pointer';
+            tr.dataset.index = filteredIndex;
+            tr.dataset.solutionName = item['Solution Name'];
+            
+            tr.innerHTML = `
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${item.Source}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${item.Category}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${item['Climate Problem']}</td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center">
+                        <span class="chevron"></span>
+                        <span class="text-sm font-medium text-gray-900 ml-2">${item['Solution Name']}</span>
+                    </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${item.Technologies}</td>
+            `;
+            return tr;
+        }
+
+        function createExpandedRow(item, index) {
+            const tr = document.createElement('tr');
+            tr.className = 'expanded-row';
+            tr.innerHTML = `
+                <td colspan="5" class="px-6 py-4">
+                    <div class="text-sm text-gray-900">
+                        <p class="whitespace-pre-wrap">${item.Description}</p>
+                    </div>
+                </td>
+            `;
+            tr.dataset.expandedIndex = index;
+            tr.dataset.solutionName = item['Solution Name'];
+            return tr;
+        }
+
+        function toggleRow(index, tableBody) {
+            const isExpanded = expandedRows.has(index);
+            const row = tableBody.querySelector(`tr[data-index="${index}"]`);
+            const solutionName = row.dataset.solutionName;
+            const dataItem = allData.find(item => item['Solution Name'] === solutionName);
+            
+            if (isExpanded) {
+                expandedRows.delete(index);
+                row.classList.remove('expanded');
+                const expandedContent = tableBody.querySelector(`tr[data-expanded-index="${index}"]`);
+                if (expandedContent) expandedContent.remove();
+            } else {
+                expandedRows.add(index);
+                row.classList.add('expanded');
+                const expandedRow = createExpandedRow(dataItem, index);
+                row.after(expandedRow);
+            }
+        }
+
+        function filterData() {
+            const filters = {
+                source: document.getElementById('sourceFilter').value,
+                category: document.getElementById('categoryFilter').value,
+                climate: document.getElementById('climateFilter').value.toLowerCase(),
+                solution: document.getElementById('solutionFilter').value.toLowerCase(),
+                tech: document.getElementById('techFilter').value.toLowerCase(),
+                description: document.getElementById('descriptionFilter').value.toLowerCase()
+            };
+
+            const filtered = allData.filter(item => {
+                return (!filters.source || item.Source === filters.source) &&
+                       (!filters.category || item.Category === filters.category) &&
+                       (!filters.climate || item['Climate Problem'].toLowerCase().includes(filters.climate)) &&
+                       (!filters.solution || item['Solution Name'].toLowerCase().includes(filters.solution)) &&
+                       (!filters.tech || item.Technologies.toLowerCase().includes(filters.tech)) &&
+                       (!filters.description || item.Description.toLowerCase().includes(filters.description));
+            });
+
+            updateTable(filtered);
+        }
+
+        function updateTable(filteredData) {
+            const tableBody = document.getElementById('tableBody');
+            tableBody.innerHTML = '';
+            expandedRows.clear();
+
+            filteredData.forEach((item, index) => {
+                const row = createTableRow(item, index);
+                row.addEventListener('click', () => toggleRow(index, tableBody));
+                tableBody.appendChild(row);
+            });
+
+            document.getElementById('resultCount').textContent = 
+                `Showing ${filteredData.length} of ${allData.length} climate adaptation solutions.`;
+        }
+
+        function populateFilters(data) {
+            const sources = [...new Set(data.map(item => item.Source))].sort();
+            const categories = [...new Set(data.map(item => item.Category))].sort();
+
+            const sourceFilter = document.getElementById('sourceFilter');
+            const categoryFilter = document.getElementById('categoryFilter');
+
+            sources.forEach(source => {
+                const option = document.createElement('option');
+                option.value = source;
+                option.textContent = source;
+                sourceFilter.appendChild(option);
+            });
+
+            categories.forEach(category => {
+                const option = document.createElement('option');
+                option.value = category;
+                option.textContent = category;
+                categoryFilter.appendChild(option);
+            });
+        }
+
+        // Initialize
+        const csvData = await window.fs.readFile('https://netzero-dev.github.io/Climate-Tech-Solutions-Map/climate_adaptation_solutions_full.csv', { encoding: 'utf8' });
+        Papa.parse(csvData, {
+            header: true,
+            skipEmptyLines: true,
+            complete: (results) => {
+                allData = results.data.map(row => {
+                    const { Page, ...rest } = row;
+                    return rest;
+                });
+                populateFilters(allData);
+                updateTable(allData);
+            }
+        });
+
+        // Event listeners
+        ['sourceFilter', 'categoryFilter', 'climateFilter', 'solutionFilter', 
+         'techFilter', 'descriptionFilter'].forEach(id => {
+            document.getElementById(id).addEventListener('input', filterData);
+        });
+    </script>
+</body>
+</html>
