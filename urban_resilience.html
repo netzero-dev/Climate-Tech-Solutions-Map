@@ -5,13 +5,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <style>
-        .table-container {
-            max-height: 70vh;
-            overflow-y: auto;
-        }
-        .fade-in {
-            animation: fadeIn 0.3s ease-in;
-        }
+        .table-container { max-height: 70vh; overflow-y: auto; }
+        .fade-in { animation: fadeIn 0.3s ease-in; }
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -53,14 +48,28 @@
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-        .description {
+        .expanded-content {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease-out;
+            background-color: #f9fafb;
         }
-        .description.expanded {
+        .expanded-content.show {
             max-height: 500px;
             transition: max-height 0.5s ease-in;
+        }
+        .triangle {
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 8px solid #9ca3af;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        .triangle.expanded {
+            transform: rotate(-180deg);
         }
     </style>
 </head>
@@ -96,9 +105,7 @@
                 </div>
                 <div class="space-y-2">
                     <label class="block text-sm font-medium text-gray-700">Search All Fields</label>
-                    <input type="text" id="search" 
-                           class="w-full p-2" 
-                           placeholder="Type to search...">
+                    <input type="text" id="search" class="w-full p-2" placeholder="Type to search...">
                 </div>
             </div>
             <div id="stats" class="mt-6 text-sm text-gray-600"></div>
@@ -133,21 +140,21 @@
         }
 
         function truncateText(text, length) {
-            return text.length > length ? text.substring(0, length) + "..." : text;
+            return text && text.length > length ? text.substring(0, length) + "..." : text || '';
         }
 
-        function toggleDescription(rowId) {
-            const descEl = document.querySelector(`#desc-${rowId}`);
-            const buttonEl = document.querySelector(`#btn-${rowId}`);
+        function toggleRow(rowId) {
+            const toggleEl = document.querySelector(`#toggle-${rowId}`);
+            const expandedEl = document.querySelector(`#expanded-${rowId}`);
             
             if (expandedRows.has(rowId)) {
                 expandedRows.delete(rowId);
-                descEl.classList.remove('expanded');
-                buttonEl.textContent = 'Read more';
+                toggleEl.classList.remove('expanded');
+                expandedEl.classList.remove('show');
             } else {
                 expandedRows.add(rowId);
-                descEl.classList.add('expanded');
-                buttonEl.textContent = 'Show less';
+                toggleEl.classList.add('expanded');
+                expandedEl.classList.add('show');
             }
         }
 
@@ -186,12 +193,13 @@
                     (!filters.tech || row.Technologies === filters.tech);
             });
 
-            updateStats(filteredData.length);
+            updateStats(filteredCount);
 
             const table = `
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead>
                         <tr>
+                            <th class="w-8 px-3 py-3"></th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">City</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Climate Problem</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Solution Name</th>
@@ -201,20 +209,40 @@
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
                         ${filteredData.map((row, idx) => `
-                            <tr class="fade-in">
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${row.Source}</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${row['Climate Problem']}</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${row['Solution Name']}</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${row.Technologies}</td>
-                                <td class="px-6 py-4 text-sm text-gray-500">
-                                    <div class="truncate">${truncateText(row.Description, 80)}</div>
-                                    <div id="desc-${idx}" class="description mt-2">${row.Description}</div>
-                                    <button 
-                                        id="btn-${idx}"
-                                        onclick="toggleDescription(${idx})" 
-                                        class="mt-2 text-blue-600 hover:text-blue-800 text-sm">
-                                        Read more
-                                    </button>
+                            <tr class="fade-in hover:bg-gray-50">
+                                <td class="px-3 py-4">
+                                    <div id="toggle-${idx}" 
+                                         class="triangle ${expandedRows.has(idx) ? 'expanded' : ''}"
+                                         onclick="toggleRow(${idx})">
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 text-sm text-gray-500">${truncateText(row.Source, 80)}</td>
+                                <td class="px-6 py-4 text-sm text-gray-500">${truncateText(row['Climate Problem'], 80)}</td>
+                                <td class="px-6 py-4 text-sm text-gray-500">${truncateText(row['Solution Name'], 80)}</td>
+                                <td class="px-6 py-4 text-sm text-gray-500">${truncateText(row.Technologies, 80)}</td>
+                                <td class="px-6 py-4 text-sm text-gray-500">${truncateText(row.Description, 80)}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="6" class="px-0">
+                                    <div id="expanded-${idx}" class="expanded-content ${expandedRows.has(idx) ? 'show' : ''}">
+                                        <div class="p-6 space-y-4">
+                                            <div>
+                                                <span class="font-medium">City:</span> ${row.Source}
+                                            </div>
+                                            <div>
+                                                <span class="font-medium">Climate Problem:</span> ${row['Climate Problem']}
+                                            </div>
+                                            <div>
+                                                <span class="font-medium">Solution Name:</span> ${row['Solution Name']}
+                                            </div>
+                                            <div>
+                                                <span class="font-medium">Technologies:</span> ${row.Technologies}
+                                            </div>
+                                            <div>
+                                                <span class="font-medium">Description:</span> ${row.Description}
+                                            </div>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                         `).join('')}
@@ -226,11 +254,11 @@
             
             // Restore expanded state
             expandedRows.forEach(rowId => {
-                const descEl = document.querySelector(`#desc-${rowId}`);
-                const buttonEl = document.querySelector(`#btn-${rowId}`);
-                if (descEl && buttonEl) {
-                    descEl.classList.add('expanded');
-                    buttonEl.textContent = 'Show less';
+                const toggleEl = document.querySelector(`#toggle-${rowId}`);
+                const expandedEl = document.querySelector(`#expanded-${rowId}`);
+                if (toggleEl && expandedEl) {
+                    toggleEl.classList.add('expanded');
+                    expandedEl.classList.add('show');
                 }
             });
         }, 300);
@@ -255,7 +283,6 @@
                 const result = Papa.parse(csv, { header: true, skipEmptyLines: true });
                 allData = result.data;
 
-                // Populate dropdowns
                 populateDropdown('source', [...new Set(allData.map(row => row.Source))]);
                 populateDropdown('problem', [...new Set(allData.map(row => row['Climate Problem']))]);
                 populateDropdown('solution', [...new Set(allData.map(row => row['Solution Name']))]);
