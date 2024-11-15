@@ -53,6 +53,15 @@
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
+        .description {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .description.expanded {
+            max-height: 500px;
+            transition: max-height 0.5s ease-in;
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -62,15 +71,9 @@
         <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="space-y-2">
-                    <label class="block text-sm font-medium text-gray-700">Source (City)</label>
+                    <label class="block text-sm font-medium text-gray-700">City</label>
                     <select id="source" class="w-full p-2">
                         <option value="">All Cities</option>
-                    </select>
-                </div>
-                <div class="space-y-2">
-                    <label class="block text-sm font-medium text-gray-700">Category</label>
-                    <select id="category" class="w-full p-2">
-                        <option value="">All Categories</option>
                     </select>
                 </div>
                 <div class="space-y-2">
@@ -117,15 +120,35 @@
     <script>
         let allData = [];
         let filters = {
-            source: '', category: '', problem: '', solution: '', tech: '', search: ''
+            source: '', problem: '', solution: '', tech: '', search: ''
         };
         let debounceTimeout;
+        let expandedRows = new Set();
 
         function debounce(func, wait) {
             return (...args) => {
                 clearTimeout(debounceTimeout);
                 debounceTimeout = setTimeout(() => func.apply(this, args), wait);
             };
+        }
+
+        function truncateText(text, length) {
+            return text.length > length ? text.substring(0, length) + "..." : text;
+        }
+
+        function toggleDescription(rowId) {
+            const descEl = document.querySelector(`#desc-${rowId}`);
+            const buttonEl = document.querySelector(`#btn-${rowId}`);
+            
+            if (expandedRows.has(rowId)) {
+                expandedRows.delete(rowId);
+                descEl.classList.remove('expanded');
+                buttonEl.textContent = 'Read more';
+            } else {
+                expandedRows.add(rowId);
+                descEl.classList.add('expanded');
+                buttonEl.textContent = 'Show less';
+            }
         }
 
         function populateDropdown(id, values) {
@@ -158,7 +181,6 @@
                 
                 return matchesSearch &&
                     (!filters.source || row.Source === filters.source) &&
-                    (!filters.category || row.Category === filters.category) &&
                     (!filters.problem || row['Climate Problem'] === filters.problem) &&
                     (!filters.solution || row['Solution Name'] === filters.solution) &&
                     (!filters.tech || row.Technologies === filters.tech);
@@ -170,8 +192,7 @@
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead>
                         <tr>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Source</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">City</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Climate Problem</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Solution Name</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Technologies</th>
@@ -179,14 +200,22 @@
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
-                        ${filteredData.map(row => `
+                        ${filteredData.map((row, idx) => `
                             <tr class="fade-in">
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${row.Source}</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${row.Category}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${row.Source}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${row['Climate Problem']}</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-blue-600">${row['Solution Name']}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${row['Solution Name']}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${row.Technologies}</td>
-                                <td class="px-6 py-4 text-sm text-gray-500">${row.Description}</td>
+                                <td class="px-6 py-4 text-sm text-gray-500">
+                                    <div class="truncate">${truncateText(row.Description, 80)}</div>
+                                    <div id="desc-${idx}" class="description mt-2">${row.Description}</div>
+                                    <button 
+                                        id="btn-${idx}"
+                                        onclick="toggleDescription(${idx})" 
+                                        class="mt-2 text-blue-600 hover:text-blue-800 text-sm">
+                                        Read more
+                                    </button>
+                                </td>
                             </tr>
                         `).join('')}
                     </tbody>
@@ -194,10 +223,20 @@
             `;
 
             document.getElementById('tableContainer').innerHTML = table;
+            
+            // Restore expanded state
+            expandedRows.forEach(rowId => {
+                const descEl = document.querySelector(`#desc-${rowId}`);
+                const buttonEl = document.querySelector(`#btn-${rowId}`);
+                if (descEl && buttonEl) {
+                    descEl.classList.add('expanded');
+                    buttonEl.textContent = 'Show less';
+                }
+            });
         }, 300);
 
         // Set up event listeners
-        ['source', 'category', 'problem', 'solution', 'tech'].forEach(id => {
+        ['source', 'problem', 'solution', 'tech'].forEach(id => {
             document.getElementById(id).addEventListener('change', (e) => {
                 filters[id] = e.target.value;
                 updateTable();
@@ -218,7 +257,6 @@
 
                 // Populate dropdowns
                 populateDropdown('source', [...new Set(allData.map(row => row.Source))]);
-                populateDropdown('category', [...new Set(allData.map(row => row.Category))]);
                 populateDropdown('problem', [...new Set(allData.map(row => row['Climate Problem']))]);
                 populateDropdown('solution', [...new Set(allData.map(row => row['Solution Name']))]);
                 populateDropdown('tech', [...new Set(allData.map(row => row.Technologies))]);
