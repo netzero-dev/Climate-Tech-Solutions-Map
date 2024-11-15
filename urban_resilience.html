@@ -62,14 +62,16 @@
             display: inline-block;
             width: 0;
             height: 0;
-            border-left: 5px solid transparent;
-            border-right: 5px solid transparent;
-            border-top: 8px solid #9ca3af;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            border-left: 8px solid #9ca3af;
             transition: transform 0.3s;
-            cursor: pointer;
         }
         .triangle.expanded {
-            transform: rotate(-180deg);
+            transform: rotate(90deg);
+        }
+        .clickable-row {
+            cursor: pointer;
         }
     </style>
 </head>
@@ -78,29 +80,11 @@
         <h1 class="text-3xl font-bold text-gray-800 mb-8">Climate Solutions Explorer</h1>
         
         <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="space-y-2">
                     <label class="block text-sm font-medium text-gray-700">City</label>
                     <select id="source" class="w-full p-2">
                         <option value="">All Cities</option>
-                    </select>
-                </div>
-                <div class="space-y-2">
-                    <label class="block text-sm font-medium text-gray-700">Climate Problem</label>
-                    <select id="problem" class="w-full p-2">
-                        <option value="">All Problems</option>
-                    </select>
-                </div>
-                <div class="space-y-2">
-                    <label class="block text-sm font-medium text-gray-700">Solution Name</label>
-                    <select id="solution" class="w-full p-2">
-                        <option value="">All Solutions</option>
-                    </select>
-                </div>
-                <div class="space-y-2">
-                    <label class="block text-sm font-medium text-gray-700">Technologies</label>
-                    <select id="tech" class="w-full p-2">
-                        <option value="">All Technologies</option>
                     </select>
                 </div>
                 <div class="space-y-2">
@@ -127,7 +111,7 @@
     <script>
         let allData = [];
         let filters = {
-            source: '', problem: '', solution: '', tech: '', search: ''
+            source: '', search: ''
         };
         let debounceTimeout;
         let expandedRows = new Set();
@@ -191,10 +175,7 @@
                     );
                 
                 return matchesSearch &&
-                    (!filters.source || row.Source === filters.source) &&
-                    (!filters.problem || row['Climate Problem'] === filters.problem) &&
-                    (!filters.solution || row['Solution Name'] === filters.solution) &&
-                    (!filters.tech || row.Technologies === filters.tech);
+                    (!filters.source || row.Source === filters.source);
             });
 
             updateStats(filteredData.length);
@@ -213,11 +194,10 @@
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
                         ${filteredData.map((row, idx) => `
-                            <tr class="fade-in hover:bg-gray-50">
+                            <tr class="fade-in hover:bg-gray-50 clickable-row" onclick="toggleRow(${idx})">
                                 <td class="px-3 py-4">
                                     <div id="toggle-${idx}" 
-                                         class="triangle ${expandedRows.has(idx) ? 'expanded' : ''}"
-                                         onclick="toggleRow(${idx})">
+                                         class="triangle ${expandedRows.has(idx) ? 'expanded' : ''}">
                                     </div>
                                 </td>
                                 <td class="px-6 py-4 text-sm text-gray-500">${truncateText(row.Source, 80)}</td>
@@ -268,7 +248,7 @@
         }, 300);
 
         // Set up event listeners
-        ['source', 'problem', 'solution', 'tech'].forEach(id => {
+        ['source'].forEach(id => {
             document.getElementById(id).addEventListener('change', (e) => {
                 filters[id] = e.target.value;
                 updateTable();
@@ -307,9 +287,6 @@
                 allData = result.data;
 
                 populateDropdown('source', [...new Set(allData.map(row => row.Source))]);
-                populateDropdown('problem', [...new Set(allData.map(row => row['Climate Problem']))]);
-                populateDropdown('solution', [...new Set(allData.map(row => row['Solution Name']))]);
-                populateDropdown('tech', [...new Set(allData.map(row => row.Technologies))]);
 
                 updateTable();
             })
