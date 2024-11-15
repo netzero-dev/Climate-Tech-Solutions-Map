@@ -164,12 +164,16 @@
             select.innerHTML = '';
             select.appendChild(defaultOption);
             
-            values.filter(Boolean)
-                 .sort((a, b) => a.localeCompare(b))
+            ['', ...values.filter(Boolean)]
+                 .sort((a, b) => {
+                    if (!a) return -1;  // Empty string (All) goes first
+                    if (!b) return 1;
+                    return a.localeCompare(b);
+                 })
                  .forEach(value => {
                     const option = document.createElement('option');
                     option.value = value;
-                    option.textContent = value;
+                    option.textContent = value || 'All';
                     select.appendChild(option);
                  });
         }
@@ -193,7 +197,7 @@
                     (!filters.tech || row.Technologies === filters.tech);
             });
 
-            updateStats(filteredCount);
+            updateStats(filteredData.length);
 
             const table = `
                 <table class="min-w-full divide-y divide-gray-200">
@@ -277,10 +281,29 @@
         });
 
         // Fetch and initialize data
-        fetch('https://netzero-dev.github.io/Climate-Tech-Solutions-Map/climate_adaptation_solutions_full.csv')
+        console.log('Fetching data...');
+        fetch('https://netzero-dev.github.io/Climate-Tech-Solutions-Map/climate_adaptation_solutions_full.csv', {
+            headers: {
+                'Accept': 'text/csv',
+                'Cache-Control': 'no-cache'
+            }
+        })
             .then(response => response.text())
             .then(csv => {
-                const result = Papa.parse(csv, { header: true, skipEmptyLines: true });
+                console.log('Parsing CSV data...');
+                const result = Papa.parse(csv, { 
+                    header: true, 
+                    skipEmptyLines: true,
+                    error: (error) => {
+                        console.error('Papa Parse error:', error);
+                        document.getElementById('tableContainer').innerHTML = `
+                            <div class="text-center p-12">
+                                <div class="text-red-500 text-lg mb-2">Error parsing data</div>
+                                <div class="text-gray-600">${error.message}</div>
+                            </div>
+                        `;
+                    }
+                });
                 allData = result.data;
 
                 populateDropdown('source', [...new Set(allData.map(row => row.Source))]);
