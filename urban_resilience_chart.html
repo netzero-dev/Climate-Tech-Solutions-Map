@@ -50,15 +50,21 @@
                             values.push(count);
                             labels.push(category);
                             parents.push('Climate Solutions');
-                            texts.push(`${category}\nSolutions: ${count}`);
+                            texts.push(`<span style="display: inline-block; width: 300px; white-space: normal;">${category}<br>Solutions: ${count}</span>`);
                         });
-                        
+
                         data.forEach(row => {
                             values.push(1);
                             labels.push(row['Solution Name']);
                             parents.push(row.Category);
-                            texts.push(`${row['Solution Name']}\n\nLocation: ${row.Source}\nCategory: ${row.Category}\nClimate Problem: ${row['Climate Problem']}\nTechnologies: ${row.Technologies}\n\nDescription:\n${row.Description}`);
+                            texts.push(`<span style="display: inline-block; width: 300px; white-space: normal;">${row['Solution Name']}<br><br>
+                        Location: ${row.Source}<br>
+                        Category: ${row.Category}<br>
+                        Climate Problem: ${row['Climate Problem']}<br>
+                        Technologies: ${row.Technologies}<br><br>
+                        Description:<br>${row.Description}</span>`);
                         });
+
 
                         const trace = {
                             type: 'treemap',
