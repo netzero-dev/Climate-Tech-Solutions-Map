@@ -34,7 +34,6 @@
                     complete: function(results) {
                         const data = results.data.filter(row => row.Category && row['Solution Name']);
                         
-                        // Count solutions by category
                         const categoryCounts = {};
                         data.forEach(row => {
                             if (row.Category) {
@@ -47,30 +46,18 @@
                         const parents = [''];
                         const texts = [''];
                         
-                        // Add categories
                         Object.entries(categoryCounts).forEach(([category, count]) => {
                             values.push(count);
                             labels.push(category);
                             parents.push('Climate Solutions');
-                            texts.push(`<div style="max-width: 300px; text-align: left;">
-                                <b>${category}</b><br>
-                                Solutions: ${count}
-                            </div>`);
+                            texts.push(`${category}\nSolutions: ${count}`);
                         });
                         
-                        // Add individual solutions
                         data.forEach(row => {
                             values.push(1);
                             labels.push(row['Solution Name']);
                             parents.push(row.Category);
-                            texts.push(`<div style="max-width: 300px; text-align: left;">
-                                <b>${row['Solution Name']}</b><br><br>
-                                <b>Location:</b> ${row.Source}<br>
-                                <b>Category:</b> ${row.Category}<br>
-                                <b>Climate Problem:</b> ${row['Climate Problem']}<br>
-                                <b>Technologies:</b> ${row.Technologies}<br><br>
-                                <b>Description:</b><br>${row.Description}
-                            </div>`);
+                            texts.push(`${row['Solution Name']}\n\nLocation: ${row.Source}\nCategory: ${row.Category}\nClimate Problem: ${row['Climate Problem']}\nTechnologies: ${row.Technologies}\n\nDescription:\n${row.Description}`);
                         });
 
                         const trace = {
@@ -82,13 +69,12 @@
                             hovertemplate: '%{text}<extra></extra>',
                             textinfo: 'label',
                             marker: {
-                                colors: [
-                                    '#FFB3BA',  // Pastel red
-                                    '#BAFFC9',  // Pastel green
-                                    '#BAE1FF',  // Pastel blue
-                                    '#FFFFBA',  // Pastel yellow
-                                    '#FFB3F7',  // Pastel purple
-                                    '#B3FFF7',  // Pastel cyan
+                                colorscale: [
+                                    [0, '#edf8f4'],
+                                    [0.25, '#bae5d5'],
+                                    [0.5, '#82ccb5'],
+                                    [0.75, '#3ea395'],
+                                    [1, '#007571']
                                 ]
                             },
                             pathbar: {
@@ -104,9 +90,14 @@
                                 family: 'Arial, sans-serif'
                             },
                             hoverlabel: {
-                                bgcolor: 'white',
+                                bgcolor: '#f0f0f0',
                                 bordercolor: '#ddd',
-                                font: { size: 13 }
+                                font: { 
+                                    size: 13,
+                                    color: '#000'
+                                },
+                                align: 'left',
+                                width: 300
                             }
                         };
 
