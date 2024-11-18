@@ -2,187 +2,110 @@
 <html>
 <head>
     <title>Climate Adaptation Solutions Sunburst</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.24.1/plotly.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f5f5f5;
-        }
-        
-        #chart {
-            width: 100%;
-            height: 800px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .tooltip {
-            position: absolute;
-            padding: 10px;
-            background: white;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            pointer-events: none;
-            font-size: 14px;
-            max-width: 300px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .tooltip h4 {
-            margin: 0 0 10px 0;
-            color: #333;
-        }
-
-        .tooltip p {
-            margin: 5px 0;
-            color: #666;
-        }
-
-        .tooltip strong {
-            color: #333;
-        }
-
-        path {
-            cursor: pointer;
-        }
+        body { margin: 0; padding: 20px; font-family: Arial, sans-serif; }
+        #chart { width: 100%; height: 800px; }
     </style>
 </head>
 <body>
     <div id="chart"></div>
 
     <script>
-        // Set up dimensions
-        const width = 800;
-        const height = 800;
-        const radius = Math.min(width, height) / 2;
+        function wrapText(text, width = 50) {
+            const words = text.split(' ');
+            const lines = [];
+            let currentLine = [];
+            let currentLength = 0;
 
-        // Create the SVG container
-        const svg = d3.select("#chart")
-            .append("svg")
-            .attr("viewBox", `0 0 ${width} ${height}`)
-            .append("g")
-            .attr("transform", `translate(${width / 2},${height / 2})`);
+            for (const word of words) {
+                if (currentLength + word.length + 1 <= width) {
+                    currentLine.push(word);
+                    currentLength += word.length + 1;
+                } else {
+                    lines.push(currentLine.join(' '));
+                    currentLine = [word];
+                    currentLength = word.length;
+                }
+            }
+            lines.push(currentLine.join(' '));
+            return lines.join('<br>');
+        }
 
-        // Create tooltip
-        const tooltip = d3.select("body")
-            .append("div")
-            .attr("class", "tooltip")
-            .style("opacity", 0);
+        async function loadData() {
+            const response = await fetch('https://netzero-dev.github.io/Climate-Tech-Solutions-Map/climate_adaptation_solutions_full.csv');
+            const text = await response.text();
+            
+            const data = Papa.parse(text, {
+                header: true,
+                skipEmptyLines: true
+            }).data;
 
-        // Color scale - pastel colors
-        const colorScale = d3.scaleOrdinal()
-            .range([
-                "#FFB3BA", // Pastel Pink
-                "#BAFFC9", // Pastel Green
-                "#BAE1FF", // Pastel Blue
-                "#FFFFBA", // Pastel Yellow
-                "#FFB3FF", // Pastel Purple
-                "#FFE4B5", // Pastel Orange
-                "#E6E6FA", // Lavender
-                "#B2DFDB", // Pastel Teal
-                "#F0F4C3", // Pastel Lime
-                "#FFCCBC"  // Pastel Coral
-            ]);
-
-        // Partition layout
-        const partition = data => {
-            const root = d3.hierarchy(data)
-                .sum(d => d.value)
-                .sort((a, b) => b.value - a.value);
-            return d3.partition()
-                .size([2 * Math.PI, root.height + 1])
-                (root);
-        };
-
-        // Arc generator
-        const arc = d3.arc()
-            .startAngle(d => d.x0)
-            .endAngle(d => d.x1)
-            .padAngle(d => Math.min((d.x1 - d.x0) / 2, 0.005))
-            .padRadius(radius * 1.5)
-            .innerRadius(d => d.y0 * radius)
-            .outerRadius(d => Math.max(d.y0 * radius, d.y1 * radius - 1));
-
-        // Load and process data
-        d3.csv("https://netzero-dev.github.io/Climate-Tech-Solutions-Map/climate_adaptation_solutions_full.csv")
-            .then(data => {
-                // Create hierarchy
-                const nested = d3.group(data, 
-                    d => d.Category,
-                    d => d.Solution_Name
-                );
-
-                const hierarchyData = {
-                    name: "root",
-                    children: Array.from(nested, ([category, solutions]) => ({
-                        name: category,
-                        children: Array.from(solutions, ([solution, items]) => ({
-                            name: solution,
-                            value: items.length,
-                            originalData: items[0]  // Store original data for tooltip
-                        }))
-                    }))
-                };
-
-                const root = partition(hierarchyData);
-
-                // Draw the visualization
-                svg.append("g")
-                    .selectAll("path")
-                    .data(root.descendants().slice(1))
-                    .join("path")
-                    .attr("fill", d => {
-                        while (d.depth > 1) d = d.parent;
-                        return colorScale(d.data.name);
-                    })
-                    .attr("fill-opacity", d => {
-                        return d.depth === 1 ? 1 : 0.7;
-                    })
-                    .attr("d", arc)
-                    .on("mouseover", function(event, d) {
-                        // Highlight the hovered element
-                        d3.select(this)
-                            .attr("fill-opacity", 1);
-
-                        // Show tooltip
-                        tooltip.transition()
-                            .duration(200)
-                            .style("opacity", .9);
-
-                        let tooltipContent = `<h4>${d.data.name}</h4>`;
-                        
-                        if (d.data.originalData) {
-                            const data = d.data.originalData;
-                            tooltipContent += `
-                                <p><strong>Source:</strong> ${data.Source}</p>
-                                <p><strong>Category:</strong> ${data.Category}</p>
-                                <p><strong>Climate Problem:</strong> ${data.Climate_Problem}</p>
-                                <p><strong>Technologies:</strong> ${data.Technologies}</p>
-                                <p><strong>Description:</strong> ${data.Description}</p>
-                            `;
-                        }
-
-                        tooltip.html(tooltipContent)
-                            .style("left", (event.pageX + 10) + "px")
-                            .style("top", (event.pageY - 28) + "px");
-                    })
-                    .on("mouseout", function(event, d) {
-                        // Restore original opacity
-                        d3.select(this)
-                            .attr("fill-opacity", d.depth === 1 ? 1 : 0.7);
-
-                        // Hide tooltip
-                        tooltip.transition()
-                            .duration(500)
-                            .style("opacity", 0);
-                    });
-            })
-            .catch(error => {
-                console.error("Error loading the data:", error);
+            // Fill missing values
+            data.forEach(row => {
+                row.Category = row.Category || 'Unknown Category';
+                row.Climate_Problem = row.Climate_Problem || 'Unknown Climate Problem';
+                row.Description = row.Description || 'No Description';
+                row.Source = row.Source || 'Unknown Source';
+                row.Wrapped_Source = wrapText(row.Source);
             });
+
+            const plotData = [{
+                type: 'sunburst',
+                labels: [],
+                parents: [],
+                values: [],
+                customdata: [],
+                hovertemplate: '<b>%{label}</b><br><br>Source:<br>%{customdata}<extra></extra>',
+                hoverlabel: {
+                    bgcolor: 'white',
+                    font: { size: 12 },
+                    align: 'left'
+                },
+                insidetextorientation: 'radial',
+                marker: {
+                    colors: [
+                        '#FFB3BA', '#BAFFC9', '#BAE1FF', '#FFFFBA', 
+                        '#FFB3FF', '#FFE4B5', '#E6E6FA', '#B2DFDB', 
+                        '#F0F4C3', '#FFCCBC'
+                    ]
+                }
+            }];
+
+            // Build hierarchy
+            data.forEach((row, i) => {
+                plotData[0].labels.push(row.Category);
+                plotData[0].parents.push('');
+                plotData[0].values.push(1);
+                plotData[0].customdata.push(row.Wrapped_Source);
+
+                plotData[0].labels.push(row.Climate_Problem);
+                plotData[0].parents.push(row.Category);
+                plotData[0].values.push(1);
+                plotData[0].customdata.push(row.Wrapped_Source);
+
+                const descLabel = row.Description.substring(0, 30) + '...';
+                plotData[0].labels.push(descLabel);
+                plotData[0].parents.push(row.Climate_Problem);
+                plotData[0].values.push(1);
+                plotData[0].customdata.push(row.Wrapped_Source);
+            });
+
+            const layout = {
+                title: {
+                    text: 'Climate Adaptation Solutions Hierarchy',
+                    x: 0.5
+                },
+                width: 1200,
+                height: 800,
+                margin: { t: 50, l: 50, r: 50, b: 50 }
+            };
+
+            Plotly.newPlot('chart', plotData, layout);
+        }
+
+        loadData().catch(console.error);
     </script>
 </body>
 </html>
