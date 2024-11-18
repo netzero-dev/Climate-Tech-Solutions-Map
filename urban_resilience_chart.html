@@ -78,11 +78,23 @@
     return lines.join('<br>');
 }
 
+function normalizeCategory(category) {
+    return category.trim().toLowerCase();
+}
+
+function capitalizeWords(str) {
+    return str.replace(/\b\w/g, char => char.toUpperCase());
+}
+
 function visualizeData(data) {
     const categoryCounts = {};
+    const categoryLabels = {}; // Map normalized categories to original labels
+
     data.forEach(row => {
         if (row.Category) {
-            categoryCounts[row.Category] = (categoryCounts[row.Category] || 0) + 1;
+            const normalizedCategory = normalizeCategory(row.Category);
+            categoryCounts[normalizedCategory] = (categoryCounts[normalizedCategory] || 0) + 1;
+            categoryLabels[normalizedCategory] = row.Category.trim();
         }
     });
 
@@ -92,18 +104,21 @@ function visualizeData(data) {
     const texts = [];
 
     // Add categories
-    Object.entries(categoryCounts).forEach(([category, count]) => {
+    Object.entries(categoryCounts).forEach(([normalizedCategory, count]) => {
+        const originalCategory = categoryLabels[normalizedCategory];
         values.push(count);
-        labels.push(category);
+        labels.push(originalCategory);
         parents.push('Climate Solutions');
-        texts.push(`${wrapText(category, 50)}<br>Solutions: ${count}`);
+        texts.push(`${wrapText(originalCategory, 50)}<br>Solutions: ${count}`);
     });
 
     // Add solutions
     data.forEach(row => {
         values.push(1);
         labels.push(row['Solution Name']);
-        parents.push(row.Category);
+        const normalizedCategory = normalizeCategory(row.Category);
+        const originalCategory = categoryLabels[normalizedCategory] || 'Other';
+        parents.push(originalCategory);
         texts.push(
             `<b>${wrapText(row['Solution Name'], 50)}</b><br><br>` +
             `Location: ${wrapText(row.Source, 50)}<br>` +
@@ -135,7 +150,7 @@ function visualizeData(data) {
     };
 
     const layout = {
-        title: 'Urban Climate Resilience Solutions Canvas',
+        title: 'Urban Climate Solutions by Category',
         autosize: true,
         margin: { l: 20, r: 20, t: 50, b: 20 },
         font: { family: 'Arial, sans-serif' },
