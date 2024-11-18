@@ -14,16 +14,14 @@
             height: 800px;
             background-color: white;
             border-radius: 16px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-/* Add this CSS to control hover label width */
-.js-plotly-plot .plotly .hoverlayer .hovertext {
-    max-width: 300px !important;
-    white-space: normal !important;
-    overflow-wrap: break-word !important;
-}
-
-
+        /* Add CSS to constrain hover label width */
+        .js-plotly-plot .plotly .hoverlayer .hovertext {
+            max-width: 300px !important;
+            white-space: normal !important;
+            overflow-wrap: break-word !important;
+        }
     </style>
 </head>
 <body>
@@ -33,13 +31,14 @@
     <script>
         async function loadAndVisualizeData() {
             try {
+                // Load the CSV data
                 const response = await fetch('https://netzero-dev.github.io/Climate-Tech-Solutions-Map/climate_adaptation_solutions_full.csv');
                 const text = await response.text();
-                
+
                 Papa.parse(text, {
                     header: true,
                     skipEmptyLines: true,
-                    complete: function(results) {
+                    complete: function (results) {
                         const data = results.data.filter(row => row.Category && row['Solution Name']);
                         visualizeData(data);
                     }
@@ -51,57 +50,78 @@
         }
 
         function visualizeData(data) {
-    const values = [0];
-    const labels = ['Climate Solutions'];
-    const parents = [''];
-    const texts = [''];
+            // Prepare the treemap data
+            const categoryCounts = {};
+            data.forEach(row => {
+                if (row.Category) {
+                    categoryCounts[row.Category] = (categoryCounts[row.Category] || 0) + 1;
+                }
+            });
 
-    // Categorize data
-    data.forEach(row => {
-        values.push(1);
-        labels.push(row['Solution Name']);
-        parents.push(row.Category);
-        texts.push(`<b>${row['Solution Name']}</b><br><br>Location: ${row.Source}<br>Category: ${row.Category}<br>Climate Problem: ${row['Climate Problem']}<br>Technologies: ${row.Technologies}<br><br>Description:<br>${row.Description}`);
-    });
+            const values = [0];
+            const labels = ['Climate Solutions'];
+            const parents = [''];
+            const texts = [''];
 
-    const trace = {
-        type: 'treemap',
-        values: values,
-        labels: labels,
-        parents: parents,
-        text: texts,
-        hovertemplate: '%{text}<extra></extra>',
-        textinfo: 'label',
-        marker: {
-            colorscale: [
-                [0, '#edf8f4'],
-                [0.25, '#bae5d5'],
-                [0.5, '#82ccb5'],
-                [0.75, '#3ea395'],
-                [1, '#007571']
-            ]
-        },
-        pathbar: { visible: true }
-    };
+            // Add categories as nodes
+            Object.entries(categoryCounts).forEach(([category, count]) => {
+                values.push(count);
+                labels.push(category);
+                parents.push('Climate Solutions');
+                texts.push(`${category}<br>Solutions: ${count}`);
+            });
 
-    const layout = {
-        title: 'Urban Climate Solutions by Category',
-        width: window.innerWidth * 0.95,
-        height: window.innerHeight * 0.9,
-        margin: { l: 50, r: 50, t: 50, b: 50 },
-        font: { family: 'Arial, sans-serif' },
-        hoverlabel: {
-            bgcolor: '#f0f0f0',
-            bordercolor: '#ddd',
-            font: { size: 13, color: '#000' },
-            align: 'left'
+            // Add solutions as child nodes
+            data.forEach(row => {
+                values.push(1);
+                labels.push(row['Solution Name']);
+                parents.push(row.Category);
+                texts.push(
+                    `<b>${row['Solution Name']}</b><br><br>Location: ${row.Source}<br>Category: ${row.Category}<br>Climate Problem: ${row['Climate Problem']}<br>Technologies: ${row.Technologies}<br><br>Description:<br>${row.Description}`
+                );
+            });
+
+            // Treemap trace
+            const trace = {
+                type: 'treemap',
+                values: values,
+                labels: labels,
+                parents: parents,
+                text: texts,
+                hovertemplate: '%{text}<extra></extra>', // Clean hover template
+                textinfo: 'label',
+                marker: {
+                    colorscale: [
+                        [0, '#edf8f4'],
+                        [0.25, '#bae5d5'],
+                        [0.5, '#82ccb5'],
+                        [0.75, '#3ea395'],
+                        [1, '#007571']
+                    ]
+                },
+                pathbar: { visible: true }
+            };
+
+            // Layout configuration
+            const layout = {
+                title: 'Urban Climate Solutions by Category',
+                width: window.innerWidth * 0.95,
+                height: window.innerHeight * 0.9,
+                margin: { l: 50, r: 50, t: 50, b: 50 },
+                font: { family: 'Arial, sans-serif' },
+                hoverlabel: {
+                    bgcolor: '#f0f0f0',
+                    bordercolor: '#ddd',
+                    font: { size: 13, color: '#000' },
+                    align: 'left'
+                }
+            };
+
+            // Render the chart
+            Plotly.newPlot('chart', [trace], layout);
         }
-    };
 
-    Plotly.newPlot('chart', [trace], layout);
-}
-
-        // Load and visualize the real data
+        // Load and visualize the data on page load
         document.addEventListener('DOMContentLoaded', loadAndVisualizeData);
     </script>
 </body>
