@@ -13,17 +13,15 @@
             width: 100%;
             height: 800px;
             background-color: white;
-            border-radius: 8px;
+            border-radius: 16px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
     </style>
 </head>
 <body>
     <div id="chart"></div>
-    <!-- Load libraries first -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.24.1/plotly.min.js"></script>
-    <!-- Then load our application code -->
     <script>
         async function loadAndVisualizeData() {
             try {
@@ -32,8 +30,9 @@
                 
                 Papa.parse(text, {
                     header: true,
+                    skipEmptyLines: true,
                     complete: function(results) {
-                        const data = results.data;
+                        const data = results.data.filter(row => row.Category && row['Solution Name']);
                         
                         // Count solutions by category
                         const categoryCounts = {};
@@ -43,41 +42,35 @@
                             }
                         });
                         
-                        // Prepare treemap data
-                        const values = [];
-                        const labels = [];
-                        const parents = [];
-                        const texts = [];
-                        
-                        // Add root
-                        values.push(0);
-                        labels.push('Climate Solutions');
-                        parents.push('');
-                        texts.push('');
+                        const values = [0];
+                        const labels = ['Climate Solutions'];
+                        const parents = [''];
+                        const texts = [''];
                         
                         // Add categories
                         Object.entries(categoryCounts).forEach(([category, count]) => {
                             values.push(count);
                             labels.push(category);
                             parents.push('Climate Solutions');
-                            texts.push(`<b>${category}</b><br>Count: ${count}`);
+                            texts.push(`<div style="max-width: 300px; text-align: left;">
+                                <b>${category}</b><br>
+                                Solutions: ${count}
+                            </div>`);
                         });
                         
                         // Add individual solutions
                         data.forEach(row => {
-                            if (row.Category && row['Solution Name']) {
-                                values.push(1);
-                                labels.push(row['Solution Name']);
-                                parents.push(row.Category);
-                                texts.push(`
-                                    <b>Solution:</b> ${row['Solution Name']}<br>
-                                    <b>Location:</b> ${row.Source}<br>
-                                    <b>Category:</b> ${row.Category}<br>
-                                    <b>Climate Problem:</b> ${row['Climate Problem']}<br>
-                                    <b>Technologies:</b> ${row.Technologies}<br>
-                                    <b>Description:</b> ${row.Description}
-                                `);
-                            }
+                            values.push(1);
+                            labels.push(row['Solution Name']);
+                            parents.push(row.Category);
+                            texts.push(`<div style="max-width: 300px; text-align: left;">
+                                <b>${row['Solution Name']}</b><br><br>
+                                <b>Location:</b> ${row.Source}<br>
+                                <b>Category:</b> ${row.Category}<br>
+                                <b>Climate Problem:</b> ${row['Climate Problem']}<br>
+                                <b>Technologies:</b> ${row.Technologies}<br><br>
+                                <b>Description:</b><br>${row.Description}
+                            </div>`);
                         });
 
                         const trace = {
@@ -87,12 +80,19 @@
                             parents: parents,
                             text: texts,
                             hovertemplate: '%{text}<extra></extra>',
-                            textinfo: 'label+value',
+                            textinfo: 'label',
                             marker: {
                                 colors: [
-                                    '#3498db', '#2ecc71', '#e74c3c', '#f1c40f', 
-                                    '#9b59b6', '#1abc9c', '#e67e22', '#34495e'
+                                    '#FFB3BA',  // Pastel red
+                                    '#BAFFC9',  // Pastel green
+                                    '#BAE1FF',  // Pastel blue
+                                    '#FFFFBA',  // Pastel yellow
+                                    '#FFB3F7',  // Pastel purple
+                                    '#B3FFF7',  // Pastel cyan
                                 ]
+                            },
+                            pathbar: {
+                                visible: true
                             }
                         };
 
@@ -102,6 +102,11 @@
                             height: window.innerHeight * 0.9,
                             font: {
                                 family: 'Arial, sans-serif'
+                            },
+                            hoverlabel: {
+                                bgcolor: 'white',
+                                bordercolor: '#ddd',
+                                font: { size: 13 }
                             }
                         };
 
@@ -114,7 +119,6 @@
             }
         }
 
-        // Wait for DOM to be ready
         document.addEventListener('DOMContentLoaded', loadAndVisualizeData);
     </script>
 </body>
