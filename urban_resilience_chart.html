@@ -20,7 +20,9 @@
 .js-plotly-plot .plotly .hoverlayer .hovertext {
     max-width: 300px !important;
     white-space: normal !important;
+    overflow-wrap: break-word !important;
 }
+
 
     </style>
 </head>
@@ -49,25 +51,12 @@
         }
 
         function visualizeData(data) {
-    const categoryCounts = {};
-    data.forEach(row => {
-        if (row.Category) {
-            categoryCounts[row.Category] = (categoryCounts[row.Category] || 0) + 1;
-        }
-    });
-    
     const values = [0];
     const labels = ['Climate Solutions'];
     const parents = [''];
     const texts = [''];
-    
-    Object.entries(categoryCounts).forEach(([category, count]) => {
-        values.push(count);
-        labels.push(category);
-        parents.push('Climate Solutions');
-        texts.push(`${category}<br>Solutions: ${count}`);
-    });
-    
+
+    // Categorize data
     data.forEach(row => {
         values.push(1);
         labels.push(row['Solution Name']);
@@ -76,30 +65,30 @@
     });
 
     const trace = {
-    type: 'treemap',
-    values: values,
-    labels: labels,
-    parents: parents,
-    text: texts,
-    hovertemplate: '%{text}<extra></extra>', // Keep the hovertemplate plain
-    textinfo: 'label',
-    marker: {
-        colorscale: [
-            [0, '#edf8f4'],
-            [0.25, '#bae5d5'],
-            [0.5, '#82ccb5'],
-            [0.75, '#3ea395'],
-            [1, '#007571']
-        ]
-    },
-    pathbar: { visible: true }
-};
-
+        type: 'treemap',
+        values: values,
+        labels: labels,
+        parents: parents,
+        text: texts,
+        hovertemplate: '%{text}<extra></extra>',
+        textinfo: 'label',
+        marker: {
+            colorscale: [
+                [0, '#edf8f4'],
+                [0.25, '#bae5d5'],
+                [0.5, '#82ccb5'],
+                [0.75, '#3ea395'],
+                [1, '#007571']
+            ]
+        },
+        pathbar: { visible: true }
+    };
 
     const layout = {
         title: 'Urban Climate Solutions by Category',
         width: window.innerWidth * 0.95,
         height: window.innerHeight * 0.9,
+        margin: { l: 50, r: 50, t: 50, b: 50 },
         font: { family: 'Arial, sans-serif' },
         hoverlabel: {
             bgcolor: '#f0f0f0',
