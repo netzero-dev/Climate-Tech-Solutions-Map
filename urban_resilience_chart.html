@@ -2,8 +2,6 @@
 <html>
 <head>
     <title>Urban Climate Solutions Treemap</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papa.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.24.1/plotly.min.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -22,6 +20,10 @@
 </head>
 <body>
     <div id="chart"></div>
+    <!-- Load libraries first -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.24.1/plotly.min.js"></script>
+    <!-- Then load our application code -->
     <script>
         async function loadAndVisualizeData() {
             try {
@@ -112,7 +114,8 @@
             }
         }
 
-        loadAndVisualizeData();
+        // Wait for DOM to be ready
+        document.addEventListener('DOMContentLoaded', loadAndVisualizeData);
     </script>
 </body>
 </html>
