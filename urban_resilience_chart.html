@@ -82,10 +82,6 @@ function normalizeCategory(category) {
     return category.trim().toLowerCase();
 }
 
-function capitalizeWords(str) {
-    return str.replace(/\b\w/g, char => char.toUpperCase());
-}
-
 function visualizeData(data) {
     const categoryCounts = {};
     const categoryLabels = {}; // Map normalized categories to original labels
@@ -98,27 +94,37 @@ function visualizeData(data) {
         }
     });
 
-    const values = [0];
+    const values = [0]; // Root node value
     const labels = ['Climate Solutions'];
     const parents = [''];
-    const texts = [];
+    const texts = ['']; // Root node text
+    const ids = ['root']; // Root node id
+
+    // Map to keep track of category IDs
+    const categoryIds = {};
 
     // Add categories
     Object.entries(categoryCounts).forEach(([normalizedCategory, count]) => {
         const originalCategory = categoryLabels[normalizedCategory];
         values.push(count);
         labels.push(originalCategory);
-        parents.push('Climate Solutions');
+        parents.push('root'); // Parent is root node
         texts.push(`${wrapText(originalCategory, 50)}<br>Solutions: ${count}`);
+
+        const categoryId = 'category_' + normalizedCategory;
+        ids.push(categoryId);
+        categoryIds[normalizedCategory] = categoryId;
     });
 
     // Add solutions
-    data.forEach(row => {
+    data.forEach((row, index) => {
         values.push(1);
         labels.push(row['Solution Name']);
+
         const normalizedCategory = normalizeCategory(row.Category);
-        const originalCategory = categoryLabels[normalizedCategory] || 'Other';
-        parents.push(originalCategory);
+        const parentCategoryId = categoryIds[normalizedCategory] || 'category_other';
+        parents.push(parentCategoryId);
+
         texts.push(
             `<b>${wrapText(row['Solution Name'], 50)}</b><br><br>` +
             `Location: ${wrapText(row.Source, 50)}<br>` +
@@ -127,6 +133,9 @@ function visualizeData(data) {
             `Technologies: ${wrapText(row.Technologies, 50)}<br><br>` +
             `Description:<br>${wrapText(row.Description, 50)}`
         );
+
+        // Generate a unique ID for each solution
+        ids.push('solution_' + index);
     });
 
     const trace = {
@@ -135,6 +144,7 @@ function visualizeData(data) {
         labels: labels,
         parents: parents,
         text: texts,
+        ids: ids, // Include ids in the trace
         hovertemplate: '%{text}<extra></extra>',
         textinfo: 'label',
         marker: {
@@ -164,6 +174,7 @@ function visualizeData(data) {
 
     Plotly.newPlot('chart', [trace], layout);
 }
+
 
 
         // Load and visualize data
