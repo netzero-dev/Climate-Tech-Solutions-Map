@@ -5,123 +5,58 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.24.1/plotly.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
     <style>
-        body { margin: 0; padding: 20px; font-family: Arial, sans-serif; background: #f5f5f5; }
-        #chart { 
-            width: 1200px; 
-            height: 800px; 
-            margin: 0 auto;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        #loading { 
-            text-align: center;
-            padding: 20px;
-            font-size: 18px;
-        }
+        body { margin: 0; padding: 20px; font-family: Arial, sans-serif; }
+        #chart { width: 1200px; height: 800px; margin: 0 auto; }
     </style>
 </head>
 <body>
-    <div id="loading">Loading data...</div>
     <div id="chart"></div>
 
     <script>
         async function createVisualization() {
-            try {
-                const response = await fetch('https://netzero-dev.github.io/Climate-Tech-Solutions-Map/climate_adaptation_solutions_full.csv');
-                const csvText = await response.text();
-                
-                const rawData = Papa.parse(csvText, {
-                    header: true,
-                    skipEmptyLines: true
-                }).data;
+            const response = await fetch('https://netzero-dev.github.io/Climate-Tech-Solutions-Map/climate_adaptation_solutions_full.csv');
+            const csvText = await response.text();
+            
+            const rawData = Papa.parse(csvText, {
+                header: true,
+                skipEmptyLines: true
+            }).data;
 
-                // Create data structure for visualization
-                const labels = [];
-                const parents = [];
-                const values = [];
-                const customdata = [];
-                const ids = [];
+            // Get unique categories
+            const categories = [...new Set(rawData.map(d => d.Category))];
+            
+            // Create data arrays
+            const labels = [...categories];  // Start with categories
+            const parents = Array(categories.length).fill('');  // Categories have no parent
+            const values = Array(categories.length).fill(1);    // Equal weight for categories
 
-                // Count solutions per category
-                const categoryCount = {};
-                rawData.forEach(row => {
-                    if (row.Category) {
-                        categoryCount[row.Category] = (categoryCount[row.Category] || 0) + 1;
-                    }
-                });
+            // Add solutions
+            rawData.forEach(row => {
+                if (row.Category && row.Solution_Name) {
+                    labels.push(row.Solution_Name);
+                    parents.push(row.Category);
+                    values.push(1);
+                }
+            });
 
-                // Add root
-                labels.push('All Solutions');
-                parents.push('');
-                values.push(rawData.length);
-                customdata.push('');
-                ids.push('root');
+            const data = [{
+                type: 'sunburst',
+                labels: labels,
+                parents: parents,
+                values: values,
+                branchvalues: 'total'
+            }];
 
-                // Add categories
-                Object.entries(categoryCount).forEach(([category, count]) => {
-                    labels.push(category);
-                    parents.push('All Solutions');
-                    values.push(count);
-                    customdata.push(`<b>Total Solutions:</b> ${count}`);
-                    ids.push(`cat-${category}`);
-                });
+            const layout = {
+                title: 'Climate Adaptation Solutions',
+                width: 1200,
+                height: 800
+            };
 
-                // Add solutions
-                rawData.forEach(row => {
-                    if (row.Category && row.Solution_Name) {
-                        labels.push(row.Solution_Name);
-                        parents.push(row.Category);
-                        values.push(1);
-                        customdata.push(
-                            `<b>Source:</b> ${row.Source}<br>` +
-                            `<b>Climate Problem:</b> ${row.Climate_Problem}<br>` +
-                            `<b>Technologies:</b> ${row.Technologies}<br>` +
-                            `<b>Description:</b> ${row.Description}`
-                        );
-                        ids.push(`sol-${row.Solution_Name}`);
-                    }
-                });
-
-                const data = [{
-                    type: 'sunburst',
-                    labels: labels,
-                    parents: parents,
-                    values: values,
-                    ids: ids,
-                    customdata: customdata,
-                    branchvalues: 'total',
-                    hovertemplate: '%{customdata}<extra></extra>',
-                    textfont: { size: 12 },
-                    marker: {
-                        colors: ['#FFB3BA', '#BAFFC9', '#BAE1FF', '#FFFFBA', 
-                                '#FFB3FF', '#FFE4B5', '#E6E6FA', '#B2DFDB', 
-                                '#F0F4C3', '#FFCCBC']
-                    }
-                }];
-
-                const layout = {
-                    title: 'Urban Climate Resilience Solutions',
-                    width: 1200,
-                    height: 800,
-                    margin: { t: 50, l: 0, r: 0, b: 0 }
-                };
-
-                const config = {
-                    responsive: true,
-                    displayModeBar: false
-                };
-
-                document.getElementById('loading').style.display = 'none';
-                await Plotly.newPlot('chart', data, layout, config);
-
-            } catch (error) {
-                document.getElementById('loading').innerHTML = `Error loading data: ${error.message}`;
-                console.error('Error:', error);
-            }
+            Plotly.newPlot('chart', data, layout);
         }
 
-        createVisualization();
+        createVisualization().catch(console.error);
     </script>
 </body>
 </html>
