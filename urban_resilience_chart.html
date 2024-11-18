@@ -36,11 +36,36 @@
                     skipEmptyLines: true
                 }).data;
 
-                const categories = [...new Set(rawData.map(d => d.Category))];
-                const labels = [...categories];
-                const parents = Array(categories.length).fill('');
-                const values = Array(categories.length).fill(1);
-                const customdata = Array(categories.length).fill('');
+                // Create data structure for visualization
+                const labels = [];
+                const parents = [];
+                const values = [];
+                const customdata = [];
+                const ids = [];
+
+                // Count solutions per category
+                const categoryCount = {};
+                rawData.forEach(row => {
+                    if (row.Category) {
+                        categoryCount[row.Category] = (categoryCount[row.Category] || 0) + 1;
+                    }
+                });
+
+                // Add root
+                labels.push('All Solutions');
+                parents.push('');
+                values.push(rawData.length);
+                customdata.push('');
+                ids.push('root');
+
+                // Add categories
+                Object.entries(categoryCount).forEach(([category, count]) => {
+                    labels.push(category);
+                    parents.push('All Solutions');
+                    values.push(count);
+                    customdata.push(`<b>Total Solutions:</b> ${count}`);
+                    ids.push(`cat-${category}`);
+                });
 
                 // Add solutions
                 rawData.forEach(row => {
@@ -54,6 +79,7 @@
                             `<b>Technologies:</b> ${row.Technologies}<br>` +
                             `<b>Description:</b> ${row.Description}`
                         );
+                        ids.push(`sol-${row.Solution_Name}`);
                     }
                 });
 
@@ -62,6 +88,7 @@
                     labels: labels,
                     parents: parents,
                     values: values,
+                    ids: ids,
                     customdata: customdata,
                     branchvalues: 'total',
                     hovertemplate: '%{customdata}<extra></extra>',
@@ -72,8 +99,8 @@
                                 '#F0F4C3', '#FFCCBC']
                     }
                 }];
-                const layout = {
 
+                const layout = {
                     title: 'Urban Climate Resilience Solutions',
                     width: 1200,
                     height: 800,
