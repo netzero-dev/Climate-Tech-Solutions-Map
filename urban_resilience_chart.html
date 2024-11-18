@@ -16,15 +16,12 @@
             border-radius: 16px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        /* Add this CSS to control hover label width */
-        .js-plotly-plot .plotly .hoverlabel {
-            width: 300px !important;
-        }
-        .js-plotly-plot .plotly .hoverlabel-text {
-            word-wrap: break-word !important;
-            white-space: pre-wrap !important;
-        }
-        }
+/* Add this CSS to control hover label width */
+.js-plotly-plot .plotly .hoverlayer .hovertext {
+    max-width: 300px !important;
+    white-space: normal !important;
+}
+
     </style>
 </head>
 <body>
