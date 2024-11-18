@@ -25,45 +25,35 @@
             const parents = [];
             const values = [];
             const customdata = [];
+            const ids = [];
 
-            // Add root
-            labels.push('Climate Solutions');
-            parents.push('');
-            values.push(rawData.length);
-            customdata.push('Overview of climate adaptation solutions');
-
-            // Process categories
-            const categoryGroups = {};
-            rawData.forEach(row => {
-                if (!categoryGroups[row.Category]) {
-                    categoryGroups[row.Category] = [];
-                }
-                categoryGroups[row.Category].push(row);
-            });
-
-            // Add categories and their solutions
-            Object.entries(categoryGroups).forEach(([category, items]) => {
-                // Add category
+            // Get unique categories
+            const categories = [...new Set(rawData.map(d => d.Category))];
+            
+            // Add categories
+            categories.forEach(category => {
                 if (category) {
                     labels.push(category);
-                    parents.push('Climate Solutions');
-                    values.push(items.length);
-                    customdata.push(`${items.length} solutions`);
+                    parents.push('');
+                    values.push(rawData.filter(d => d.Category === category).length);
+                    customdata.push(`${rawData.filter(d => d.Category === category).length} solutions`);
+                    ids.push(`cat-${category}`);
+                }
+            });
 
-                    // Add solutions for this category
-                    items.forEach(item => {
-                        if (item.Solution_Name) {
-                            labels.push(item.Solution_Name);
-                            parents.push(category);
-                            values.push(1);
-                            customdata.push(
-                                `<b>Source:</b> ${item.Source}<br>` +
-                                `<b>Climate Problem:</b> ${item.Climate_Problem}<br>` +
-                                `<b>Technologies:</b> ${item.Technologies}<br>` +
-                                `<b>Description:</b> ${item.Description}`
-                            );
-                        }
-                    });
+            // Add solutions
+            rawData.forEach(row => {
+                if (row.Category && row.Solution_Name) {
+                    labels.push(row.Solution_Name);
+                    parents.push(row.Category);
+                    values.push(1);
+                    ids.push(`sol-${row.Solution_Name}`);
+                    customdata.push(
+                        `<b>Source:</b> ${row.Source}<br>` +
+                        `<b>Climate Problem:</b> ${row.Climate_Problem}<br>` +
+                        `<b>Technologies:</b> ${row.Technologies}<br>` +
+                        `<b>Description:</b> ${row.Description}`
+                    );
                 }
             });
 
@@ -72,9 +62,11 @@
                 labels: labels,
                 parents: parents,
                 values: values,
+                ids: ids,
                 customdata: customdata,
-                branchvalues: 'total',
                 hovertemplate: '%{customdata}<extra></extra>',
+                branchvalues: 'total',
+                maxdepth: 3,
                 marker: {
                     colors: [
                         '#FFB3BA', '#BAFFC9', '#BAE1FF', '#FFFFBA', 
@@ -86,10 +78,20 @@
             const layout = {
                 title: 'Climate Adaptation Solutions',
                 width: 1200,
-                height: 800
+                height: 800,
+                sunburstcolorway: [
+                    '#FFB3BA', '#BAFFC9', '#BAE1FF', '#FFFFBA', 
+                    '#FFB3FF', '#FFE4B5', '#E6E6FA', '#B2DFDB'
+                ]
             };
 
-            Plotly.newPlot('chart', data, layout);
+            const config = {
+                responsive: true,
+                displayModeBar: false,
+                showSendToCloud: false
+            };
+
+            Plotly.newPlot('chart', data, layout, config);
         }
 
         createVisualization().catch(console.error);
