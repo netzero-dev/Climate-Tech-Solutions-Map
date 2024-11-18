@@ -16,6 +16,14 @@
             border-radius: 16px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
+        /* Add this CSS to control hover label width */
+        .js-plotly-plot .plotly .hoverlabel {
+            max-width: 300px !important;
+            white-space: normal !important;
+        }
+        .js-plotly-plot .plotly .hoverlabel .hoverlabel-text-g {
+            width: 300px !important;
+        }
     </style>
 </head>
 <body>
@@ -33,81 +41,7 @@
                     skipEmptyLines: true,
                     complete: function(results) {
                         const data = results.data.filter(row => row.Category && row['Solution Name']);
-                        
-                        const categoryCounts = {};
-                        data.forEach(row => {
-                            if (row.Category) {
-                                categoryCounts[row.Category] = (categoryCounts[row.Category] || 0) + 1;
-                            }
-                        });
-                        
-                        const values = [0];
-                        const labels = ['Climate Solutions'];
-                        const parents = [''];
-                        const texts = [''];
-                        
-                        Object.entries(categoryCounts).forEach(([category, count]) => {
-                            values.push(count);
-                            labels.push(category);
-                            parents.push('Climate Solutions');
-                            texts.push(`<span style="display: inline-block; width: 300px; white-space: normal;">${category}<br>Solutions: ${count}</span>`);
-                        });
-
-                        data.forEach(row => {
-                            values.push(1);
-                            labels.push(row['Solution Name']);
-                            parents.push(row.Category);
-                            texts.push(`<span style="display: inline-block; width: 300px; white-space: normal;">${row['Solution Name']}<br><br>
-                        Location: ${row.Source}<br>
-                        Category: ${row.Category}<br>
-                        Climate Problem: ${row['Climate Problem']}<br>
-                        Technologies: ${row.Technologies}<br><br>
-                        Description:<br>${row.Description}</span>`);
-                        });
-
-
-                        const trace = {
-                            type: 'treemap',
-                            values: values,
-                            labels: labels,
-                            parents: parents,
-                            text: texts,
-                            hovertemplate: '%{text}<extra></extra>',
-                            textinfo: 'label',
-                            marker: {
-                                colorscale: [
-                                    [0, '#edf8f4'],
-                                    [0.25, '#bae5d5'],
-                                    [0.5, '#82ccb5'],
-                                    [0.75, '#3ea395'],
-                                    [1, '#007571']
-                                ]
-                            },
-                            pathbar: {
-                                visible: true
-                            }
-                        };
-
-                        const layout = {
-                            title: 'Urban Climate Solutions by Category',
-                            width: window.innerWidth * 0.95,
-                            height: window.innerHeight * 0.9,
-                            font: {
-                                family: 'Arial, sans-serif'
-                            },
-                            hoverlabel: {
-                                bgcolor: '#f0f0f0',
-                                bordercolor: '#ddd',
-                                font: { 
-                                    size: 13,
-                                    color: '#000'
-                                },
-                                align: 'left',
-                                width: 300
-                            }
-                        };
-
-                        Plotly.newPlot('chart', [trace], layout);
+                        visualizeData(data);
                     }
                 });
             } catch (error) {
@@ -116,6 +50,70 @@
             }
         }
 
+        function visualizeData(data) {
+            const categoryCounts = {};
+            data.forEach(row => {
+                if (row.Category) {
+                    categoryCounts[row.Category] = (categoryCounts[row.Category] || 0) + 1;
+                }
+            });
+            
+            const values = [0];
+            const labels = ['Climate Solutions'];
+            const parents = [''];
+            const texts = [''];
+            
+            Object.entries(categoryCounts).forEach(([category, count]) => {
+                values.push(count);
+                labels.push(category);
+                parents.push('Climate Solutions');
+                texts.push(`${category}<br>Solutions: ${count}`);
+            });
+            
+            data.forEach(row => {
+                values.push(1);
+                labels.push(row['Solution Name']);
+                parents.push(row.Category);
+                texts.push(`<b>${row['Solution Name']}</b><br><br>Location: ${row.Source}<br>Category: ${row.Category}<br>Climate Problem: ${row['Climate Problem']}<br>Technologies: ${row.Technologies}<br><br>Description:<br>${row.Description}`);
+            });
+
+            const trace = {
+                type: 'treemap',
+                values: values,
+                labels: labels,
+                parents: parents,
+                text: texts,
+                hovertemplate: '%{text}<extra></extra>',
+                textinfo: 'label',
+                marker: {
+                    colorscale: [
+                        [0, '#edf8f4'],
+                        [0.25, '#bae5d5'],
+                        [0.5, '#82ccb5'],
+                        [0.75, '#3ea395'],
+                        [1, '#007571']
+                    ]
+                },
+                pathbar: { visible: true }
+            };
+
+            const layout = {
+                title: 'Urban Climate Solutions by Category',
+                width: 800,
+                height: 600,
+                font: { family: 'Arial, sans-serif' },
+                hoverlabel: {
+                    bgcolor: '#f0f0f0',
+                    bordercolor: '#ddd',
+                    font: { size: 13, color: '#000' },
+                    align: 'left'
+                }
+            };
+
+            Plotly.newPlot('chart', [trace], layout);
+        }
+
+        // Load and visualize the real data
         document.addEventListener('DOMContentLoaded', loadAndVisualizeData);
     </script>
 </body>
