@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Climate Adaptation Solutions Sunburst</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.24.1/plotly.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
     <style>
-        body { margin: 0; padding: 20px; font-family: Arial, sans-serif; }
         #chart { width: 1200px; height: 800px; margin: 0 auto; }
     </style>
 </head>
@@ -22,20 +20,50 @@
                 skipEmptyLines: true
             }).data;
 
-            // Get unique categories
-            const categories = [...new Set(rawData.map(d => d.Category))];
-            
-            // Create data arrays
-            const labels = [...categories];  // Start with categories
-            const parents = Array(categories.length).fill('');  // Categories have no parent
-            const values = Array(categories.length).fill(1);    // Equal weight for categories
+            // Process data for visualization
+            const labels = [];
+            const parents = [];
+            const values = [];
+            const customdata = [];
 
-            // Add solutions
+            // Add root
+            labels.push('Climate Solutions');
+            parents.push('');
+            values.push(rawData.length);
+            customdata.push('Overview of climate adaptation solutions');
+
+            // Process categories
+            const categoryGroups = {};
             rawData.forEach(row => {
-                if (row.Category && row.Solution_Name) {
-                    labels.push(row.Solution_Name);
-                    parents.push(row.Category);
-                    values.push(1);
+                if (!categoryGroups[row.Category]) {
+                    categoryGroups[row.Category] = [];
+                }
+                categoryGroups[row.Category].push(row);
+            });
+
+            // Add categories and their solutions
+            Object.entries(categoryGroups).forEach(([category, items]) => {
+                // Add category
+                if (category) {
+                    labels.push(category);
+                    parents.push('Climate Solutions');
+                    values.push(items.length);
+                    customdata.push(`${items.length} solutions`);
+
+                    // Add solutions for this category
+                    items.forEach(item => {
+                        if (item.Solution_Name) {
+                            labels.push(item.Solution_Name);
+                            parents.push(category);
+                            values.push(1);
+                            customdata.push(
+                                `<b>Source:</b> ${item.Source}<br>` +
+                                `<b>Climate Problem:</b> ${item.Climate_Problem}<br>` +
+                                `<b>Technologies:</b> ${item.Technologies}<br>` +
+                                `<b>Description:</b> ${item.Description}`
+                            );
+                        }
+                    });
                 }
             });
 
@@ -44,7 +72,15 @@
                 labels: labels,
                 parents: parents,
                 values: values,
-                branchvalues: 'total'
+                customdata: customdata,
+                branchvalues: 'total',
+                hovertemplate: '%{customdata}<extra></extra>',
+                marker: {
+                    colors: [
+                        '#FFB3BA', '#BAFFC9', '#BAE1FF', '#FFFFBA', 
+                        '#FFB3FF', '#FFE4B5', '#E6E6FA', '#B2DFDB'
+                    ]
+                }
             }];
 
             const layout = {
