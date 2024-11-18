@@ -20,70 +20,57 @@
     <div id="chart"></div>
 
     <script>
-        // Error handling function
-        function handleError(error) {
-            console.error('Error:', error);
-            document.getElementById('chart').innerHTML = `Error loading chart: ${error.message}`;
-        }
-
         async function loadAndProcessData() {
-            try {
-                const response = await fetch('https://netzero-dev.github.io/Climate-Tech-Solutions-Map/climate_adaptation_solutions_full.csv');
-                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                const csvText = await response.text();
-                
-                return new Promise((resolve) => {
-                    Papa.parse(csvText, {
-                        header: true,
-                        complete: (results) => {
-                            resolve(results.data.filter(row => row.Category && row.Climate_Problem));
-                        },
-                        error: (error) => {
-                            throw new Error('CSV parsing failed: ' + error);
-                        }
-                    });
+            const response = await fetch('https://netzero-dev.github.io/Climate-Tech-Solutions-Map/climate_adaptation_solutions_full.csv');
+            const csvText = await response.text();
+            
+            return new Promise((resolve) => {
+                Papa.parse(csvText, {
+                    header: true,
+                    complete: (results) => {
+                        resolve(results.data.filter(row => row.Category && row.Solution_Name));
+                    }
                 });
-            } catch (error) {
-                throw new Error('Data loading failed: ' + error);
-            }
+            });
         }
 
         function createSunburstData(data) {
-            const ids = [];
-            const labels = [];
-            const parents = [];
-            const customdata = [];
-
-            // Add root
-            ids.push('root');
-            labels.push('All Solutions');
-            parents.push('');
-
-            // Process Categories
-            const categories = [...new Set(data.map(d => d.Category))];
-            categories.forEach(category => {
-                ids.push(category);
-                labels.push(category);
-                parents.push('root');
+            // Group solutions by category
+            const groupedData = {};
+            data.forEach(row => {
+                if (!groupedData[row.Category]) {
+                    groupedData[row.Category] = new Set();
+                }
+                groupedData[row.Category].add(row.Solution_Name);
             });
 
-            // Process Problems within Categories
+            const labels = [];
+            const parents = [];
+            const values = [];
+            const descriptions = [];
+
+            // Add categories
+            Object.keys(groupedData).forEach(category => {
+                labels.push(category);
+                parents.push("");
+                values.push(groupedData[category].size);
+                descriptions.push("");
+            });
+
+            // Add solutions
             data.forEach(row => {
-                const problemId = `${row.Category}-${row.Climate_Problem}`;
-                if (!ids.includes(problemId)) {
-                    ids.push(problemId);
-                    labels.push(row.Climate_Problem);
-                    parents.push(row.Category);
-                    customdata.push(row.Source || 'Unknown Source');
-                }
+                labels.push(row.Solution_Name);
+                parents.push(row.Category);
+                values.push(1);
+                descriptions.push(row.Description);
             });
 
             return [{
                 type: 'sunburst',
-                ids: ids,
                 labels: labels,
                 parents: parents,
-                customdata: customdata,
+                values: values,
+                customdata: descriptions,
                 branchvalues: 'total',
                 hovertemplate: '<b>%{label}</b><br><br>%{customdata}<extra></extra>',
                 marker: {
@@ -102,17 +89,10 @@
                 const plotData = createSunburstData(data);
                 
                 const layout = {
-                    title: {
-                        text: 'Climate Adaptation Solutions',
-                        font: { size: 24 }
-                    },
+                    title: 'Climate Adaptation Solutions',
                     width: 1200,
                     height: 800,
-                    margin: { t: 50, l: 0, r: 0, b: 0 },
-                    sunburstcolorway: [
-                        '#FFB3BA', '#BAFFC9', '#BAE1FF', '#FFFFBA', 
-                        '#FFB3FF', '#FFE4B5', '#E6E6FA', '#B2DFDB'
-                    ]
+                    margin: { t: 50, l: 0, r: 0, b: 0 }
                 };
 
                 const config = {
@@ -122,11 +102,11 @@
 
                 await Plotly.newPlot('chart', plotData, layout, config);
             } catch (error) {
-                handleError(error);
+                console.error('Error:', error);
+                document.getElementById('chart').innerHTML = `Error loading chart: ${error.message}`;
             }
         }
 
-        // Initialize the chart
         initChart();
     </script>
 </body>
