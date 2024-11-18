@@ -76,24 +76,25 @@
     });
 
     const trace = {
-        type: 'treemap',
-        values: values,
-        labels: labels,
-        parents: parents,
-        text: texts,
-        hovertemplate: '<div style="max-width: 300px; white-space: normal;">%{text}</div><extra></extra>',
-        textinfo: 'label',
-        marker: {
-            colorscale: [
-                [0, '#edf8f4'],
-                [0.25, '#bae5d5'],
-                [0.5, '#82ccb5'],
-                [0.75, '#3ea395'],
-                [1, '#007571']
-            ]
-        },
-        pathbar: { visible: true }
-    };
+    type: 'treemap',
+    values: values,
+    labels: labels,
+    parents: parents,
+    text: texts,
+    hovertemplate: '%{text}<extra></extra>', // Keep the hovertemplate plain
+    textinfo: 'label',
+    marker: {
+        colorscale: [
+            [0, '#edf8f4'],
+            [0.25, '#bae5d5'],
+            [0.5, '#82ccb5'],
+            [0.75, '#3ea395'],
+            [1, '#007571']
+        ]
+    },
+    pathbar: { visible: true }
+};
+
 
     const layout = {
         title: 'Urban Climate Solutions by Category',
