@@ -18,11 +18,12 @@
         }
         /* Add this CSS to control hover label width */
         .js-plotly-plot .plotly .hoverlabel {
-            max-width: 300px !important;
-            white-space: normal !important;
-        }
-        .js-plotly-plot .plotly .hoverlabel .hoverlabel-text-g {
             width: 300px !important;
+        }
+        .js-plotly-plot .plotly .hoverlabel-text {
+            word-wrap: break-word !important;
+            white-space: pre-wrap !important;
+        }
         }
     </style>
 </head>
@@ -99,8 +100,8 @@
 
             const layout = {
                 title: 'Urban Climate Solutions by Category',
-                width: 800,
-                height: 600,
+                width: window.innerWidth * 0.95,
+                height: window.innerHeight * 0.9,
                 font: { family: 'Arial, sans-serif' },
                 hoverlabel: {
                     bgcolor: '#f0f0f0',
