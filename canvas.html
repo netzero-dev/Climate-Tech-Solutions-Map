@@ -93,7 +93,7 @@ mindmap
 
     for (let i = 2; i < lines.length; i++) {
       const line = lines[i];
-      const indent = line.split(/\S/)[0].length;
+      const indent = line.match(/^(\s*)/)[0].length; // Get leading spaces
       const text = line.trim();
 
       const node = { name: text, children: [] };
@@ -126,15 +126,8 @@ mindmap
 
     if (data.children.length) {
       data.children.forEach(child => {
-        if (child.children.length) {
-          container.appendChild(createCanvasHTML(child));
-        } else {
-          const ul = container.querySelector('ul') || document.createElement('ul');
-          if (!ul.parentElement) container.appendChild(ul);
-          const li = document.createElement('li');
-          li.textContent = child.name;
-          ul.appendChild(li);
-        }
+        const subContainer = createCanvasHTML(child);
+        container.appendChild(subContainer);
       });
     }
 
